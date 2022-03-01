@@ -201,7 +201,7 @@ void tree_t<K, V>::_transplant(node_ptr_t u, node_ptr_t v){
 template <typename K, typename V>
 void tree_t<K, V>::_delete(node_ptr_t z) {
     node_ptr_t y = z;
-    unsigned int y_original_color = y->color;
+    Color y_original_color = y->color;
 
     node_ptr_t x;
     if (z->left == nil){
