@@ -35,6 +35,9 @@ struct tree_t {
     void _right_rotate(node_ptr_t);
 
     node_ptr_t _minimum(node_ptr_t);
+    node_ptr_t _upper_bound(K key);
+    node_ptr_t _lower_bound(K key);
+
     void _transplant(node_ptr_t, node_ptr_t);
     void _delete(node_ptr_t);
     void _delete_fixup(node_ptr_t);
@@ -183,6 +186,53 @@ node_t<K, V> *tree_t<K, V>::_minimum(node_ptr_t x){
     return x;
 }
 
+
+template <typename K, typename V>
+node_t<K, V> *tree_t<K, V>::_upper_bound(K key){
+    node_ptr_t x = root;
+    node_ptr_t upper_bound;
+
+    while(x != nil){
+        if (x->key == key){
+            upper_bound = x;
+            return upper_bound;
+        }
+
+        if (x->key < key){
+            x = x->right;
+        }
+        else {
+            upper_bound = x;
+            x = x->left;
+        }
+    }
+
+    return upper_bound;
+}
+
+template <typename K, typename V>
+node_t<K, V> *tree_t<K, V>::_lower_bound(K key){
+    node_ptr_t x = root;
+    node_ptr_t lower_bound;
+
+    while(x != nil){
+        if (x->key == key){
+            lower_bound = x;
+            return lower_bound;
+        }
+
+        if (x->key < key){
+            lower_bound = x;
+            x = x->right;
+        }
+        else {
+            x = x->left;
+        }
+    }
+
+    return lower_bound;
+}
+
 template <typename K, typename V> 
 void tree_t<K, V>::_transplant(node_ptr_t u, node_ptr_t v){
     if (u->p == nil)
@@ -301,12 +351,15 @@ void tree_t<K, V>::_delete_fixup(node_ptr_t x) {
         }
     }
 
-    x->color == Color::BLACK;
+    x->color = Color::BLACK;
 }
 
 
 template <typename K, typename V>
-void tree_t<K, V>::erase(K key) {}
+void tree_t<K, V>::erase(K key) {
+    node_ptr_t dNode = _upper_bound(key);
+    _delete(dNode);
+}
 
 }  // namespace rb_tree
 }  // namespace DS
