@@ -1,55 +1,7 @@
 #pragma once
 
-#include <cstddef>
-
 namespace DS {
 namespace rb_tree {
-
-enum class Color : unsigned {
-    BLACK,
-    RED
-};
-
-template <typename K, typename V>
-struct node_t {
-    K key;
-    V val;
-    node_t *p{nullptr}, *left{nullptr}, *right{nullptr};
-
-    Color color{Color::BLACK};
-
-   public:
-    bool is_leaf() noexcept;
-};
-
-template <typename K, typename V>
-struct tree_t {
-    using node_ptr_t = node_t<K, V> *;
-
-   private:
-    std::size_t _size;                  // Number of Elements in the Tree
-    node_ptr_t nil = new node_t<K, V>;  // Sentinel node_ptr_t
-    node_ptr_t root{nil};               // Root node_ptr_t
-
-    node_ptr_t _minimum(node_ptr_t);
-
-    void _transplant(node_ptr_t, node_ptr_t);
-    void _delete(node_ptr_t);
-    void _delete_fixup(node_ptr_t);
-
-    void _left_rotate(node_ptr_t);
-    void _right_rotate(node_ptr_t);
-    void _insert_fixup(node_ptr_t);
-
-   public:
-    node_ptr_t _search(K key);
-    node_ptr_t _upper_bound(K key);
-    node_ptr_t _lower_bound(K key);
-    node_ptr_t insert(K key, V val);
-    void erase(K key);
-
-    std::size_t size() const { return _size; }
-};
 
 template <typename K, typename V>
 void tree_t<K, V>::_left_rotate(node_ptr_t x) {
@@ -177,7 +129,6 @@ void tree_t<K, V>::_insert_fixup(node_ptr_t z) {
 }
 
 template <typename K, typename V>
-
 node_t<K, V> *tree_t<K, V>::_minimum(node_ptr_t x) {
     while (x->left != nil) {
         x = x->left;
@@ -186,7 +137,7 @@ node_t<K, V> *tree_t<K, V>::_minimum(node_ptr_t x) {
 }
 
 template <typename K, typename V>
-node_t<K, V> *tree_t<K, V>::_search(K key) {
+node_t<K, V> *tree_t<K, V>::search(K key) {
     node_ptr_t x = root;
     while (x != nil && x->key != key) {
         if (x->key > key) {
@@ -199,7 +150,7 @@ node_t<K, V> *tree_t<K, V>::_search(K key) {
 }
 
 template <typename K, typename V>
-node_t<K, V> *tree_t<K, V>::_upper_bound(K key) {
+node_t<K, V> *tree_t<K, V>::upper_bound(K key) {
     node_ptr_t x = root;
     node_ptr_t upper_bound = nil;
 
@@ -216,15 +167,15 @@ node_t<K, V> *tree_t<K, V>::_upper_bound(K key) {
 }
 
 template <typename K, typename V>
-node_t<K, V> *tree_t<K, V>::_lower_bound(K key) {
+node_t<K, V> *tree_t<K, V>::lower_bound(K key) {
     node_ptr_t x = root;
     node_ptr_t lower_bound = nil;
 
     while (x != nil) {
         if (x->key < key) {
-            lower_bound = x;
             x = x->right;
         } else {
+            lower_bound = x;
             x = x->left;
         }
     }
@@ -349,8 +300,76 @@ void tree_t<K, V>::_delete_fixup(node_ptr_t x) {
 
 template <typename K, typename V>
 void tree_t<K, V>::erase(K key) {
-    node_ptr_t dNode = _search(key);
+    node_ptr_t dNode = search(key);
+    if (dNode == nil) return;
     _delete(dNode);
+    _size--;
+}
+
+template <typename K, typename V>
+void tree_t<K, V>::_predecessor_util(node_ptr_t x, node_ptr_t &pre, K key) {
+    if (x == nil)
+        return;
+
+    if (x->key == key) {
+        if (x->left != nil) {
+            node_ptr_t y = x->left;
+            while (y->right != nil)
+                y = y->right;
+
+            pre = y;
+        }
+        return;
+    }
+
+    if (x->key > key) {
+        _predecessor_util(x->left, pre, key);
+    } else {
+        pre = x;
+        _predecessor_util(x->right, pre, key);
+    }
+}
+
+template <typename K, typename V>
+node_t<K, V> *tree_t<K, V>::predecessor(K key) {
+    node_ptr_t x = root;
+    node_ptr_t pre;
+
+    _predecessor_util(x, pre, key);
+
+    return pre;
+}
+
+template <typename K, typename V>
+void tree_t<K, V>::_successor_util(node_ptr_t x, node_ptr_t &suc, K key) {
+    if (x == nil)
+        return;
+
+    if (x->key == key) {
+        if (x->right != nil) {
+            node_ptr_t y = x->right;
+            while (y->left != nil)
+                y = y->left;
+            suc = y;
+        }
+        return;
+    }
+
+    if (x->key > key) {
+        suc = root;
+        _successor_util(x->left, suc, key);
+    } else
+        _successor_util(x->right, suc, key);
+}
+
+template <typename K, typename V>
+node_t<K, V> *tree_t<K, V>::successor(K key) {
+    node_ptr_t x = root;
+    node_ptr_t suc;
+
+    _successor_util(x, suc, key);
+
+    return suc;
 }
 
 }  // namespace rb_tree

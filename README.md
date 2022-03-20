@@ -1,6 +1,5 @@
-# The CRust Compiler
+# SweepLine Algorithm for Line Segment Intersection
 
-CRust is the Lovechild of Rust and C++, built for the modern times.
 
 ## Team (Group 9)
 
