@@ -7,31 +7,29 @@ using point_t = Geometry::Point;
 using segment_t = Geometry::LineSegment;
 
 struct Status {
-    using container_t = DS::rb_tree::tree_t<ComparableSegment, ComparableSegment*>;
-    using node_t = DS::rb_tree::node_t<ComparableSegment, ComparableSegment*>;
+    using node_type = DS::rb_tree::node_t<ComparableSegment>;
+    using container_type = DS::rb_tree::tree_t<ComparableSegment>;
+    using iterator_type = DS::rb_tree::iterator_t<node_type>;
 
-    void insert(ComparableSegment* seg) {
-        _container.insert(*seg, seg);
+    void insert(const ComparableSegment& seg) {
+        _container.insert(seg);
     }
 
     void erase(const ComparableSegment& seg) {
         _container.erase(seg);
     }
 
-    ComparableSegment* lower_bound(const ComparableSegment& seg) {
-        return _container.lower_bound(seg)->val;
+    iterator_type lower_bound(const ComparableSegment& seg) {
+        return _container.lower_bound(seg);
     }
 
-    ComparableSegment* upper_bound(const ComparableSegment& seg) {
-        return _container.upper_bound(seg)->val;
+    iterator_type upper_bound(const ComparableSegment& seg) {
+        return _container.upper_bound(seg);
     }
 
-    node_t* begin() { return _container.begin(); }
-    node_t* end() { return _container.end(); }
-
-    node_t* predecessor(ComparableSegment seg) { return _container.predecessor(seg); }
-    node_t* successor(ComparableSegment seg) { return _container.successor(seg); }
+    iterator_type begin() { return _container.begin(); }
+    iterator_type end() { return _container.end(); }
 
    private:
-    container_t _container;
+    container_type _container;
 };

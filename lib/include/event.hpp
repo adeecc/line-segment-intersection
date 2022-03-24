@@ -9,15 +9,15 @@ using point_t = Geometry::Point;
 using segment_t = Geometry::LineSegment;
 
 struct Event {
-   private:
-   public:
-    point_t* pt;
+    Event() {}
 
-    std::vector<ComparableSegment*> lower;
-    std::vector<ComparableSegment*> upper;
-    std::vector<ComparableSegment*> contain;
+    point_t pt;
 
-    Event(point_t* pt, ComparableSegment* seg, int type) : pt(pt) {
+    std::vector<ComparableSegment> lower;
+    std::vector<ComparableSegment> upper;
+    std::vector<ComparableSegment> contain;
+
+    Event(const point_t& pt, const ComparableSegment& seg, int type) : pt(pt) {
         // TODO: Verify this THOROUGHLY
         switch (type) {
             case 0:
@@ -43,5 +43,18 @@ struct Event {
         res.contain.insert(res.contain.end(), rhs.contain.begin(), rhs.contain.end());
 
         return res;
+    }
+
+    friend auto operator<=>(const Event& lhs, const Event& rhs) {
+        if (lhs.pt < rhs.pt)
+            return -1;
+        else if (lhs.pt == rhs.pt)
+            return 0;
+        else
+            return 1;
+    }
+
+    friend auto operator==(const Event& lhs, const Event& rhs) {
+        return (lhs.pt == rhs.pt);
     }
 };
