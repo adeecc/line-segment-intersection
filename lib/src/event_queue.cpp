@@ -1,24 +1,22 @@
-#include <event_queue.hpp>
+#pragma once
 
-void EventQueue::insert(const point_t& pt, Event* e) {
-    auto node_ptr = _container.search(pt);
-    if (node_ptr->key == pt) {
-        *(node_ptr->val) = *(node_ptr->val) | *e;  // Merge the events
-    } else {
-        _container.insert(pt, e);
-    }
-}
+#include <event.hpp>
+#include <rb_tree.hpp>
 
-void EventQueue::erase(const point_t& pt) { _container.erase(pt); };
+struct EventQueue {
+    using node_type = DS::rb_tree::node_t<Event>;
+    using container_type = DS::rb_tree::tree_t<Event>;
+    using iterator_type = DS::rb_tree::iterator_t<node_type>;
 
-Event* EventQueue::next() {
-    if (_container.size() == 0) return nullptr;
+    void insert(const Event& e);
+    void erase(const Event& e);
+    Event next();
 
-    auto min = _container.minimum();
+    iterator_type find(const Event& e) { return _container.find(e); }
+    iterator_type end() { return _container.end(); }
 
-    // TODO: Verify if this actually works
-    auto res = std::move(min->val);  // Speed Moving >> Copying
-    _container.erase(min->key);
+    bool empty() { return _container.size() == 0; }
 
-    return res;
-}
+   private:
+    container_type _container;
+};

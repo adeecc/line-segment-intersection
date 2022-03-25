@@ -3,17 +3,17 @@
 namespace DS {
 namespace rb_tree {
 
-template <typename K, typename V>
-void tree_t<K, V>::_left_rotate(node_ptr_t x) {
-    node_ptr_t y = x->right;
+template <typename T>
+void tree_t<T>::_left_rotate(node_type *x) {
+    node_type *y = x->right;
     x->right = y->left;
 
-    if (y->left != nil)
+    if (y->left != node_type::nil)
         y->left->p = x;
 
     y->p = x->p;
 
-    if (y->p == nil)
+    if (y->p == node_type::nil)
         root = y;
     else {
         if (x == x->p->left)
@@ -26,17 +26,17 @@ void tree_t<K, V>::_left_rotate(node_ptr_t x) {
     x->p = y;
 }
 
-template <typename K, typename V>
-void tree_t<K, V>::_right_rotate(node_ptr_t y) {
-    node_ptr_t x = y->left;
+template <typename T>
+void tree_t<T>::_right_rotate(node_type *y) {
+    node_type *x = y->left;
     y->left = x->right;
 
-    if (x->right != nil)
+    if (x->right != node_type::nil)
         x->right->p = y;
 
     x->p = y->p;
 
-    if (y->p == nil)
+    if (y->p == node_type::nil)
         root = x;
     else {
         if (y == y->p->left)
@@ -49,17 +49,13 @@ void tree_t<K, V>::_right_rotate(node_ptr_t y) {
     y->p = x;
 }
 
-template <typename K, typename V>
-node_t<K, V> *tree_t<K, V>::insert(K key, V val) {
-    node_ptr_t z = new node_t<K, V>;
-    z->key = key;
-    z->val = val;
+template <typename T>
+tree_t<T>::node_type *tree_t<T>::_insert(node_type *z) {
+    node_type *x = root, *y = node_type::nil;
 
-    node_ptr_t x = root, y = nil;
-
-    while (x != nil) {
+    while (x != node_type::nil) {
         y = x;
-        if (key < x->key)
+        if (z->val < x->val)
             x = x->left;
         else
             x = x->right;
@@ -67,17 +63,17 @@ node_t<K, V> *tree_t<K, V>::insert(K key, V val) {
 
     z->p = y;
 
-    if (y == nil)
+    if (y == node_type::nil)
         root = z;
     else {
-        if (z->key < y->key)
+        if (z->val < y->val)
             y->left = z;
         else
             y->right = z;
     }
 
-    z->left = nil;
-    z->right = nil;
+    z->left = node_type::nil;
+    z->right = node_type::nil;
     z->color = Color::RED;
 
     _insert_fixup(z);
@@ -86,11 +82,11 @@ node_t<K, V> *tree_t<K, V>::insert(K key, V val) {
     return z;
 }
 
-template <typename K, typename V>
-void tree_t<K, V>::_insert_fixup(node_ptr_t z) {
+template <typename T>
+void tree_t<T>::_insert_fixup(node_type *z) {
     while (z->p->color == Color::RED) {
         if (z->p == z->p->p->left) {
-            node_ptr_t y = z->p->p->right;
+            node_type *y = z->p->p->right;
             if (y->color == Color::RED) {
                 z->p->color = y->color = Color::BLACK;
                 z->p->p->color = Color::RED;
@@ -106,7 +102,7 @@ void tree_t<K, V>::_insert_fixup(node_ptr_t z) {
                 _right_rotate(z->p->p);
             }
         } else {
-            node_ptr_t y = z->p->p->left;
+            node_type *y = z->p->p->left;
 
             if (y->color == Color::RED) {
                 z->p->color = y->color = Color::BLACK;
@@ -128,19 +124,11 @@ void tree_t<K, V>::_insert_fixup(node_ptr_t z) {
     root->color = Color::BLACK;
 }
 
-template <typename K, typename V>
-node_t<K, V> *tree_t<K, V>::_minimum(node_ptr_t x) {
-    while (x->left != nil) {
-        x = x->left;
-    }
-    return x;
-}
-
-template <typename K, typename V>
-node_t<K, V> *tree_t<K, V>::search(K key) {
-    node_ptr_t x = root;
-    while (x != nil && x->key != key) {
-        if (x->key > key) {
+template <typename T>
+tree_t<T>::node_type *tree_t<T>::_find(const value_type &val) {
+    node_type *x = root;
+    while (x != node_type::nil && x->val != val) {
+        if (x->val > val) {
             x = x->left;
         } else {
             x = x->right;
@@ -149,13 +137,13 @@ node_t<K, V> *tree_t<K, V>::search(K key) {
     return x;
 }
 
-template <typename K, typename V>
-node_t<K, V> *tree_t<K, V>::upper_bound(K key) {
-    node_ptr_t x = root;
-    node_ptr_t upper_bound = nil;
+template <typename T>
+tree_t<T>::node_type *tree_t<T>::_upper_bound(const value_type &val) {
+    node_type *x = root;
+    node_type *upper_bound = node_type::nil;
 
-    while (x != nil) {
-        if (x->key <= key) {
+    while (x != node_type::nil) {
+        if (x->val <= val) {
             x = x->right;
         } else {
             upper_bound = x;
@@ -166,13 +154,13 @@ node_t<K, V> *tree_t<K, V>::upper_bound(K key) {
     return upper_bound;
 }
 
-template <typename K, typename V>
-node_t<K, V> *tree_t<K, V>::lower_bound(K key) {
-    node_ptr_t x = root;
-    node_ptr_t lower_bound = nil;
+template <typename T>
+tree_t<T>::node_type *tree_t<T>::_lower_bound(const value_type &val) {
+    node_type *x = root;
+    node_type *lower_bound = node_type::nil;
 
-    while (x != nil) {
-        if (x->key < key) {
+    while (x != node_type::nil) {
+        if (x->val < val) {
             x = x->right;
         } else {
             lower_bound = x;
@@ -183,9 +171,9 @@ node_t<K, V> *tree_t<K, V>::lower_bound(K key) {
     return lower_bound;
 }
 
-template <typename K, typename V>
-void tree_t<K, V>::_transplant(node_ptr_t u, node_ptr_t v) {
-    if (u->p == nil)
+template <typename T>
+void tree_t<T>::_transplant(node_type *u, node_type *v) {
+    if (u->p == node_type::nil)
         root = v;
 
     else if (u == u->p->left)
@@ -197,22 +185,22 @@ void tree_t<K, V>::_transplant(node_ptr_t u, node_ptr_t v) {
     v->p = u->p;
 }
 
-template <typename K, typename V>
-void tree_t<K, V>::_delete(node_ptr_t z) {
-    node_ptr_t y = z;
+template <typename T>
+void tree_t<T>::_delete(node_type *z) {
+    node_type *y = z;
     Color y_original_color = y->color;
 
-    node_ptr_t x;
-    if (z->left == nil) {
+    node_type *x;
+    if (z->left == node_type::nil) {
         x = z->right;
         _transplant(z, z->right);
-    } else if (z->right == nil) {
+    } else if (z->right == node_type::nil) {
         x = z->left;
         _transplant(z, z->left);
     }
 
     else {
-        y = _minimum(z->right);
+        y = z->right->min();
         y_original_color = y->color;
         x = y->right;
 
@@ -236,9 +224,9 @@ void tree_t<K, V>::_delete(node_ptr_t z) {
         _delete_fixup(x);
 }
 
-template <typename K, typename V>
-void tree_t<K, V>::_delete_fixup(node_ptr_t x) {
-    node_ptr_t w;
+template <typename T>
+void tree_t<T>::_delete_fixup(node_type *x) {
+    node_type *w;
     while (x != root && x->color == Color::BLACK) {
         if (x == x->p->left) {
             w = x->p->right;
@@ -298,11 +286,13 @@ void tree_t<K, V>::_delete_fixup(node_ptr_t x) {
     x->color = Color::BLACK;
 }
 
-template <typename K, typename V>
-void tree_t<K, V>::erase(K key) {
-    node_ptr_t dNode = search(key);
-    if (dNode == nil) return;
-    _delete(dNode);
+template <typename T>
+void tree_t<T>::erase(iterator_type it) {
+    node_type *tmp = _find(*it);
+    if (tmp == node_type::nil)
+        return;
+
+    _delete(tmp);
     _size--;
 }
 
