@@ -7,26 +7,29 @@ using point_t = Geometry::Point;
 using segment_t = Geometry::LineSegment;
 
 struct Status {
-    using container_t = DS::rb_tree::tree_t<ComparableSegment, ComparableSegment*>;
+    using node_type = DS::rb_tree::node_t<ComparableSegment>;
+    using container_type = DS::rb_tree::tree_t<ComparableSegment>;
+    using iterator = DS::rb_tree::iterator_t<node_type>;
 
-    void insert(ComparableSegment* seg) {
-        _container.insert(*seg, seg);
+    void insert(const ComparableSegment& seg) {
+        _container.insert(seg);
     }
 
     void erase(const ComparableSegment& seg) {
         _container.erase(seg);
     }
 
-    ComparableSegment* lower_bound(const ComparableSegment& seg) {
-        return _container.lower_bound(seg)->val;
+    iterator lower_bound(const ComparableSegment& seg) {
+        return _container.lower_bound(seg);
     }
 
-    ComparableSegment* upper_bound(const ComparableSegment& seg) {
-        return _container.upper_bound(seg)->val;
+    iterator upper_bound(const ComparableSegment& seg) {
+        return _container.upper_bound(seg);
     }
 
-    ComparableSegment* next();
+    iterator begin() { return _container.begin(); }
+    iterator end() { return _container.end(); }
 
    private:
-    container_t _container;
+    container_type _container;
 };

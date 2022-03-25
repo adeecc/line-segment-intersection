@@ -4,18 +4,21 @@
 #include <rb_tree.hpp>
 
 struct EventQueue {
-    using container_t = DS::rb_tree::tree_t<point_t, Event*>;
-    using node_t = DS::rb_tree::node_t<point_t, Event*>;
+    using node_type = DS::rb_tree::node_t<Event>;
+    using container_type = DS::rb_tree::tree_t<Event>;
+    using iterator = DS::rb_tree::iterator_t<node_type>;
 
-    void insert(const point_t& pt, Event* e);
-    void erase(const point_t& pt);
-    Event* next();
+    void insert(const Event& e);
+    void erase(const Event& e);
+    Event next();
 
-    node_t* search(const point_t& pt) { return _container.search(pt); }
-    node_t* end() { return _container.end(); }
+    iterator find(const Event& e) { return _container.find(e); }
+
+    iterator begin() { return _container.begin(); }
+    iterator end() { return _container.end(); }
 
     bool empty() { return _container.size() == 0; }
 
    private:
-    container_t _container;
+    container_type _container;
 };

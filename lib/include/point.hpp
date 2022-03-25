@@ -8,7 +8,7 @@ namespace Geometry {
 struct Point {
     double x, y;
 
-    Point() : x(std::numeric_limits<int>::min()), y(std::numeric_limits<int>::min()) {}
+    constexpr Point() : x(std::numeric_limits<int>::min()), y(std::numeric_limits<int>::min()) {}
 
     Point(double x, double y) : x(x), y(y) {}
 

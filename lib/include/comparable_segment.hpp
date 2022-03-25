@@ -35,7 +35,9 @@ struct ComparableSegment : public segment_t {
     }
 
     friend bool operator==(const ComparableSegment& lhs, const ComparableSegment& rhs) {
-        assert(lhs.sweep_line_y == rhs.sweep_line_y);
+        if (lhs.sweep_line_y != rhs.sweep_line_y) {
+            assert(lhs.sweep_line_y == rhs.sweep_line_y);
+        }
 
         auto lhs_intersection = ComparableSegment::compute_intersection(lhs, *lhs.sweep_line_y);
         auto rhs_intersection = ComparableSegment::compute_intersection(rhs, *rhs.sweep_line_y);

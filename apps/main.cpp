@@ -5,10 +5,12 @@
 
 int main() {
     std::vector<segment_t> segs;
-    segs.emplace_back(1, 2, 3, 4);
-    segs.emplace_back(2, 3, 4, 5);
 
-#ifdef DEBUG
+    segs.emplace_back(1, 1, 3, 3);
+    segs.emplace_back(2, 1, 1, 2);
+
+#ifndef NDEBUG
+
     std::cout << "Staring Sweep Line Algorithm for: \n";
     for (auto seg : segs) std::cout << seg << "\t";
     std::cout << "\n------------------------------\n";
@@ -18,9 +20,12 @@ int main() {
     sweep.find_intersections();
     auto intersections = sweep.getIntersections();
 
+    std::cout << "Found Following Intersections: ";
     for (const auto& intersection : intersections) {
         std::cout << intersection.pt.x << " " << intersection.pt.x << "\n";
     };
+
+    std::cout << "\nCount: " << intersections.size() << "\n";
 
     return 0;
 }

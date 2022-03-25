@@ -1,24 +1,24 @@
 #include <event_queue.hpp>
 
-void EventQueue::insert(const point_t& pt, Event* e) {
-    auto node_ptr = _container.search(pt);
-    if (node_ptr->key == pt) {
-        *(node_ptr->val) = *(node_ptr->val) | *e;  // Merge the events
+void EventQueue::insert(const Event& e) {
+    auto it = _container.find(e);
+
+    if (*it == e) {
+        *it = *it | e;
     } else {
-        _container.insert(pt, e);
+        _container.insert(e);
     }
 }
 
-void EventQueue::erase(const point_t& pt) { _container.erase(pt); };
+void EventQueue::erase(const Event& e) { _container.erase(e); };
 
-Event* EventQueue::next() {
-    if (_container.size() == 0) return nullptr;
+Event EventQueue::next() {
+    if (_container.empty()) return Event();
 
-    auto min = _container.minimum();
+    auto it = _container.begin();
 
-    // TODO: Verify if this actually works
-    auto res = std::move(min->val);  // Speed Moving >> Copying
-    _container.erase(min->key);
-
+    // auto res = std::move(*it);  // Speed Moving >> Copying
+    auto res = *it;
+    _container.erase(it);
     return res;
 }
