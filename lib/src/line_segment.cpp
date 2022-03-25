@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <iostream>
 #include <line_segment.hpp>
 #include <point.hpp>
 
@@ -68,16 +69,17 @@ Point LineSegment::compute_intersection(const LineSegment& l1, const LineSegment
     double c2 = -det(l2.u.x, l2.u.y, l2.v.x, l2.v.y);
 
     double dr = det(a1, b1, a2, b2);
+
+    if (dr == 0) {
+        std::cout << "Assertion will fail @LineSegment::compute_intersection: " << l1 << " " << l2 << "\n";
+    }
+
     assert(dr != 0);
 
     double x = det(b1, c1, b2, c2) / dr;
     double y = det(c1, a1, c2, a2) / dr;
 
-    Point intersection(x, y);
-    if (is_internal(l1, intersection) and is_internal(l2, intersection))
-        return intersection;
-    else
-        return Point();
+    return Point(x, y);
 }
 
 Point LineSegment::compute_intersection(const Point& u, const Point& v, double y) {

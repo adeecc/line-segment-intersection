@@ -288,6 +288,8 @@ void tree_t<T>::_delete_fixup(node_type *x) {
 
 template <typename T>
 void tree_t<T>::erase(iterator it) {
+    if (it == end()) return;
+
     node_type *tmp = _find(*it);
     if (tmp == node_type::nil)
         return;

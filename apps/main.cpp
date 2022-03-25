@@ -20,9 +20,12 @@ int main() {
     sweep.find_intersections();
     auto intersections = sweep.getIntersections();
 
+    std::cout << "Found Following Intersections: ";
     for (const auto& intersection : intersections) {
         std::cout << intersection.pt.x << " " << intersection.pt.x << "\n";
     };
+
+    std::cout << "\nCount: " << intersections.size() << "\n";
 
     return 0;
 }

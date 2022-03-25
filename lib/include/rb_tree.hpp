@@ -62,7 +62,7 @@ struct node_t {
         if (succ != node_t::nil) {
             return succ->p;
         } else
-            return nullptr;
+            return node_t::nil;
     }
 
     node_t *predecessor() {
@@ -77,11 +77,11 @@ struct node_t {
         if (pred != node_t::nil) {
             return pred->p;
         } else
-            return nullptr;
+            return node_t::nil;
     }
 
     node_t *sibling() {
-        if (p == node_t::nil) return nullptr;
+        if (p == node_t::nil) return node_t::nil;
 
         return _is_a_left_child() ? p->right : p->left;
     }
@@ -94,7 +94,7 @@ node_t<T> *node_t<T>::nil = new node_t<T>();
 template <typename T>
 struct iterator_t {
    private:
-    T *m_ptr = nullptr;  // Pointer to a node_t
+    T *m_ptr = T::nil;  // Pointer to a node_t
 
    public:
     // Type definitions

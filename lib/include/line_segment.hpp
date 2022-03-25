@@ -13,24 +13,20 @@ struct LineSegment {
 
     LineSegment() = default;
 
-    // TODO: Remove this quirk. It breaks when u and v are reassigned
-    LineSegment(Point _u, Point _v) : u(_u), v(_v) {
-        if (u > v) {
-            std::swap(u, v);
-        }
-    }
+    LineSegment(Point _u, Point _v) : u(_u), v(_v) {}
+    LineSegment(double ux, double uy, double vx, double vy) : u(ux, uy), v(vx, vy) {}
 
-    LineSegment(double ux, double uy, double vx, double vy) : u(ux, uy), v(vx, vy) {
-        if (u > v) {
-            std::swap(u, v);
-        }
-    }
+    Point& top() { return (u < v) ? u : v; }
+    const Point& top() const { return (u < v) ? u : v; }
 
-    Point& operator[](std::size_t idx) { return idx ? v : u; }
-    const Point& operator[](std::size_t idx) const { return idx ? v : u; }
+    Point& bottom() { return (u < v) ? v : u; }
+    const Point& bottom() const { return (u < v) ? v : u; }
+
+    Point& operator[](std::size_t idx) { return idx ? bottom() : top(); }
+    const Point& operator[](std::size_t idx) const { return idx ? bottom() : top(); }
 
     friend std::ostream& operator<<(std::ostream& stream, const LineSegment& l) {
-        stream << "[" << l.u << " " << l.v << "]";
+        stream << "[" << l.top() << "->" << l.bottom() << "]";
         return stream;
     }
 

@@ -30,6 +30,15 @@ class LineSweep {
     std::vector<ComparableSegment> segments;
     std::vector<Intersection> intersections;
 
+    void _findTrivialIntersection(const Event& e);
+    void _eraseConsideredPoints(const Event& e);
+    void _insertNewPoints(const Event& e);
+    double _findLeftMostIntersection(const std::vector<ComparableSegment>& segs);
+    double _findRightMostIntersection(const std::vector<ComparableSegment>& segs);
+    void _handleLowerOnlyPoint(const Event &e);
+    void _handleIsUpperContainPoint(const Event &e);
+
+
    public:
     LineSweep(const std::vector<segment_t>& segments);
     void find_intersections();
