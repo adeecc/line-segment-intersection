@@ -13,6 +13,8 @@ struct EventQueue {
     Event next();
 
     iterator find(const Event& e) { return _container.find(e); }
+
+    iterator begin() { return _container.begin(); }
     iterator end() { return _container.end(); }
 
     bool empty() { return _container.size() == 0; }

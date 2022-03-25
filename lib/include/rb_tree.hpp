@@ -179,7 +179,7 @@ struct tree_t {
 
     iterator max() { return empty() ? end() : iterator(root->max()); }
     iterator min() { return empty() ? end() : iterator(root->min()); }
-    iterator begin() { return end(); }
+    iterator begin() { return min(); }
     iterator end() { return iterator(node_type::nil); }
     bool empty() { return _size == 0; }
 

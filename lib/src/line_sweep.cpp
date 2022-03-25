@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <iostream>
 #include <line_sweep.hpp>
 
@@ -12,6 +13,14 @@ LineSweep::LineSweep(const std::vector<segment_t>& segs) {
         q.insert(Event(segment.u, segment, 0));
         q.insert(Event(segment.v, segment, 1));
     }
+
+#ifndef NDEBUG
+    std::cout << "Event Queue: ";
+    for (auto it = q.begin(); it != q.end(); ++it) {
+        std::cout << (*it).pt << "\t";
+    }
+    std::cout << "\n\n";
+#endif
 }
 
 void LineSweep::find_intersections() {
@@ -43,8 +52,8 @@ void LineSweep::handleEventPoint(const Event& e) {
 
     int total_size = e.lower.size() + e.upper.size() + e.contain.size();
     if (total_size > 1) {
-        Intersection I;
-        I.pt = e.pt;
+        Intersection I(e.pt);
+
         for (const auto& comparableSeg : e.lower) {
             I.segs.push_back(comparableSeg);
         }
@@ -59,7 +68,8 @@ void LineSweep::handleEventPoint(const Event& e) {
 
         intersections.push_back(I);
 #ifndef NDEBUG
-        std::cout << "Found Intersection point: " << e.pt;
+        std::cout << "Found Intersection point:\n"
+                  << I;
         std::cout << "\n------------------------------\n";
 
 #endif
@@ -73,67 +83,89 @@ void LineSweep::handleEventPoint(const Event& e) {
         status.erase(comparableSeg);
     }
 
+    double leftMostIntersect = std::numeric_limits<int>::max(), rightMostIntersect = std::numeric_limits<int>::min();
+
     // Insert U(p) | C(p) into Status in their order slightly below l
     sweep_line_y += 2 * EPS;
-    for (auto& comparableSeg : e.upper) {
-        status.insert(comparableSeg);
+    for (auto& seg : e.upper) {
+        point_t sweep_line_intersection = ComparableSegment::compute_intersection(seg, sweep_line_y);
+        leftMostIntersect = std::min(leftMostIntersect, sweep_line_intersection.x);
+        rightMostIntersect = std::min(rightMostIntersect, sweep_line_intersection.x);
+
+        status.insert(seg);
     }
 
-    for (auto& comparableSeg : e.contain) {
-        status.insert(comparableSeg);
+    for (auto& seg : e.contain) {
+        point_t sweep_line_intersection = ComparableSegment::compute_intersection(seg, sweep_line_y);
+        leftMostIntersect = std::min(leftMostIntersect, sweep_line_intersection.x);
+        rightMostIntersect = std::min(rightMostIntersect, sweep_line_intersection.x);
+
+        status.insert(seg);
     }
+    sweep_line_y -= 2 * EPS;  // FIXME: Is this reset required?
 
     if (e.upper.size() + e.contain.size() == 0) {
         // This must mean that p is a lower point only,
         // and not the upper point or intersection point of any segment
         // So, Get Left and Right neighbour to check
 
-        Status::iterator rightNeighbour = status.upper_bound(ComparableSegment(e.pt, e.pt, &sweep_line_y));
-        if (rightNeighbour != status.end() and rightNeighbour != status.begin()) {
-            // TODO: Check if the predecssor exists?
-            Status::iterator leftNeighbour = rightNeighbour--;
-            findNewEvent(leftNeighbour->val, rightNeighbour->val, e.pt);
+        Status::iterator b_right = status.upper_bound(ComparableSegment(e.pt, e.pt, &sweep_line_y));
+        if (b_right != status.end() and b_right != status.begin()) {  // FIXME: Are both checks required?
+            Status::iterator b_left = b_right--;
+#ifndef NDEBUG
+            std::cout << "[" << e.pt << "] "
+                      << "b_left: " << *b_left << "b_right: " << *b_right << "\n";
+#endif
+            findNewEvent(*b_left, *b_right, e.pt);
         }
+#ifndef NDEBUG
+        else {
+            std::cout << "[" << e.pt << "] "
+                      << "b_right = " << (b_right == status.end() ? "status.end()" : "status.begin()") << ". Skipping\n";
+        }
+#endif
 
     } else {
-        ComparableSegment leftmost, rightmost;
-        if (e.upper.size()) {
-            leftmost = e.upper[0];
-            rightmost = e.upper[0];
-        } else {
-            leftmost = e.contain[0];
-            rightmost = e.contain[0];
+        point_t left(leftMostIntersect - 2 * EPS, sweep_line_y),
+            right(rightMostIntersect + 2 * EPS, sweep_line_y);
+
+        Status::iterator s_left = status.upper_bound(ComparableSegment(left, left, &sweep_line_y));
+        Status::iterator b_right = status.upper_bound(ComparableSegment(right, right, &sweep_line_y));
+
+        if (s_left != status.end() and s_left != status.begin()) {
+            Status::iterator b_left = s_left--;
+            findNewEvent(*b_left, *s_left, e.pt);
+        }
+#ifndef NDEBUG
+        else {
+            std::cout << "[" << e.pt << "] "
+                      << "s_left = " << (s_left == status.end() ? "status.end()" : "status.begin()") << ". Skipping\n";
+        }
+#endif
+
+        if (b_right != status.end() and b_right != status.begin()) {
+            Status::iterator s_right = b_right--;
+            findNewEvent(*s_right, *b_right, e.pt);
+        }
+#ifndef NDEBUG
+        else {
+            std::cout << "[" << e.pt << "] "
+                      << "b_right = " << (b_right == status.end() ? "status.end()" : "status.begin()") << ". Skipping\n";
         }
 
-        for (const auto& seg : e.upper) {
-            auto leftmost_intersection = segment_t::compute_intersection(leftmost, e.pt.y);
-            auto rightmost_intersection = segment_t::compute_intersection(rightmost, e.pt.y);
-            auto seg_intersection = segment_t::compute_intersection(seg, e.pt.y);
-
-            if (seg_intersection.x < leftmost_intersection.x) leftmost = seg;
-            if (seg_intersection.x > rightmost_intersection.x) rightmost = seg;
-        }
-
-        for (const auto& seg : e.contain) {
-            // Move the leftmost and rightmost segments slightly to get the correct items
-            auto leftmost_intersection = segment_t::compute_intersection(leftmost, e.pt.y);
-            auto rightmost_intersection = segment_t::compute_intersection(rightmost, e.pt.y);
-            auto seg_intersection = segment_t::compute_intersection(seg, e.pt.y);
-
-            if (seg_intersection.x < leftmost_intersection.x) leftmost = seg;
-            if (seg_intersection.x > rightmost_intersection.x) rightmost = seg;
-        }
-
-        Status::iterator leftNeighbour = status.upper_bound(leftmost);    // --leftNeighbour;
-        Status::iterator rightNeighbour = status.upper_bound(rightmost);  // --rightNeighbour;
-
-        if (leftNeighbour != status.end() && rightNeighbour != status.end())
-            findNewEvent(leftNeighbour->val, rightNeighbour->val, e.pt);
+#endif
     }
 }
 
 void LineSweep::findNewEvent(const ComparableSegment& leftNeighbour, const ComparableSegment& rightNeighbour, const point_t& pt) {
-    if (!segment_t::does_intersect(leftNeighbour, rightNeighbour)) return;
+    if (!segment_t::does_intersect(leftNeighbour, rightNeighbour)) {
+#ifndef NDEBUG
+        std::cout << "[" << pt << "] (findNewEvent): "
+                  << leftNeighbour << " does not intersect with" << rightNeighbour << "\n";
+
+#endif
+        return;
+    }
     point_t intersection = segment_t::compute_intersection(leftNeighbour, rightNeighbour);
 
     // If intersection is below sweep_line or to the right of the event point

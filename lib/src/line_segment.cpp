@@ -81,7 +81,9 @@ Point LineSegment::compute_intersection(const LineSegment& l1, const LineSegment
 }
 
 Point LineSegment::compute_intersection(const Point& u, const Point& v, double y) {
-    assert(u.y != v.y);
+    if (u.y == v.y)
+        return u;
+
     double x = v.x + ((y - v.y) * (v.x - u.x) / (v.y - u.y));
 
     return Point(x, y);
