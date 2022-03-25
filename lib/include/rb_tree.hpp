@@ -6,7 +6,6 @@
 using std::bidirectional_iterator_tag;
 using std::iterator;
 
-
 namespace DS {
 namespace rb_tree {
 
@@ -14,7 +13,6 @@ enum class Color : unsigned {
     BLACK,
     RED
 };
-
 
 template <typename T>
 struct node_t {
@@ -109,8 +107,15 @@ struct iterator_t {
     // Constructors:
     iterator_t(T *ptr) : m_ptr(ptr) {}
     iterator_t(const iterator_t &that) : m_ptr(that.m_ptr) {}
+    iterator_t(iterator_t &&) = default;
 
     // Operators
+    iterator_t &operator=(const reference that) {
+        m_ptr->val = that;
+        return *this;
+    }
+
+    iterator_t &operator=(iterator_t &&) = default;
 
     iterator_t operator++() {
         m_ptr = m_ptr->successor();
@@ -134,11 +139,6 @@ struct iterator_t {
         return iterator_t(temp);
     }
 
-    iterator_t &operator=(const reference that) {
-        m_ptr->val = that;
-        return *this;
-    }
-
     bool operator==(const iterator_t &that) const {
         return m_ptr == that.m_ptr;
     }
@@ -154,7 +154,7 @@ template <typename T>
 struct tree_t {
     using value_type = T;
     using node_type = node_t<value_type>;
-    using iterator_type = iterator_t<node_type>;
+    using iterator = iterator_t<node_type>;
 
    private:
     std::size_t _size = 0;            // Number of Elements in the Tree
@@ -177,22 +177,22 @@ struct tree_t {
    public:
     tree_t() {}
 
-    iterator_type max() { return empty() ? end() : iterator_type(root->max()); }
-    iterator_type min() { return empty() ? end() : iterator_type(root->min()); }
-    iterator_type begin() { return end(); }
-    iterator_type end() { return iterator_type(node_type::nil); }
+    iterator max() { return empty() ? end() : iterator(root->max()); }
+    iterator min() { return empty() ? end() : iterator(root->min()); }
+    iterator begin() { return end(); }
+    iterator end() { return iterator(node_type::nil); }
     bool empty() { return _size == 0; }
 
-    iterator_type insert(value_type val) {
-        return iterator_type(_insert(new node_type(val)));
+    iterator insert(value_type val) {
+        return iterator(_insert(new node_type(val)));
     }
 
-    void erase(iterator_type pos);
+    void erase(iterator pos);
     void erase(const value_type &val) { erase(find(val)); }
 
-    iterator_type find(const value_type &val) { return iterator_type(_find(val)); }
-    iterator_type upper_bound(const value_type &val) { return iterator_type(_upper_bound(val)); };
-    iterator_type lower_bound(const value_type &val) { return iterator_type(_lower_bound(val)); };
+    iterator find(const value_type &val) { return iterator(_find(val)); }
+    iterator upper_bound(const value_type &val) { return iterator(_upper_bound(val)); };
+    iterator lower_bound(const value_type &val) { return iterator(_lower_bound(val)); };
 
     std::size_t size() { return _size; }
 };

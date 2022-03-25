@@ -4,7 +4,7 @@
 #include <status.hpp>
 #include <vector>
 
-constexpr double EPS = 1e-9;  // TODO: Try other numbers
+const double EPS = 1e-9;  // TODO: Try other numbers
 
 struct Intersection {
     point_t pt;

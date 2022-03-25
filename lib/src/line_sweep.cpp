@@ -88,10 +88,10 @@ void LineSweep::handleEventPoint(const Event& e) {
         // and not the upper point or intersection point of any segment
         // So, Get Left and Right neighbour to check
 
-        Status::iterator_type rightNeighbour = status.upper_bound(ComparableSegment(e.pt, e.pt, &sweep_line_y));
+        Status::iterator rightNeighbour = status.upper_bound(ComparableSegment(e.pt, e.pt, &sweep_line_y));
         if (rightNeighbour != status.end() and rightNeighbour != status.begin()) {
             // TODO: Check if the predecssor exists?
-            Status::iterator_type leftNeighbour = rightNeighbour--;
+            Status::iterator leftNeighbour = rightNeighbour--;
             findNewEvent(leftNeighbour->val, rightNeighbour->val, e.pt);
         }
 
@@ -124,8 +124,8 @@ void LineSweep::handleEventPoint(const Event& e) {
             if (seg_intersection.x > rightmost_intersection.x) rightmost = seg;
         }
 
-        Status::iterator_type leftNeighbour = status.upper_bound(leftmost);    // --leftNeighbour;
-        Status::iterator_type rightNeighbour = status.upper_bound(rightmost);  // --rightNeighbour;
+        Status::iterator leftNeighbour = status.upper_bound(leftmost);    // --leftNeighbour;
+        Status::iterator rightNeighbour = status.upper_bound(rightmost);  // --rightNeighbour;
 
         if (leftNeighbour != status.end() && rightNeighbour != status.end())
             findNewEvent(leftNeighbour->val, rightNeighbour->val, e.pt);
