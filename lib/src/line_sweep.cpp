@@ -48,44 +48,59 @@ void LineSweep::_findTrivialIntersection(const Event& e) {
         }
 
         intersections.push_back(I);
-        std::cout << "Found Intersection point:\n"
-                  << I;
-        std::cout << "\n------------------------------\n";
+
+#ifndef NDEBUG
+
+        std::cout << "Found Intersection point: " << I << "\n";
+#endif
     }
 }
 
 void LineSweep::_eraseConsideredPoints(const Event& e) {
-    std::cout << "[" << e.pt << "] "
+#ifndef NDEBUG
+
+    std::cout << "[" << e.pt << "] (_eraseConsideredPoints): "
               << "Erasing from status...\n";
+#endif
 
     for (auto seg : e.lower) {
+#ifndef NDEBUG
         std::cout << "Erased: " << seg << "\n";
+#endif
         status.erase(seg);
     }
 
     for (const auto& seg : e.contain) {
+#ifndef NDEBUG
         std::cout << "Erased: " << seg << "\n";
+#endif
         status.erase(seg);
     }
 }
 
 void LineSweep::_insertNewPoints(const Event& e) {
-    std::cout << "[" << e.pt << "] "
+#ifndef NDEBUG
+
+    std::cout << "[" << e.pt << "] (_insertNewPoints): "
               << "Inserting into status...\n";
-
+#endif
     // Insert U(p) | C(p) into Status in their order **slightly below l**
-    sweep_line_y += 2 * EPS;
-    for (auto& seg : e.upper) {
+    sweep_line_y -= 2 * LineSweep::EPS;
+    for (const ComparableSegment& seg : e.upper) {
+#ifndef NDEBUG
         std::cout << "Inserted: " << seg << "\n";
+#endif
         status.insert(seg);
     }
 
-    for (auto& seg : e.contain) {
+    for (const ComparableSegment& seg : e.contain) {
+#ifndef NDEBUG
         std::cout << "Inserted: " << seg << "\n";
+#endif
         status.insert(seg);
     }
 
-    sweep_line_y -= 2 * EPS;  // FIXME: Is this reset required?
+    // sweep_line_y -= 2 * LineSweep::EPS;  // FIXME: Is this reset required?
 }
 
 double LineSweep::_findLeftMostIntersection(const std::vector<ComparableSegment>& segs) {
@@ -118,13 +133,16 @@ void LineSweep::_handleLowerOnlyPoint(const Event& e) {
     if (b_right != status.end() and b_right != status.begin()) {
         Status::iterator b_left = b_right;
         b_left--;
-
-        std::cout << "[" << e.pt << "] "
-                  << "b_left: " << *b_left << "b_right: " << *b_right << "\n";
+#ifndef NDEBUG
+        std::cout << "[" << e.pt << "] (_handleLowerOnlyPoint): "
+                  << "b_left: " << *b_left << " b_right: " << *b_right << "\n";
+#endif
         findNewEvent(*b_left, *b_right, e.pt);
     } else {
-        std::cout << "[" << e.pt << "] "
+#ifndef NDEBUG
+        std::cout << "[" << e.pt << "] (_handleLowerOnlyPoint): "
                   << "b_right = " << (b_right == status.end() ? "status.end()" : "status.begin()") << ". Skipping\n";
+#endif
     }
 }
 
@@ -137,8 +155,8 @@ void LineSweep::_handleIsUpperContainPoint(const Event& e) {
     double rightMostIntersect =
         std::max(_findRightMostIntersection(e.upper), _findRightMostIntersection(e.contain));
 
-    point_t left(leftMostIntersect - 2 * EPS, sweep_line_y),
-        right(rightMostIntersect + 2 * EPS, sweep_line_y);
+    point_t left(leftMostIntersect - 2 * LineSweep::EPS, sweep_line_y),
+        right(rightMostIntersect + 2 * LineSweep::EPS, sweep_line_y);
 
     Status::iterator s_left = status.upper_bound(ComparableSegment(left, left, &sweep_line_y));
     Status::iterator b_right = status.upper_bound(ComparableSegment(right, right, &sweep_line_y));
@@ -146,53 +164,71 @@ void LineSweep::_handleIsUpperContainPoint(const Event& e) {
     if (s_left != status.end() and s_left != status.begin()) {
         Status::iterator b_left = s_left;
         b_left--;
+#ifndef NDEBUG
+        std::cout << "[" << e.pt << "] (_handleIsUpperContainPoint:left): "
+                  << "b_left: " << *b_left << " s_left: " << *s_left << "\n";
+#endif
         findNewEvent(*b_left, *s_left, e.pt);
     } else {
-        std::cout << "[" << e.pt << "] "
+#ifndef NDEBUG
+        std::cout << "[" << e.pt << "] (_handleIsUpperContainPoint:left): "
                   << "s_left = " << (s_left == status.end() ? "status.end()" : "status.begin()") << ". Skipping\n";
+#endif
     }
 
     if (b_right != status.end() and b_right != status.begin()) {
         Status::iterator s_right = b_right;
         s_right--;
+#ifndef NDEBUG
+        std::cout << "[" << e.pt << "] (_handleIsUpperContainPoint:right): "
+                  << "s_right: " << *s_right << " b_right: " << *b_right << "\n";
+#endif
         findNewEvent(*s_right, *b_right, e.pt);
     } else {
-        std::cout << "[" << e.pt << "] "
+#ifndef NDEBUG
+        std::cout << "[" << e.pt << "] (_handleIsUpperContainPoint:right): "
                   << "b_right = " << (b_right == status.end() ? "status.end()" : "status.begin()") << ". Skipping\n";
+#endif
     }
 }
 
 void LineSweep::handleEventPoint(const Event& e) {
     sweep_line_y = e.pt.y;
 
+#ifndef NDEBUG
     std::cout << "Handling Event Point: " << e.pt << "\n";
+    std::cout << "Sweep Line: y = " << e.pt.y << "\n";
 
     std::cout << "lower: ";
-    for (const auto& seg : e.lower) std::cout << seg << "\t";
+    for (const auto& seg : e.lower) std::cout << seg << " ";
     std::cout << "\n";
 
     std::cout << "contain: ";
-    for (const auto& seg : e.contain) std::cout << seg << "\t";
+    for (const auto& seg : e.contain) std::cout << seg << " ";
     std::cout << "\n";
 
     std::cout << "upper: ";
-    for (const auto& seg : e.upper) std::cout << seg << "\n";
+    for (const auto& seg : e.upper) std::cout << seg << " ";
+    std::cout << "\n";
 
-    std::cout << "Final Status Queue: {";
+    std::cout << "Initial Status Queue: {";
     for (auto seg : status) {
         std::cout << seg << "    ";
     }
     std::cout << "}\n\n";
+#endif
 
     _findTrivialIntersection(e);
     _eraseConsideredPoints(e);
     _insertNewPoints(e);
 
+#ifndef NDEBUG
     std::cout << "Final Status Queue: {";
     for (auto seg : status) {
         std::cout << seg << "    ";
     }
     std::cout << "}\n\n";
+#endif
 
     if (e.upper.size() + e.contain.size() == 0) {
         // This must mean that p is a lower point only,
@@ -202,8 +238,9 @@ void LineSweep::handleEventPoint(const Event& e) {
     } else {
         _handleIsUpperContainPoint(e);
     }
-
+#ifndef NDEBUG
     std::cout << "\n------------------------------\n";
+#endif
 }
 
 void LineSweep::findNewEvent(const ComparableSegment& leftNeighbour, const ComparableSegment& rightNeighbour, const point_t& pt) {
@@ -211,14 +248,21 @@ void LineSweep::findNewEvent(const ComparableSegment& leftNeighbour, const Compa
 #ifndef NDEBUG
         std::cout << "[" << pt << "] (findNewEvent): "
                   << leftNeighbour << " does not intersect with" << rightNeighbour << "\n";
-
 #endif
         return;
     }
+
+#ifndef NDEBUG
+    std::cout << "[" << pt << "] (findNewEvent): "
+              << leftNeighbour << " intersects " << rightNeighbour << "\n";
+#endif
     point_t intersection = segment_t::compute_intersection(leftNeighbour, rightNeighbour);
 
     // If intersection is below sweep_line or to the right of the event point
     if ((intersection.y < sweep_line_y) or (intersection.x > pt.x)) {
+#ifndef NDEBUG
+        std::cout << "Found New Event Point: " << intersection << "\n";
+#endif
         if (intersection != leftNeighbour.u and intersection != leftNeighbour.v)
             q.insert(Event(intersection, leftNeighbour, Event::Type::CONTAIN));
         if (intersection != rightNeighbour.u and intersection != rightNeighbour.v)

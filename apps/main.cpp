@@ -1,16 +1,13 @@
 #include <iostream>
 #include <line_sweep.hpp>
 #include <rb_tree.hpp>
+#include <utils.hpp>
 #include <vector>
 
 int main() {
-    std::vector<segment_t> segs;
-
-    segs.emplace_back(1, 1, 3, 3);
-    segs.emplace_back(2, 1, 1, 2);
+    std::vector<segment_t> segs = Utils::parse_file("fixed-intersection-100000.txt");
 
 #ifndef NDEBUG
-
     std::cout << "Staring Sweep Line Algorithm for: \n";
     for (auto seg : segs) std::cout << seg << "\t";
     std::cout << "\n------------------------------\n";
@@ -20,12 +17,21 @@ int main() {
     sweep.find_intersections();
     auto intersections = sweep.getIntersections();
 
-    std::cout << "Found Following Intersections: ";
-    for (const auto& intersection : intersections) {
-        std::cout << intersection.pt.x << " " << intersection.pt.x << "\n";
-    };
+    // std::cout << "Found Following Intersections: \n";
+    // for (const auto& intersection : intersections) {
+    //     std::cout << intersection << "\n";
+    // };
 
-    std::cout << "\nCount: " << intersections.size() << "\n";
+    std::cout << "\nIntersection Count: " << intersections.size() << "\n";
+
+    std::vector<point_t> intersection_pts;
+    intersection_pts.reserve(intersections.size());
+
+    for (const auto& its : intersections) {
+        intersection_pts.push_back(its.pt);
+    }
+
+    Utils::generate_output("output.txt", segs, intersection_pts);
 
     return 0;
 }

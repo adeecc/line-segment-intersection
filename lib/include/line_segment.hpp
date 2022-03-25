@@ -4,11 +4,13 @@
 
 #include <ostream>
 #include <point.hpp>
+#include <limits>
 #include <utility>
 
 namespace Geometry {
 
 struct LineSegment {
+    static constexpr double EPS = std::numeric_limits<float>::epsilon();
     Point u, v;
 
     LineSegment() = default;
