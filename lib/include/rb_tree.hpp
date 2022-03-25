@@ -6,6 +6,7 @@
 using std::bidirectional_iterator_tag;
 using std::iterator;
 
+
 namespace DS {
 namespace rb_tree {
 
@@ -14,12 +15,14 @@ enum class Color : unsigned {
     RED
 };
 
+
 template <typename T>
 struct node_t {
     using value_type = T;
     using pointer = T *;
 
     value_type val;
+
     node_t *p{nullptr}, *left{nullptr}, *right{nullptr};
 
     Color color{Color::BLACK};

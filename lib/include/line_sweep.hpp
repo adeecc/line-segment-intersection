@@ -16,6 +16,7 @@ class LineSweep {
 
     EventQueue q;
     Status status;
+
     std::vector<ComparableSegment> segments;
     std::vector<Intersection> intersections;
 
@@ -25,6 +26,7 @@ class LineSweep {
     void handleEventPoint(const Event& e);
 
     void findNewEvent(const ComparableSegment& left, const ComparableSegment& right, const point_t& pt);
+
 
     std::vector<Intersection> getIntersections() { return intersections; }
 };

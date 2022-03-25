@@ -1,25 +1,22 @@
-#include <event_queue.hpp>
+#pragma once
 
-void EventQueue::insert(const Event& e) {
-    auto it = _container.find(e);
+#include <event.hpp>
+#include <rb_tree.hpp>
 
-    if (*it == e) {
-        *it = *it | e;
-    } else {
-        _container.insert(e);
-    }
-}
+struct EventQueue {
+    using node_type = DS::rb_tree::node_t<Event>;
+    using container_type = DS::rb_tree::tree_t<Event>;
+    using iterator_type = DS::rb_tree::iterator_t<node_type>;
 
-void EventQueue::erase(const Event& e) { _container.erase(e); };
+    void insert(const Event& e);
+    void erase(const Event& e);
+    Event next();
 
-Event EventQueue::next() {
-    if (_container.empty()) return Event();
+    iterator_type find(const Event& e) { return _container.find(e); }
+    iterator_type end() { return _container.end(); }
 
-    auto it = _container.begin();
+    bool empty() { return _container.size() == 0; }
 
-    // TODO: Verify if this actually works
-    // auto res = std::move(*it);  // Speed Moving >> Copying
-    auto res = *it;
-    _container.erase(it);
-    return res;
-}
+   private:
+    container_type _container;
+};
