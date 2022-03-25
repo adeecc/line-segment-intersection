@@ -6,6 +6,7 @@
 namespace Geometry {
 
 struct Point {
+    static constexpr double EPS = std::numeric_limits<float>::epsilon();
     double x, y;
 
     constexpr Point() : x(std::numeric_limits<int>::min()), y(std::numeric_limits<int>::min()) {}
@@ -22,7 +23,8 @@ struct Point {
     }
 
     friend bool operator==(const Point& lhs, const Point& rhs) {
-        return lhs.x == rhs.x and lhs.y == rhs.y;
+        return std::abs(lhs.x - rhs.x) < Point::EPS and
+               std::abs(lhs.y - rhs.y) < Point::EPS;
     }
 
     friend std::ostream& operator<<(std::ostream& stream, const Point& pt) {

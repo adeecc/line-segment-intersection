@@ -1,10 +1,9 @@
 #pragma once
 
 #include <event_queue.hpp>
+#include <iomanip>
 #include <status.hpp>
 #include <vector>
-
-const double EPS = 1e-9;  // TODO: Try other numbers
 
 struct Intersection {
     point_t pt;
@@ -14,14 +13,16 @@ struct Intersection {
     Intersection(const point_t& pt) : pt(pt) {}
 
     friend std::ostream& operator<<(std::ostream& stream, const Intersection& intersection) {
-        stream << "<" << intersection.pt << ">: {";
-        for (const auto& segs : intersection.segs) stream << segs << "\t";
+        stream << intersection.pt << ": {";
+        for (const auto& segs : intersection.segs) stream << segs << "\t\t";
         stream << "}\n";
         return stream;
     }
 };
 
 class LineSweep {
+    static constexpr double EPS = std::numeric_limits<float>::epsilon();  // TODO: Try other options
+
     double sweep_line_y;
 
     EventQueue q;
@@ -35,9 +36,8 @@ class LineSweep {
     void _insertNewPoints(const Event& e);
     double _findLeftMostIntersection(const std::vector<ComparableSegment>& segs);
     double _findRightMostIntersection(const std::vector<ComparableSegment>& segs);
-    void _handleLowerOnlyPoint(const Event &e);
-    void _handleIsUpperContainPoint(const Event &e);
-
+    void _handleLowerOnlyPoint(const Event& e);
+    void _handleIsUpperContainPoint(const Event& e);
 
    public:
     LineSweep(const std::vector<segment_t>& segments);

@@ -4,8 +4,6 @@
 #include <point.hpp>
 #include <rb_tree.hpp>
 
-// oEUv
-
 using point_t = Geometry::Point;
 using segment_t = Geometry::LineSegment;
 
@@ -26,22 +24,20 @@ struct ComparableSegment : public segment_t {
         auto lhs_intersection = ComparableSegment::compute_intersection(lhs, *lhs.sweep_line_y);
         auto rhs_intersection = ComparableSegment::compute_intersection(rhs, *rhs.sweep_line_y);
 
-        if (lhs_intersection.x < rhs_intersection.x)
-            return -1;
-        else if (lhs_intersection.x == rhs_intersection.x)
+        if (std::abs(lhs_intersection.x - rhs_intersection.x) < segment_t::EPS)
             return 0;
+        else if (lhs_intersection.x < rhs_intersection.x)
+            return -1;
         else
             return 1;
     }
 
     friend bool operator==(const ComparableSegment& lhs, const ComparableSegment& rhs) {
-        if (lhs.sweep_line_y != rhs.sweep_line_y) {
-            assert(lhs.sweep_line_y == rhs.sweep_line_y);
-        }
+        assert(lhs.sweep_line_y == rhs.sweep_line_y);
 
         auto lhs_intersection = ComparableSegment::compute_intersection(lhs, *lhs.sweep_line_y);
         auto rhs_intersection = ComparableSegment::compute_intersection(rhs, *rhs.sweep_line_y);
 
-        return lhs_intersection.x == rhs_intersection.x;
+        return std::abs(lhs_intersection.x - rhs_intersection.x) < segment_t::EPS;
     }
 };

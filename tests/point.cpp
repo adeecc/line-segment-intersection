@@ -16,10 +16,10 @@ TEST(PointTest, ParameterizedConstructor) {
 }
 
 TEST(PointTest, LargeDeltaComparisonOperatorTest) {
-    const double EPS = 1;
-    const double x = 3, y = 2;
+    double del = 1;
+    double x = 3, y = 2;
 
-    Geometry::Point a(x, y), b(x + 2 * EPS, y), c(x, y + 2 * EPS), d(x + 2 * EPS, y + 2 * EPS);
+    Geometry::Point a(x, y), b(x + 2 * del, y), c(x, y + 2 * del), d(x + 2 * del, y + 2 * del);
 
     // c    d
     // a    b
@@ -33,10 +33,10 @@ TEST(PointTest, LargeDeltaComparisonOperatorTest) {
 }
 
 TEST(PointTest, SmallDeltaComparisonOperatorTest) {
-    const double EPS = 1e-9;
-    const double x = 3, y = 2;
+    double del = Geometry::Point::EPS;
+    double x = 3, y = 2;
 
-    Geometry::Point a(x, y), b(x + 2 * EPS, y), c(x, y + 2 * EPS), d(x + 2 * EPS, y + 2 * EPS);
+    Geometry::Point a(x, y), b(x + 2 * del, y), c(x, y + 2 * del), d(x + 2 * del, y + 2 * del);
 
     // c    d
     // a    b
