@@ -1,0 +1,203 @@
+\hypertarget{struct_d_s_1_1rb__tree_1_1node__t}{}\doxysection{DS\+::rb\+\_\+tree\+::node\+\_\+t\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Struct Template Reference}
+\label{struct_d_s_1_1rb__tree_1_1node__t}\index{DS::rb\_tree::node\_t$<$ T $>$@{DS::rb\_tree::node\_t$<$ T $>$}}
+
+
+A struct for a node in the rb-\/tree.  
+
+
+
+
+{\ttfamily \#include $<$rb\+\_\+tree.\+hpp$>$}
+
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_d_s_1_1rb__tree_1_1node__t_a5c1d553dace763224a18f1936a677667}\label{struct_d_s_1_1rb__tree_1_1node__t_a5c1d553dace763224a18f1936a677667}} 
+using {\bfseries value\+\_\+type} = T
+\item 
+\mbox{\Hypertarget{struct_d_s_1_1rb__tree_1_1node__t_aec315cdc79ee461b76ae464d70906300}\label{struct_d_s_1_1rb__tree_1_1node__t_aec315cdc79ee461b76ae464d70906300}} 
+using {\bfseries pointer} = T $\ast$
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t_a5b64eccbafc4c33acb91fee093faee50}{\+\_\+is\+\_\+a\+\_\+left\+\_\+child}} ()
+\begin{DoxyCompactList}\small\item\em Determine if a node is a left child. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t_a216a9d31149f06d53b3a5c2d3c65a300}{\+\_\+is\+\_\+a\+\_\+right\+\_\+child}} ()
+\begin{DoxyCompactList}\small\item\em Determine if a node is a right child. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_d_s_1_1rb__tree_1_1node__t_a2223469a621c2a56297c1cc090cb008b}\label{struct_d_s_1_1rb__tree_1_1node__t_a2223469a621c2a56297c1cc090cb008b}} 
+{\bfseries node\+\_\+t} ()
+\begin{DoxyCompactList}\small\item\em Construct a new node t object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t_a7d78969d060f5213568b3b88179661e9}{node\+\_\+t}} (value\+\_\+type val)
+\begin{DoxyCompactList}\small\item\em Construct a new node t object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_d_s_1_1rb__tree_1_1node__t_a48d7f77789fd479d3c82961a4464fdc2}\label{struct_d_s_1_1rb__tree_1_1node__t_a48d7f77789fd479d3c82961a4464fdc2}} 
+bool {\bfseries is\+\_\+leaf} () noexcept
+\item 
+\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{node\+\_\+t}} $\ast$ \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t_a90539d26f3e17a92c31ddc5ef98648d2}{max}} ()
+\begin{DoxyCompactList}\small\item\em Determine the node with its maximum value in its subtree. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{node\+\_\+t}} $\ast$ \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t_a9ce0e9f6082e36bd2a0b488575992827}{min}} ()
+\begin{DoxyCompactList}\small\item\em Determine the node with its minimum value in its subtree. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{node\+\_\+t}} $\ast$ \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t_a90f49258ef994021e4e78e8ed3288c4a}{successor}} ()
+\begin{DoxyCompactList}\small\item\em Determine the successor node with least value greater than the current node. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{node\+\_\+t}} $\ast$ \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t_ad9e2eb24ac37108acbe958725e134905}{predecessor}} ()
+\begin{DoxyCompactList}\small\item\em Determine the predecessor node with maximum value less than the current node. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{node\+\_\+t}} $\ast$ \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t_ab74327ee91b3f36aae600d63b42f7420}{sibling}} ()
+\begin{DoxyCompactList}\small\item\em Determine the sibling of the current node. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_d_s_1_1rb__tree_1_1node__t_a16803f6fc8cd801ca12957c82a1c2dba}\label{struct_d_s_1_1rb__tree_1_1node__t_a16803f6fc8cd801ca12957c82a1c2dba}} 
+value\+\_\+type {\bfseries val}
+\item 
+\mbox{\Hypertarget{struct_d_s_1_1rb__tree_1_1node__t_ae5647c8627cbe46658418df6bf9c296f}\label{struct_d_s_1_1rb__tree_1_1node__t_ae5647c8627cbe46658418df6bf9c296f}} 
+\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{node\+\_\+t}} $\ast$ {\bfseries p} \{nullptr\}
+\item 
+\mbox{\Hypertarget{struct_d_s_1_1rb__tree_1_1node__t_ae43b04aa6bbc0e263cba3404f1fa9cdb}\label{struct_d_s_1_1rb__tree_1_1node__t_ae43b04aa6bbc0e263cba3404f1fa9cdb}} 
+\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{node\+\_\+t}} $\ast$ {\bfseries left} \{nullptr\}
+\item 
+\mbox{\Hypertarget{struct_d_s_1_1rb__tree_1_1node__t_a4359b0b942107714ff4be68ea8e85be2}\label{struct_d_s_1_1rb__tree_1_1node__t_a4359b0b942107714ff4be68ea8e85be2}} 
+\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{node\+\_\+t}} $\ast$ {\bfseries right} \{nullptr\}
+\item 
+\mbox{\Hypertarget{struct_d_s_1_1rb__tree_1_1node__t_aee1cc3199a999618f0c65b6f073a9536}\label{struct_d_s_1_1rb__tree_1_1node__t_aee1cc3199a999618f0c65b6f073a9536}} 
+\mbox{\hyperlink{rb__tree_8hpp_a6070021a90a50d2d9b60da72cd3e4b51}{Color}} {\bfseries color} \{Color\+::\+BLACK\}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_d_s_1_1rb__tree_1_1node__t_ae11db916d5d6fb1e759d0672ed742c1f}\label{struct_d_s_1_1rb__tree_1_1node__t_ae11db916d5d6fb1e759d0672ed742c1f}} 
+static \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{node\+\_\+t}} $\ast$ {\bfseries nil} = new \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{node\+\_\+t}}$<$T$>$()
+\begin{DoxyCompactList}\small\item\em Declare the NIL sentinel. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\newline
+struct DS\+::rb\+\_\+tree\+::node\+\_\+t$<$ T $>$}
+A struct for a node in the rb-\/tree. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{struct_d_s_1_1rb__tree_1_1node__t_a7d78969d060f5213568b3b88179661e9}\label{struct_d_s_1_1rb__tree_1_1node__t_a7d78969d060f5213568b3b88179661e9}} 
+\index{DS::rb\_tree::node\_t$<$ T $>$@{DS::rb\_tree::node\_t$<$ T $>$}!node\_t@{node\_t}}
+\index{node\_t@{node\_t}!DS::rb\_tree::node\_t$<$ T $>$@{DS::rb\_tree::node\_t$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{node\_t()}{node\_t()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{DS\+::rb\+\_\+tree\+::node\+\_\+t}}$<$ T $>$\+::node\+\_\+t (\begin{DoxyParamCaption}\item[{value\+\_\+type}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a new node t object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{struct_d_s_1_1rb__tree_1_1node__t_a5b64eccbafc4c33acb91fee093faee50}\label{struct_d_s_1_1rb__tree_1_1node__t_a5b64eccbafc4c33acb91fee093faee50}} 
+\index{DS::rb\_tree::node\_t$<$ T $>$@{DS::rb\_tree::node\_t$<$ T $>$}!\_is\_a\_left\_child@{\_is\_a\_left\_child}}
+\index{\_is\_a\_left\_child@{\_is\_a\_left\_child}!DS::rb\_tree::node\_t$<$ T $>$@{DS::rb\_tree::node\_t$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{\_is\_a\_left\_child()}{\_is\_a\_left\_child()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{DS\+::rb\+\_\+tree\+::node\+\_\+t}}$<$ T $>$\+::\+\_\+is\+\_\+a\+\_\+left\+\_\+child (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Determine if a node is a left child. 
+
+\begin{DoxyReturn}{Returns}
+true If a node is left child 
+
+false If a node is not a left child 
+\end{DoxyReturn}
+\mbox{\Hypertarget{struct_d_s_1_1rb__tree_1_1node__t_a216a9d31149f06d53b3a5c2d3c65a300}\label{struct_d_s_1_1rb__tree_1_1node__t_a216a9d31149f06d53b3a5c2d3c65a300}} 
+\index{DS::rb\_tree::node\_t$<$ T $>$@{DS::rb\_tree::node\_t$<$ T $>$}!\_is\_a\_right\_child@{\_is\_a\_right\_child}}
+\index{\_is\_a\_right\_child@{\_is\_a\_right\_child}!DS::rb\_tree::node\_t$<$ T $>$@{DS::rb\_tree::node\_t$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{\_is\_a\_right\_child()}{\_is\_a\_right\_child()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{DS\+::rb\+\_\+tree\+::node\+\_\+t}}$<$ T $>$\+::\+\_\+is\+\_\+a\+\_\+right\+\_\+child (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Determine if a node is a right child. 
+
+\begin{DoxyReturn}{Returns}
+true If a node is right child 
+
+false If a node is not a right child 
+\end{DoxyReturn}
+\mbox{\Hypertarget{struct_d_s_1_1rb__tree_1_1node__t_a90539d26f3e17a92c31ddc5ef98648d2}\label{struct_d_s_1_1rb__tree_1_1node__t_a90539d26f3e17a92c31ddc5ef98648d2}} 
+\index{DS::rb\_tree::node\_t$<$ T $>$@{DS::rb\_tree::node\_t$<$ T $>$}!max@{max}}
+\index{max@{max}!DS::rb\_tree::node\_t$<$ T $>$@{DS::rb\_tree::node\_t$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{max()}{max()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{node\+\_\+t}} $\ast$ \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{DS\+::rb\+\_\+tree\+::node\+\_\+t}}$<$ T $>$\+::max (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Determine the node with its maximum value in its subtree. 
+
+\begin{DoxyReturn}{Returns}
+node\+\_\+t$\ast$ the node with its maximum value in its subtree 
+\end{DoxyReturn}
+\mbox{\Hypertarget{struct_d_s_1_1rb__tree_1_1node__t_a9ce0e9f6082e36bd2a0b488575992827}\label{struct_d_s_1_1rb__tree_1_1node__t_a9ce0e9f6082e36bd2a0b488575992827}} 
+\index{DS::rb\_tree::node\_t$<$ T $>$@{DS::rb\_tree::node\_t$<$ T $>$}!min@{min}}
+\index{min@{min}!DS::rb\_tree::node\_t$<$ T $>$@{DS::rb\_tree::node\_t$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{min()}{min()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{node\+\_\+t}} $\ast$ \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{DS\+::rb\+\_\+tree\+::node\+\_\+t}}$<$ T $>$\+::min (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Determine the node with its minimum value in its subtree. 
+
+\begin{DoxyReturn}{Returns}
+node\+\_\+t$\ast$ the node with its minimum value in its subtree 
+\end{DoxyReturn}
+\mbox{\Hypertarget{struct_d_s_1_1rb__tree_1_1node__t_ad9e2eb24ac37108acbe958725e134905}\label{struct_d_s_1_1rb__tree_1_1node__t_ad9e2eb24ac37108acbe958725e134905}} 
+\index{DS::rb\_tree::node\_t$<$ T $>$@{DS::rb\_tree::node\_t$<$ T $>$}!predecessor@{predecessor}}
+\index{predecessor@{predecessor}!DS::rb\_tree::node\_t$<$ T $>$@{DS::rb\_tree::node\_t$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{predecessor()}{predecessor()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{node\+\_\+t}} $\ast$ \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{DS\+::rb\+\_\+tree\+::node\+\_\+t}}$<$ T $>$\+::predecessor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Determine the predecessor node with maximum value less than the current node. 
+
+\begin{DoxyReturn}{Returns}
+node\+\_\+t$\ast$ the predecessor node 
+\end{DoxyReturn}
+\mbox{\Hypertarget{struct_d_s_1_1rb__tree_1_1node__t_ab74327ee91b3f36aae600d63b42f7420}\label{struct_d_s_1_1rb__tree_1_1node__t_ab74327ee91b3f36aae600d63b42f7420}} 
+\index{DS::rb\_tree::node\_t$<$ T $>$@{DS::rb\_tree::node\_t$<$ T $>$}!sibling@{sibling}}
+\index{sibling@{sibling}!DS::rb\_tree::node\_t$<$ T $>$@{DS::rb\_tree::node\_t$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{sibling()}{sibling()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{node\+\_\+t}} $\ast$ \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{DS\+::rb\+\_\+tree\+::node\+\_\+t}}$<$ T $>$\+::sibling (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Determine the sibling of the current node. 
+
+\begin{DoxyReturn}{Returns}
+node\+\_\+t$\ast$ sibling of the current node 
+\end{DoxyReturn}
+\mbox{\Hypertarget{struct_d_s_1_1rb__tree_1_1node__t_a90f49258ef994021e4e78e8ed3288c4a}\label{struct_d_s_1_1rb__tree_1_1node__t_a90f49258ef994021e4e78e8ed3288c4a}} 
+\index{DS::rb\_tree::node\_t$<$ T $>$@{DS::rb\_tree::node\_t$<$ T $>$}!successor@{successor}}
+\index{successor@{successor}!DS::rb\_tree::node\_t$<$ T $>$@{DS::rb\_tree::node\_t$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{successor()}{successor()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{node\+\_\+t}} $\ast$ \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{DS\+::rb\+\_\+tree\+::node\+\_\+t}}$<$ T $>$\+::successor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Determine the successor node with least value greater than the current node. 
+
+\begin{DoxyReturn}{Returns}
+node\+\_\+t$\ast$ the successor node 
+\end{DoxyReturn}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/vedan/\+Desktop/\+DAA Assignment/daa-\/assignment-\/sweep/lib/include/\mbox{\hyperlink{rb__tree_8hpp}{rb\+\_\+tree.\+hpp}}\end{DoxyCompactItemize}

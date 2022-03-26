@@ -1,0 +1,130 @@
+\hypertarget{struct_comparable_segment}{}\doxysection{Comparable\+Segment Struct Reference}
+\label{struct_comparable_segment}\index{ComparableSegment@{ComparableSegment}}
+
+
+This struct inherits from segment\+\_\+t and defines comparisions on them.  
+
+
+
+
+{\ttfamily \#include $<$comparable\+\_\+segment.\+hpp$>$}
+
+Inheritance diagram for Comparable\+Segment\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{struct_comparable_segment}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_comparable_segment_a52890ef736347de08f10670d12210817}\label{struct_comparable_segment_a52890ef736347de08f10670d12210817}} 
+{\bfseries Comparable\+Segment} ()
+\begin{DoxyCompactList}\small\item\em Construct a new Comparable Segment object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_comparable_segment_a695ad80a9c3fd515c107b01020b4e6da}{Comparable\+Segment}} (const \mbox{\hyperlink{comparable__segment_8hpp_a14d629d6369fd1827c7f1965e25ea082}{segment\+\_\+t}} \&seg, double $\ast$sweep\+\_\+line\+\_\+y)
+\begin{DoxyCompactList}\small\item\em Construct a new Comparable Segment object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_comparable_segment_afe1e425072a1a3c119f6d19ef374cceb}{Comparable\+Segment}} (\mbox{\hyperlink{comparable__segment_8hpp_a3e0c1f9aae83dc00dcfd714d6595bfc7}{point\+\_\+t}} \+\_\+u, \mbox{\hyperlink{comparable__segment_8hpp_a3e0c1f9aae83dc00dcfd714d6595bfc7}{point\+\_\+t}} \+\_\+v, double $\ast$sweep\+\_\+line\+\_\+y)
+\begin{DoxyCompactList}\small\item\em Construct a new Comparable Segment object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_comparable_segment_ae29dd71189c667cf9d50bfe41933cf55}\label{struct_comparable_segment_ae29dd71189c667cf9d50bfe41933cf55}} 
+double $\ast$ {\bfseries sweep\+\_\+line\+\_\+y} = nullptr
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+auto \mbox{\hyperlink{struct_comparable_segment_a1a9b4594f2da0a7a718e48f656d144b8}{operator$<$=$>$}} (const \mbox{\hyperlink{struct_comparable_segment}{Comparable\+Segment}} \&lhs, const \mbox{\hyperlink{struct_comparable_segment}{Comparable\+Segment}} \&rhs)
+\begin{DoxyCompactList}\small\item\em Defining the operator \texorpdfstring{$<$}{<}=\texorpdfstring{$>$}{>} on line segments. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{struct_comparable_segment_add2cf9a36285ddd2b78bdae76ecf82fd}{operator==}} (const \mbox{\hyperlink{struct_comparable_segment}{Comparable\+Segment}} \&lhs, const \mbox{\hyperlink{struct_comparable_segment}{Comparable\+Segment}} \&rhs)
+\begin{DoxyCompactList}\small\item\em defining \textquotesingle{}==\textquotesingle{} operator overload \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+This struct inherits from segment\+\_\+t and defines comparisions on them. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{struct_comparable_segment_a695ad80a9c3fd515c107b01020b4e6da}\label{struct_comparable_segment_a695ad80a9c3fd515c107b01020b4e6da}} 
+\index{ComparableSegment@{ComparableSegment}!ComparableSegment@{ComparableSegment}}
+\index{ComparableSegment@{ComparableSegment}!ComparableSegment@{ComparableSegment}}
+\doxysubsubsection{\texorpdfstring{ComparableSegment()}{ComparableSegment()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Comparable\+Segment\+::\+Comparable\+Segment (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{comparable__segment_8hpp_a14d629d6369fd1827c7f1965e25ea082}{segment\+\_\+t}} \&}]{seg,  }\item[{double $\ast$}]{sweep\+\_\+line\+\_\+y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a new Comparable Segment object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em seg} & \\
+\hline
+{\em sweep\+\_\+line\+\_\+y} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{struct_comparable_segment_afe1e425072a1a3c119f6d19ef374cceb}\label{struct_comparable_segment_afe1e425072a1a3c119f6d19ef374cceb}} 
+\index{ComparableSegment@{ComparableSegment}!ComparableSegment@{ComparableSegment}}
+\index{ComparableSegment@{ComparableSegment}!ComparableSegment@{ComparableSegment}}
+\doxysubsubsection{\texorpdfstring{ComparableSegment()}{ComparableSegment()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Comparable\+Segment\+::\+Comparable\+Segment (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{comparable__segment_8hpp_a3e0c1f9aae83dc00dcfd714d6595bfc7}{point\+\_\+t}}}]{\+\_\+u,  }\item[{\mbox{\hyperlink{comparable__segment_8hpp_a3e0c1f9aae83dc00dcfd714d6595bfc7}{point\+\_\+t}}}]{\+\_\+v,  }\item[{double $\ast$}]{sweep\+\_\+line\+\_\+y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a new Comparable Segment object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+u} & \\
+\hline
+{\em \+\_\+v} & \\
+\hline
+{\em sweep\+\_\+line\+\_\+y} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{struct_comparable_segment_a1a9b4594f2da0a7a718e48f656d144b8}\label{struct_comparable_segment_a1a9b4594f2da0a7a718e48f656d144b8}} 
+\index{ComparableSegment@{ComparableSegment}!operator$<$=$>$@{operator$<$=$>$}}
+\index{operator$<$=$>$@{operator$<$=$>$}!ComparableSegment@{ComparableSegment}}
+\doxysubsubsection{\texorpdfstring{operator$<$=$>$}{operator<=>}}
+{\footnotesize\ttfamily auto operator$<$=$>$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_comparable_segment}{Comparable\+Segment}} \&}]{lhs,  }\item[{const \mbox{\hyperlink{struct_comparable_segment}{Comparable\+Segment}} \&}]{rhs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Defining the operator \texorpdfstring{$<$}{<}=\texorpdfstring{$>$}{>} on line segments. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lhs} & \\
+\hline
+{\em rhs} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{struct_comparable_segment_add2cf9a36285ddd2b78bdae76ecf82fd}\label{struct_comparable_segment_add2cf9a36285ddd2b78bdae76ecf82fd}} 
+\index{ComparableSegment@{ComparableSegment}!operator==@{operator==}}
+\index{operator==@{operator==}!ComparableSegment@{ComparableSegment}}
+\doxysubsubsection{\texorpdfstring{operator==}{operator==}}
+{\footnotesize\ttfamily bool operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_comparable_segment}{Comparable\+Segment}} \&}]{lhs,  }\item[{const \mbox{\hyperlink{struct_comparable_segment}{Comparable\+Segment}} \&}]{rhs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+defining \textquotesingle{}==\textquotesingle{} operator overload 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lhs} & \\
+\hline
+{\em rhs} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/vedan/\+Desktop/\+DAA Assignment/daa-\/assignment-\/sweep/lib/include/\mbox{\hyperlink{comparable__segment_8hpp}{comparable\+\_\+segment.\+hpp}}\end{DoxyCompactItemize}

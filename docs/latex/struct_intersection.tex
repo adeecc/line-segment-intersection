@@ -1,0 +1,82 @@
+\hypertarget{struct_intersection}{}\doxysection{Intersection Struct Reference}
+\label{struct_intersection}\index{Intersection@{Intersection}}
+
+
+Stores the intersection points and the segments intersecting.  
+
+
+
+
+{\ttfamily \#include $<$line\+\_\+sweep.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_intersection_a67497e3efe2793b23909052eeb82c4f3}\label{struct_intersection_a67497e3efe2793b23909052eeb82c4f3}} 
+{\bfseries Intersection} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{struct_intersection}{Intersection}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_intersection_a7520159dc010dd45b134f2ab53d4dd8f}{Intersection}} (const \mbox{\hyperlink{comparable__segment_8hpp_a3e0c1f9aae83dc00dcfd714d6595bfc7}{point\+\_\+t}} \&pt)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{struct_intersection}{Intersection}} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_intersection_a8afc0638545ff493d8c86b826e7e8bac}\label{struct_intersection_a8afc0638545ff493d8c86b826e7e8bac}} 
+\mbox{\hyperlink{comparable__segment_8hpp_a3e0c1f9aae83dc00dcfd714d6595bfc7}{point\+\_\+t}} {\bfseries pt}
+\item 
+\mbox{\Hypertarget{struct_intersection_a2dc6cba91fa67073b2c034ced2a4b735}\label{struct_intersection_a2dc6cba91fa67073b2c034ced2a4b735}} 
+std\+::vector$<$ \mbox{\hyperlink{struct_comparable_segment}{Comparable\+Segment}} $>$ {\bfseries segs}
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \mbox{\hyperlink{struct_intersection_a3be8f14e0541fd86ad75185554a63f19}{operator$<$$<$}} (std\+::ostream \&stream, const \mbox{\hyperlink{struct_intersection}{Intersection}} \&intersection)
+\begin{DoxyCompactList}\small\item\em Overloading the Left Shift operator \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Stores the intersection points and the segments intersecting. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{struct_intersection_a7520159dc010dd45b134f2ab53d4dd8f}\label{struct_intersection_a7520159dc010dd45b134f2ab53d4dd8f}} 
+\index{Intersection@{Intersection}!Intersection@{Intersection}}
+\index{Intersection@{Intersection}!Intersection@{Intersection}}
+\doxysubsubsection{\texorpdfstring{Intersection()}{Intersection()}}
+{\footnotesize\ttfamily Intersection\+::\+Intersection (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{comparable__segment_8hpp_a3e0c1f9aae83dc00dcfd714d6595bfc7}{point\+\_\+t}} \&}]{pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a new \mbox{\hyperlink{struct_intersection}{Intersection}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pt} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{struct_intersection_a3be8f14e0541fd86ad75185554a63f19}\label{struct_intersection_a3be8f14e0541fd86ad75185554a63f19}} 
+\index{Intersection@{Intersection}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Intersection@{Intersection}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily std\+::ostream \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{stream,  }\item[{const \mbox{\hyperlink{struct_intersection}{Intersection}} \&}]{intersection }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Overloading the Left Shift operator \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em stream} & Output Stream to be written on \\
+\hline
+{\em l} & line segment to write \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::ostream\& reference to the output stream 
+\end{DoxyReturn}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/vedan/\+Desktop/\+DAA Assignment/daa-\/assignment-\/sweep/lib/include/\mbox{\hyperlink{line__sweep_8hpp}{line\+\_\+sweep.\+hpp}}\end{DoxyCompactItemize}

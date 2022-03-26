@@ -1,0 +1,75 @@
+\hypertarget{event_8hpp_source}{}\doxysection{event.\+hpp}
+\label{event_8hpp_source}\index{C:/Users/vedan/Desktop/DAA Assignment/daa-\/assignment-\/sweep/lib/include/event.hpp@{C:/Users/vedan/Desktop/DAA Assignment/daa-\/assignment-\/sweep/lib/include/event.hpp}}
+\mbox{\hyperlink{event_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{comparable__segment_8hpp}{comparable\_segment.hpp}}>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{line__segment_8hpp}{line\_segment.hpp}}>}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{point_8hpp}{point.hpp}}>}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{12 \textcolor{keyword}{using} \mbox{\hyperlink{struct_geometry_1_1_point}{point\_t}} = \mbox{\hyperlink{struct_geometry_1_1_point}{Geometry::Point}};}
+\DoxyCodeLine{14 \textcolor{keyword}{using} \mbox{\hyperlink{struct_geometry_1_1_line_segment}{segment\_t}} = \mbox{\hyperlink{struct_geometry_1_1_line_segment}{Geometry::LineSegment}};}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_event}{Event}} \{}
+\DoxyCodeLine{19     \textcolor{keyword}{enum class} \mbox{\hyperlink{struct_event_a2e208393d2fb7c9574088209ff7212e5}{Type}} : uint8\_t \{}
+\DoxyCodeLine{20         UPPER,  }
+\DoxyCodeLine{21         LOWER,  }
+\DoxyCodeLine{22         CONTAIN,    }
+\DoxyCodeLine{23         OTHER   }
+\DoxyCodeLine{24     \};}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{27     \mbox{\hyperlink{struct_geometry_1_1_point}{point\_t}} \mbox{\hyperlink{struct_event_a12c0f718c0ec555d682b9687ab6a6e82}{pt}};}
+\DoxyCodeLine{29     std::vector<ComparableSegment> \mbox{\hyperlink{struct_event_af161bc0e81b88e078cd8f11e2a80bd79}{lower}};}
+\DoxyCodeLine{31     std::vector<ComparableSegment> \mbox{\hyperlink{struct_event_a44f8d47f91f0b108cb83e53e23276341}{upper}};}
+\DoxyCodeLine{33     std::vector<ComparableSegment> \mbox{\hyperlink{struct_event_accc0c01bd4489be7b82d4a7ed82f3c99}{contain}};}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{39     \mbox{\hyperlink{struct_event_a5a40dd4708297f7031e29b39e039ae10}{Event}}() \{\}}
+\DoxyCodeLine{47     \mbox{\hyperlink{struct_event_a12c5070a0649842fa23368465df1b5c1}{Event}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_geometry_1_1_point}{point\_t}}\& \mbox{\hyperlink{struct_event_a12c0f718c0ec555d682b9687ab6a6e82}{pt}}, \textcolor{keyword}{const} \mbox{\hyperlink{struct_comparable_segment}{ComparableSegment}}\& seg, \mbox{\hyperlink{struct_event_a2e208393d2fb7c9574088209ff7212e5}{Type}} type) : \mbox{\hyperlink{struct_event_a12c0f718c0ec555d682b9687ab6a6e82}{pt}}(\mbox{\hyperlink{struct_event_a12c0f718c0ec555d682b9687ab6a6e82}{pt}}) \{}
+\DoxyCodeLine{48         \textcolor{comment}{// TODO: Verify this THOROUGHLY}}
+\DoxyCodeLine{49         \textcolor{keywordflow}{switch} (type) \{}
+\DoxyCodeLine{50             \textcolor{keywordflow}{case} \mbox{\hyperlink{struct_event_a2e208393d2fb7c9574088209ff7212e5a9e43f5291e6fcb2ad99c8e3f91acd179}{Type::UPPER}}:}
+\DoxyCodeLine{51                 \mbox{\hyperlink{struct_event_a44f8d47f91f0b108cb83e53e23276341}{upper}}.push\_back(seg);}
+\DoxyCodeLine{52                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{53             \textcolor{keywordflow}{case} \mbox{\hyperlink{struct_event_a2e208393d2fb7c9574088209ff7212e5aa7c48ba367e019d004bfb0239b85f2b3}{Type::LOWER}}:}
+\DoxyCodeLine{54                 \mbox{\hyperlink{struct_event_af161bc0e81b88e078cd8f11e2a80bd79}{lower}}.push\_back(seg);}
+\DoxyCodeLine{55                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{56             \textcolor{keywordflow}{case} \mbox{\hyperlink{struct_event_a2e208393d2fb7c9574088209ff7212e5a6c8c93b0cd657e2fd400f2c61acc6f42}{Type::CONTAIN}}:}
+\DoxyCodeLine{57                 \mbox{\hyperlink{struct_event_accc0c01bd4489be7b82d4a7ed82f3c99}{contain}}.push\_back(seg);}
+\DoxyCodeLine{58                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{59             \textcolor{keywordflow}{case} \mbox{\hyperlink{struct_event_a2e208393d2fb7c9574088209ff7212e5a03570470bad94692ce93e32700d2e1cb}{Type::OTHER}}:}
+\DoxyCodeLine{60                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{61             \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{62                 assert(0);}
+\DoxyCodeLine{63                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{64         \}}
+\DoxyCodeLine{65     \}}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{75     \textcolor{keyword}{friend} \mbox{\hyperlink{struct_event}{Event}} \mbox{\hyperlink{struct_event_a4544ff357a4fb2d65dff4de1af736f23}{operator|}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_event}{Event}}\& lhs, \textcolor{keyword}{const} \mbox{\hyperlink{struct_event}{Event}}\& rhs) \{}
+\DoxyCodeLine{76         }
+\DoxyCodeLine{77         \mbox{\hyperlink{struct_event}{Event}} res\{lhs\};}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79         res.\mbox{\hyperlink{struct_event_af161bc0e81b88e078cd8f11e2a80bd79}{lower}}.insert(res.lower.end(), rhs.\mbox{\hyperlink{struct_event_af161bc0e81b88e078cd8f11e2a80bd79}{lower}}.begin(), rhs.\mbox{\hyperlink{struct_event_af161bc0e81b88e078cd8f11e2a80bd79}{lower}}.end());}
+\DoxyCodeLine{80         res.upper.insert(res.upper.end(), rhs.\mbox{\hyperlink{struct_event_a44f8d47f91f0b108cb83e53e23276341}{upper}}.begin(), rhs.\mbox{\hyperlink{struct_event_a44f8d47f91f0b108cb83e53e23276341}{upper}}.end());}
+\DoxyCodeLine{81         res.contain.insert(res.contain.end(), rhs.\mbox{\hyperlink{struct_event_accc0c01bd4489be7b82d4a7ed82f3c99}{contain}}.begin(), rhs.\mbox{\hyperlink{struct_event_accc0c01bd4489be7b82d4a7ed82f3c99}{contain}}.end());}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{83         \textcolor{keywordflow}{return} res;}
+\DoxyCodeLine{84     \}}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{94     \textcolor{keyword}{friend} \textcolor{keyword}{auto} \mbox{\hyperlink{struct_event_a2d64fbd8e515a8dabb1bcc347e57c8ee}{operator<=>}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_event}{Event}}\& lhs, \textcolor{keyword}{const} \mbox{\hyperlink{struct_event}{Event}}\& rhs) \{}
+\DoxyCodeLine{95         \textcolor{keywordflow}{if} (lhs.\mbox{\hyperlink{struct_event_a12c0f718c0ec555d682b9687ab6a6e82}{pt}} < rhs.\mbox{\hyperlink{struct_event_a12c0f718c0ec555d682b9687ab6a6e82}{pt}})}
+\DoxyCodeLine{96             \textcolor{keywordflow}{return} -\/1;}
+\DoxyCodeLine{97         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (lhs.\mbox{\hyperlink{struct_event_a12c0f718c0ec555d682b9687ab6a6e82}{pt}} == rhs.\mbox{\hyperlink{struct_event_a12c0f718c0ec555d682b9687ab6a6e82}{pt}})}
+\DoxyCodeLine{98             \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{99         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{100             \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{101     \}}
+\DoxyCodeLine{102 }
+\DoxyCodeLine{111     \textcolor{keyword}{friend} \textcolor{keyword}{auto} \mbox{\hyperlink{struct_event_aaa6676ddc45af1e16b32fa49bf862be4}{operator==}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_event}{Event}}\& lhs, \textcolor{keyword}{const} \mbox{\hyperlink{struct_event}{Event}}\& rhs) \{}
+\DoxyCodeLine{112         \textcolor{keywordflow}{return} (lhs.\mbox{\hyperlink{struct_event_a12c0f718c0ec555d682b9687ab6a6e82}{pt}} == rhs.\mbox{\hyperlink{struct_event_a12c0f718c0ec555d682b9687ab6a6e82}{pt}});}
+\DoxyCodeLine{113     \}}
+\DoxyCodeLine{114 \};}
+
+\end{DoxyCode}

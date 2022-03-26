@@ -1,14 +1,47 @@
+/**
+ * @file line_sweep.hpp
+ * @brief Defining intersection points and the segments intersecting 
+ */
 #pragma once
 
 #include <event_queue.hpp>
 #include <status.hpp>
 #include <vector>
 
-constexpr double EPS = 1e-9;  // TODO: Try other numbers
+const double EPS = 1e-9;  // TODO: Try other numbers
 
+/**
+ * @brief Stores the intersection points and the segments intersecting 
+ * 
+ */
 struct Intersection {
     point_t pt;
     std::vector<ComparableSegment> segs;
+    /**
+     * @brief Construct a new Intersection object
+     * 
+     */
+    Intersection() {}
+    /**
+     * @brief Construct a new Intersection object
+     * 
+     * @param pt 
+     */
+    Intersection(const point_t& pt) : pt(pt) {}
+
+    /**
+     * @brief Overloading the Left Shift operator << 
+     * 
+     * @param stream Output Stream to be written on
+     * @param l line segment to write
+     * @return std::ostream& reference to the output stream
+     */
+    friend std::ostream& operator<<(std::ostream& stream, const Intersection& intersection) {
+        stream << "<" << intersection.pt << ">: {";
+        for (const auto& segs : intersection.segs) stream << segs << "\t";
+        stream << "}\n";
+        return stream;
+    }
 };
 
 class LineSweep {
@@ -16,15 +49,25 @@ class LineSweep {
 
     EventQueue q;
     Status status;
-    std::vector<ComparableSegment*> segments;
+
+    std::vector<ComparableSegment> segments;
     std::vector<Intersection> intersections;
 
-   public:
-    LineSweep(std::vector<segment_t>& segments);
-    void find_intersections();
-    void handleEventPoint(Event* e);
+    void _findTrivialIntersection(const Event& e);
+    void _eraseConsideredPoints(const Event& e);
+    void _insertNewPoints(const Event& e);
+    double _findLeftMostIntersection(const std::vector<ComparableSegment>& segs);
+    double _findRightMostIntersection(const std::vector<ComparableSegment>& segs);
+    void _handleLowerOnlyPoint(const Event &e);
+    void _handleIsUpperContainPoint(const Event &e);
 
-    void findNewEvent(ComparableSegment* left, ComparableSegment* right, point_t* pt);
+
+   public:
+    LineSweep(const std::vector<segment_t>& segments);
+    void find_intersections();
+    void handleEventPoint(const Event& e);
+
+    void findNewEvent(const ComparableSegment& left, const ComparableSegment& right, const point_t& pt);
 
     std::vector<Intersection> getIntersections() { return intersections; }
 };

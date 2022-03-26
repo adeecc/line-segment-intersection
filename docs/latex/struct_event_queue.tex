@@ -1,0 +1,141 @@
+\hypertarget{struct_event_queue}{}\doxysection{Event\+Queue Struct Reference}
+\label{struct_event_queue}\index{EventQueue@{EventQueue}}
+
+
+A struct for mainting a \mbox{\hyperlink{struct_event}{Event}} queue.  
+
+
+
+
+{\ttfamily \#include $<$event\+\_\+queue.\+hpp$>$}
+
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_event_queue_a43c7b847eaa0f219edd5f78c38de6db9}\label{struct_event_queue_a43c7b847eaa0f219edd5f78c38de6db9}} 
+using {\bfseries node\+\_\+type} = \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{DS\+::rb\+\_\+tree\+::node\+\_\+t}}$<$ \mbox{\hyperlink{struct_event}{Event}} $>$
+\begin{DoxyCompactList}\small\item\em Type Alias for rb-\/tree node. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_event_queue_a4d79a3c7aec9e57a09a4394fec6a89af}\label{struct_event_queue_a4d79a3c7aec9e57a09a4394fec6a89af}} 
+using {\bfseries container\+\_\+type} = \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1tree__t}{DS\+::rb\+\_\+tree\+::tree\+\_\+t}}$<$ \mbox{\hyperlink{struct_event}{Event}} $>$
+\begin{DoxyCompactList}\small\item\em Type Alias for rb-\/tree tree. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_event_queue_a8b1a6d3587be958eb02646edbe503c14}\label{struct_event_queue_a8b1a6d3587be958eb02646edbe503c14}} 
+using {\bfseries iterator} = \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t}{DS\+::rb\+\_\+tree\+::iterator\+\_\+t}}$<$ \mbox{\hyperlink{struct_event_queue_a43c7b847eaa0f219edd5f78c38de6db9}{node\+\_\+type}} $>$
+\begin{DoxyCompactList}\small\item\em Type Alias for rb-\/tree iterator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{struct_event_queue_aaffcc81ed15cd3eccff8fb946d7aeba9}{insert}} (const \mbox{\hyperlink{struct_event}{Event}} \&e)
+\begin{DoxyCompactList}\small\item\em This method inserts an event in the \mbox{\hyperlink{struct_event}{Event}} queue. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{struct_event_queue_a97e2ae7513789c82aa5afbc31dafe978}{erase}} (const \mbox{\hyperlink{struct_event}{Event}} \&e)
+\begin{DoxyCompactList}\small\item\em This method removes an event from the \mbox{\hyperlink{struct_event}{Event}} queue. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_event_queue_a2264347560f7af929b6202ecd47be5a6}\label{struct_event_queue_a2264347560f7af929b6202ecd47be5a6}} 
+\mbox{\hyperlink{struct_event}{Event}} {\bfseries next} ()
+\begin{DoxyCompactList}\small\item\em iterator pointing to the element after being advanced \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_event_queue_a8b1a6d3587be958eb02646edbe503c14}{iterator}} \mbox{\hyperlink{struct_event_queue_a013cd47654accb357ab0318d50dd602c}{find}} (const \mbox{\hyperlink{struct_event}{Event}} \&e)
+\begin{DoxyCompactList}\small\item\em Finding an event in the \mbox{\hyperlink{struct_event}{Event}} queue. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_event_queue_a8b1a6d3587be958eb02646edbe503c14}{iterator}} \mbox{\hyperlink{struct_event_queue_a3f499ae0ee86391ae6ef6be0d1e015dd}{begin}} ()
+\begin{DoxyCompactList}\small\item\em Obtaining the first event. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_event_queue_a8b1a6d3587be958eb02646edbe503c14}{iterator}} \mbox{\hyperlink{struct_event_queue_ac029339d141f163c33d3dc1956f43161}{end}} ()
+\begin{DoxyCompactList}\small\item\em Obtaining the last event. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{struct_event_queue_a1ac35ff19397a33041838727b7229553}{empty}} ()
+\begin{DoxyCompactList}\small\item\em Determines if the \mbox{\hyperlink{struct_event}{Event}} queue contains an event or is empty. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A struct for mainting a \mbox{\hyperlink{struct_event}{Event}} queue. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{struct_event_queue_a3f499ae0ee86391ae6ef6be0d1e015dd}\label{struct_event_queue_a3f499ae0ee86391ae6ef6be0d1e015dd}} 
+\index{EventQueue@{EventQueue}!begin@{begin}}
+\index{begin@{begin}!EventQueue@{EventQueue}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_event_queue_a8b1a6d3587be958eb02646edbe503c14}{iterator}} Event\+Queue\+::begin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Obtaining the first event. 
+
+\begin{DoxyReturn}{Returns}
+iterator to the first event in \mbox{\hyperlink{struct_event}{Event}} queue 
+\end{DoxyReturn}
+\mbox{\Hypertarget{struct_event_queue_a1ac35ff19397a33041838727b7229553}\label{struct_event_queue_a1ac35ff19397a33041838727b7229553}} 
+\index{EventQueue@{EventQueue}!empty@{empty}}
+\index{empty@{empty}!EventQueue@{EventQueue}}
+\doxysubsubsection{\texorpdfstring{empty()}{empty()}}
+{\footnotesize\ttfamily bool Event\+Queue\+::empty (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Determines if the \mbox{\hyperlink{struct_event}{Event}} queue contains an event or is empty. 
+
+\begin{DoxyReturn}{Returns}
+true if the \mbox{\hyperlink{struct_event}{Event}} queue contains one or more events 
+
+false if the \mbox{\hyperlink{struct_event}{Event}} queue is empty 
+\end{DoxyReturn}
+\mbox{\Hypertarget{struct_event_queue_ac029339d141f163c33d3dc1956f43161}\label{struct_event_queue_ac029339d141f163c33d3dc1956f43161}} 
+\index{EventQueue@{EventQueue}!end@{end}}
+\index{end@{end}!EventQueue@{EventQueue}}
+\doxysubsubsection{\texorpdfstring{end()}{end()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_event_queue_a8b1a6d3587be958eb02646edbe503c14}{iterator}} Event\+Queue\+::end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Obtaining the last event. 
+
+\begin{DoxyReturn}{Returns}
+iterator to the last event in \mbox{\hyperlink{struct_event}{Event}} queue 
+\end{DoxyReturn}
+\mbox{\Hypertarget{struct_event_queue_a97e2ae7513789c82aa5afbc31dafe978}\label{struct_event_queue_a97e2ae7513789c82aa5afbc31dafe978}} 
+\index{EventQueue@{EventQueue}!erase@{erase}}
+\index{erase@{erase}!EventQueue@{EventQueue}}
+\doxysubsubsection{\texorpdfstring{erase()}{erase()}}
+{\footnotesize\ttfamily void Event\+Queue\+::erase (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_event}{Event}} \&}]{e }\end{DoxyParamCaption})}
+
+
+
+This method removes an event from the \mbox{\hyperlink{struct_event}{Event}} queue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{struct_event_queue_a013cd47654accb357ab0318d50dd602c}\label{struct_event_queue_a013cd47654accb357ab0318d50dd602c}} 
+\index{EventQueue@{EventQueue}!find@{find}}
+\index{find@{find}!EventQueue@{EventQueue}}
+\doxysubsubsection{\texorpdfstring{find()}{find()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_event_queue_a8b1a6d3587be958eb02646edbe503c14}{iterator}} Event\+Queue\+::find (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_event}{Event}} \&}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Finding an event in the \mbox{\hyperlink{struct_event}{Event}} queue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+iterator to the event in the \mbox{\hyperlink{struct_event}{Event}} queue 
+\end{DoxyReturn}
+\mbox{\Hypertarget{struct_event_queue_aaffcc81ed15cd3eccff8fb946d7aeba9}\label{struct_event_queue_aaffcc81ed15cd3eccff8fb946d7aeba9}} 
+\index{EventQueue@{EventQueue}!insert@{insert}}
+\index{insert@{insert}!EventQueue@{EventQueue}}
+\doxysubsubsection{\texorpdfstring{insert()}{insert()}}
+{\footnotesize\ttfamily void Event\+Queue\+::insert (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_event}{Event}} \&}]{e }\end{DoxyParamCaption})}
+
+
+
+This method inserts an event in the \mbox{\hyperlink{struct_event}{Event}} queue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/vedan/\+Desktop/\+DAA Assignment/daa-\/assignment-\/sweep/lib/include/\mbox{\hyperlink{event__queue_8hpp}{event\+\_\+queue.\+hpp}}\end{DoxyCompactItemize}

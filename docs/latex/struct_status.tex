@@ -1,0 +1,141 @@
+\hypertarget{struct_status}{}\doxysection{Status Struct Reference}
+\label{struct_status}\index{Status@{Status}}
+
+
+A struct for mainting a \mbox{\hyperlink{struct_status}{Status}} queue of Line Segments.  
+
+
+
+
+{\ttfamily \#include $<$status.\+hpp$>$}
+
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_status_a427c248d3548938dd1cafd471b92e64c}\label{struct_status_a427c248d3548938dd1cafd471b92e64c}} 
+using {\bfseries node\+\_\+type} = \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{DS\+::rb\+\_\+tree\+::node\+\_\+t}}$<$ \mbox{\hyperlink{struct_comparable_segment}{Comparable\+Segment}} $>$
+\begin{DoxyCompactList}\small\item\em Type Alias for rb-\/tree node. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_status_a9ab85223b4bfa03961e60f70d86ceec4}\label{struct_status_a9ab85223b4bfa03961e60f70d86ceec4}} 
+using {\bfseries container\+\_\+type} = \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1tree__t}{DS\+::rb\+\_\+tree\+::tree\+\_\+t}}$<$ \mbox{\hyperlink{struct_comparable_segment}{Comparable\+Segment}} $>$
+\begin{DoxyCompactList}\small\item\em Type Alias for rb-\/tree tree. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_status_afd72b588bd59b382e437e3ddf2b97d1e}\label{struct_status_afd72b588bd59b382e437e3ddf2b97d1e}} 
+using {\bfseries iterator} = \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t}{DS\+::rb\+\_\+tree\+::iterator\+\_\+t}}$<$ \mbox{\hyperlink{struct_status_a427c248d3548938dd1cafd471b92e64c}{node\+\_\+type}} $>$
+\begin{DoxyCompactList}\small\item\em Type Alias for rb-\/tree iterator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{struct_status_a4f745cfec8b13bd4c68aafdccc42ae20}{insert}} (const \mbox{\hyperlink{struct_comparable_segment}{Comparable\+Segment}} \&seg)
+\begin{DoxyCompactList}\small\item\em This method inserts the segment in the \mbox{\hyperlink{struct_status}{Status}} queue. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{struct_status_a316f1173b3e578c7463161298051a628}{erase}} (const \mbox{\hyperlink{struct_comparable_segment}{Comparable\+Segment}} \&seg)
+\begin{DoxyCompactList}\small\item\em This method removes the segment from the \mbox{\hyperlink{struct_status}{Status}} queue. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_status_afd72b588bd59b382e437e3ddf2b97d1e}{iterator}} \mbox{\hyperlink{struct_status_af860180af01da7d79a862be3a973be91}{lower\+\_\+bound}} (const \mbox{\hyperlink{struct_comparable_segment}{Comparable\+Segment}} \&seg)
+\begin{DoxyCompactList}\small\item\em This method defines a lower bound on a segment. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_status_afd72b588bd59b382e437e3ddf2b97d1e}{iterator}} \mbox{\hyperlink{struct_status_a6024c38da9a43053afefe8f358dcc603}{upper\+\_\+bound}} (const \mbox{\hyperlink{struct_comparable_segment}{Comparable\+Segment}} \&seg)
+\begin{DoxyCompactList}\small\item\em This method defines an upper bound on a segment. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_status_afd72b588bd59b382e437e3ddf2b97d1e}{iterator}} \mbox{\hyperlink{struct_status_a48a95ef45f03780c75e32eef9b243fae}{begin}} ()
+\begin{DoxyCompactList}\small\item\em Obtaining the first segment in the \mbox{\hyperlink{struct_status}{Status}} queue. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_status_afd72b588bd59b382e437e3ddf2b97d1e}{iterator}} \mbox{\hyperlink{struct_status_ad9ca1bb03b175f8e76639514b633a62c}{end}} ()
+\begin{DoxyCompactList}\small\item\em Obtaining the last segment in the \mbox{\hyperlink{struct_status}{Status}} queue. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A struct for mainting a \mbox{\hyperlink{struct_status}{Status}} queue of Line Segments. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{struct_status_a48a95ef45f03780c75e32eef9b243fae}\label{struct_status_a48a95ef45f03780c75e32eef9b243fae}} 
+\index{Status@{Status}!begin@{begin}}
+\index{begin@{begin}!Status@{Status}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_status_afd72b588bd59b382e437e3ddf2b97d1e}{iterator}} Status\+::begin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Obtaining the first segment in the \mbox{\hyperlink{struct_status}{Status}} queue. 
+
+\begin{DoxyReturn}{Returns}
+iterator to the first element in the queue 
+\end{DoxyReturn}
+\mbox{\Hypertarget{struct_status_ad9ca1bb03b175f8e76639514b633a62c}\label{struct_status_ad9ca1bb03b175f8e76639514b633a62c}} 
+\index{Status@{Status}!end@{end}}
+\index{end@{end}!Status@{Status}}
+\doxysubsubsection{\texorpdfstring{end()}{end()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_status_afd72b588bd59b382e437e3ddf2b97d1e}{iterator}} Status\+::end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Obtaining the last segment in the \mbox{\hyperlink{struct_status}{Status}} queue. 
+
+\begin{DoxyReturn}{Returns}
+iterator to the last element in the queue 
+\end{DoxyReturn}
+\mbox{\Hypertarget{struct_status_a316f1173b3e578c7463161298051a628}\label{struct_status_a316f1173b3e578c7463161298051a628}} 
+\index{Status@{Status}!erase@{erase}}
+\index{erase@{erase}!Status@{Status}}
+\doxysubsubsection{\texorpdfstring{erase()}{erase()}}
+{\footnotesize\ttfamily void Status\+::erase (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_comparable_segment}{Comparable\+Segment}} \&}]{seg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method removes the segment from the \mbox{\hyperlink{struct_status}{Status}} queue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em seg} & is the current segment to be removed \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{struct_status_a4f745cfec8b13bd4c68aafdccc42ae20}\label{struct_status_a4f745cfec8b13bd4c68aafdccc42ae20}} 
+\index{Status@{Status}!insert@{insert}}
+\index{insert@{insert}!Status@{Status}}
+\doxysubsubsection{\texorpdfstring{insert()}{insert()}}
+{\footnotesize\ttfamily void Status\+::insert (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_comparable_segment}{Comparable\+Segment}} \&}]{seg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method inserts the segment in the \mbox{\hyperlink{struct_status}{Status}} queue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em seg} & is the current segment to be inserted \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{struct_status_af860180af01da7d79a862be3a973be91}\label{struct_status_af860180af01da7d79a862be3a973be91}} 
+\index{Status@{Status}!lower\_bound@{lower\_bound}}
+\index{lower\_bound@{lower\_bound}!Status@{Status}}
+\doxysubsubsection{\texorpdfstring{lower\_bound()}{lower\_bound()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_status_afd72b588bd59b382e437e3ddf2b97d1e}{iterator}} Status\+::lower\+\_\+bound (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_comparable_segment}{Comparable\+Segment}} \&}]{seg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method defines a lower bound on a segment. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em seg} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+iterator to the smallest element greater than or equal to the seg in the \mbox{\hyperlink{struct_status}{Status}} queue 
+\end{DoxyReturn}
+\mbox{\Hypertarget{struct_status_a6024c38da9a43053afefe8f358dcc603}\label{struct_status_a6024c38da9a43053afefe8f358dcc603}} 
+\index{Status@{Status}!upper\_bound@{upper\_bound}}
+\index{upper\_bound@{upper\_bound}!Status@{Status}}
+\doxysubsubsection{\texorpdfstring{upper\_bound()}{upper\_bound()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_status_afd72b588bd59b382e437e3ddf2b97d1e}{iterator}} Status\+::upper\+\_\+bound (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_comparable_segment}{Comparable\+Segment}} \&}]{seg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method defines an upper bound on a segment. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em seg} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+iterator to smallest element strictly greater than seg in the \mbox{\hyperlink{struct_status}{Status}} queue 
+\end{DoxyReturn}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/vedan/\+Desktop/\+DAA Assignment/daa-\/assignment-\/sweep/lib/include/\mbox{\hyperlink{status_8hpp}{status.\+hpp}}\end{DoxyCompactItemize}

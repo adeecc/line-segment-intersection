@@ -1,0 +1,127 @@
+\hypertarget{struct_geometry_1_1_point}{}\doxysection{Geometry\+::Point Struct Reference}
+\label{struct_geometry_1_1_point}\index{Geometry::Point@{Geometry::Point}}
+
+
+A struct for defining a point.  
+
+
+
+
+{\ttfamily \#include $<$point.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_geometry_1_1_point_a18b400e85776517fc7e87be4bb0c5365}\label{struct_geometry_1_1_point_a18b400e85776517fc7e87be4bb0c5365}} 
+constexpr {\bfseries Point} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_geometry_1_1_point_a7c156649a8850a7ac86dedd84777e750}{Point}} (double \mbox{\hyperlink{struct_geometry_1_1_point_afda73ad21424fb7a5202e3a7f1865b4a}{x}}, double \mbox{\hyperlink{struct_geometry_1_1_point_a11218e1256b644dc226d696eea074e8d}{y}})
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{struct_geometry_1_1_point}{Point}} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_geometry_1_1_point_afda73ad21424fb7a5202e3a7f1865b4a}\label{struct_geometry_1_1_point_afda73ad21424fb7a5202e3a7f1865b4a}} 
+double {\bfseries x}
+\begin{DoxyCompactList}\small\item\em X -\/ coordinate. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_geometry_1_1_point_a11218e1256b644dc226d696eea074e8d}\label{struct_geometry_1_1_point_a11218e1256b644dc226d696eea074e8d}} 
+double {\bfseries y}
+\begin{DoxyCompactList}\small\item\em Y -\/ coordinate. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+auto \mbox{\hyperlink{struct_geometry_1_1_point_adbde2e732e09e348be702c8da306724e}{operator$<$=$>$}} (const \mbox{\hyperlink{struct_geometry_1_1_point}{Point}} \&lhs, const \mbox{\hyperlink{struct_geometry_1_1_point}{Point}} \&rhs)
+\begin{DoxyCompactList}\small\item\em Defining the operator \texorpdfstring{$<$}{<}=\texorpdfstring{$>$}{>} on points. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{struct_geometry_1_1_point_ad32019380665fdd1d07e75f3482544a3}{operator==}} (const \mbox{\hyperlink{struct_geometry_1_1_point}{Point}} \&lhs, const \mbox{\hyperlink{struct_geometry_1_1_point}{Point}} \&rhs)
+\begin{DoxyCompactList}\small\item\em defining \textquotesingle{}==\textquotesingle{} operator overload on points \end{DoxyCompactList}\item 
+std\+::ostream \& \mbox{\hyperlink{struct_geometry_1_1_point_a21d098459b16a7c8dd1a0cd8ed8dbaf6}{operator$<$$<$}} (std\+::ostream \&stream, const \mbox{\hyperlink{struct_geometry_1_1_point}{Point}} \&pt)
+\begin{DoxyCompactList}\small\item\em Overloading the Left Shift operator \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A struct for defining a point. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{struct_geometry_1_1_point_a7c156649a8850a7ac86dedd84777e750}\label{struct_geometry_1_1_point_a7c156649a8850a7ac86dedd84777e750}} 
+\index{Geometry::Point@{Geometry::Point}!Point@{Point}}
+\index{Point@{Point}!Geometry::Point@{Geometry::Point}}
+\doxysubsubsection{\texorpdfstring{Point()}{Point()}}
+{\footnotesize\ttfamily Geometry\+::\+Point\+::\+Point (\begin{DoxyParamCaption}\item[{double}]{x,  }\item[{double}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a new \mbox{\hyperlink{struct_geometry_1_1_point}{Point}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & \\
+\hline
+{\em y} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{struct_geometry_1_1_point_a21d098459b16a7c8dd1a0cd8ed8dbaf6}\label{struct_geometry_1_1_point_a21d098459b16a7c8dd1a0cd8ed8dbaf6}} 
+\index{Geometry::Point@{Geometry::Point}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Geometry::Point@{Geometry::Point}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily std\+::ostream \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{stream,  }\item[{const \mbox{\hyperlink{struct_geometry_1_1_point}{Point}} \&}]{pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Overloading the Left Shift operator \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em stream} & Output Stream to be written on \\
+\hline
+{\em l} & line segment to write \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::ostream\& reference to the output stream 
+\end{DoxyReturn}
+\mbox{\Hypertarget{struct_geometry_1_1_point_adbde2e732e09e348be702c8da306724e}\label{struct_geometry_1_1_point_adbde2e732e09e348be702c8da306724e}} 
+\index{Geometry::Point@{Geometry::Point}!operator$<$=$>$@{operator$<$=$>$}}
+\index{operator$<$=$>$@{operator$<$=$>$}!Geometry::Point@{Geometry::Point}}
+\doxysubsubsection{\texorpdfstring{operator$<$=$>$}{operator<=>}}
+{\footnotesize\ttfamily auto operator$<$=$>$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_geometry_1_1_point}{Point}} \&}]{lhs,  }\item[{const \mbox{\hyperlink{struct_geometry_1_1_point}{Point}} \&}]{rhs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Defining the operator \texorpdfstring{$<$}{<}=\texorpdfstring{$>$}{>} on points. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lhs} & \\
+\hline
+{\em rhs} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{struct_geometry_1_1_point_ad32019380665fdd1d07e75f3482544a3}\label{struct_geometry_1_1_point_ad32019380665fdd1d07e75f3482544a3}} 
+\index{Geometry::Point@{Geometry::Point}!operator==@{operator==}}
+\index{operator==@{operator==}!Geometry::Point@{Geometry::Point}}
+\doxysubsubsection{\texorpdfstring{operator==}{operator==}}
+{\footnotesize\ttfamily bool operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_geometry_1_1_point}{Point}} \&}]{lhs,  }\item[{const \mbox{\hyperlink{struct_geometry_1_1_point}{Point}} \&}]{rhs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+defining \textquotesingle{}==\textquotesingle{} operator overload on points 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lhs} & \\
+\hline
+{\em rhs} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/vedan/\+Desktop/\+DAA Assignment/daa-\/assignment-\/sweep/lib/include/\mbox{\hyperlink{point_8hpp}{point.\+hpp}}\end{DoxyCompactItemize}

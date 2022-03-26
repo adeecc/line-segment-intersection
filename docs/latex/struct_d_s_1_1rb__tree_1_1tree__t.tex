@@ -1,0 +1,80 @@
+\hypertarget{struct_d_s_1_1rb__tree_1_1tree__t}{}\doxysection{DS\+::rb\+\_\+tree\+::tree\+\_\+t\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Struct Template Reference}
+\label{struct_d_s_1_1rb__tree_1_1tree__t}\index{DS::rb\_tree::tree\_t$<$ T $>$@{DS::rb\_tree::tree\_t$<$ T $>$}}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_d_s_1_1rb__tree_1_1tree__t_a9a6be6d4a10385ae396fc496ae804f36}\label{struct_d_s_1_1rb__tree_1_1tree__t_a9a6be6d4a10385ae396fc496ae804f36}} 
+using {\bfseries value\+\_\+type} = T
+\item 
+\mbox{\Hypertarget{struct_d_s_1_1rb__tree_1_1tree__t_a216ee5754b0516cd366c5e837ea6e73b}\label{struct_d_s_1_1rb__tree_1_1tree__t_a216ee5754b0516cd366c5e837ea6e73b}} 
+using {\bfseries node\+\_\+type} = \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{node\+\_\+t}}$<$ value\+\_\+type $>$
+\item 
+\mbox{\Hypertarget{struct_d_s_1_1rb__tree_1_1tree__t_a842aaab9c45fb5fc2ee2ccf3442c6793}\label{struct_d_s_1_1rb__tree_1_1tree__t_a842aaab9c45fb5fc2ee2ccf3442c6793}} 
+using {\bfseries iterator} = \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t}{iterator\+\_\+t}}$<$ \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{node\+\_\+type}} $>$
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_d_s_1_1rb__tree_1_1tree__t_a6a2ec76ca94f8f599013805aa7278074}\label{struct_d_s_1_1rb__tree_1_1tree__t_a6a2ec76ca94f8f599013805aa7278074}} 
+{\bfseries tree\+\_\+t} ()
+\begin{DoxyCompactList}\small\item\em Construct a new tree t object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_d_s_1_1rb__tree_1_1tree__t_a1499335a86f4c8518890f717c49b7f7f}\label{struct_d_s_1_1rb__tree_1_1tree__t_a1499335a86f4c8518890f717c49b7f7f}} 
+\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t}{iterator}} {\bfseries max} ()
+\item 
+\mbox{\Hypertarget{struct_d_s_1_1rb__tree_1_1tree__t_a847b5242a8c80f5eba076128cc3fbecc}\label{struct_d_s_1_1rb__tree_1_1tree__t_a847b5242a8c80f5eba076128cc3fbecc}} 
+\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t}{iterator}} {\bfseries min} ()
+\item 
+\mbox{\Hypertarget{struct_d_s_1_1rb__tree_1_1tree__t_a624843bc93629b0057a4bb0c1f62fa02}\label{struct_d_s_1_1rb__tree_1_1tree__t_a624843bc93629b0057a4bb0c1f62fa02}} 
+\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t}{iterator}} {\bfseries begin} ()
+\item 
+\mbox{\Hypertarget{struct_d_s_1_1rb__tree_1_1tree__t_a7f009e203acc454757456c184e532ad6}\label{struct_d_s_1_1rb__tree_1_1tree__t_a7f009e203acc454757456c184e532ad6}} 
+\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t}{iterator}} {\bfseries end} ()
+\item 
+\mbox{\Hypertarget{struct_d_s_1_1rb__tree_1_1tree__t_a901168c05a44f1855660937b54c8809b}\label{struct_d_s_1_1rb__tree_1_1tree__t_a901168c05a44f1855660937b54c8809b}} 
+bool {\bfseries empty} ()
+\item 
+\mbox{\Hypertarget{struct_d_s_1_1rb__tree_1_1tree__t_a381f86c5ad68c0d68b83aea013fec6b5}\label{struct_d_s_1_1rb__tree_1_1tree__t_a381f86c5ad68c0d68b83aea013fec6b5}} 
+\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t}{iterator}} {\bfseries insert} (value\+\_\+type val)
+\item 
+void \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1tree__t_a479d00e8b5beeef19d424d00de1880e3}{erase}} (\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t}{iterator}} pos)
+\begin{DoxyCompactList}\small\item\em Erasing a node from the rb-\/tree. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_d_s_1_1rb__tree_1_1tree__t_afeaa1c0ffcb69f243e32b7bd2e74b59a}\label{struct_d_s_1_1rb__tree_1_1tree__t_afeaa1c0ffcb69f243e32b7bd2e74b59a}} 
+void {\bfseries erase} (const value\+\_\+type \&val)
+\item 
+\mbox{\Hypertarget{struct_d_s_1_1rb__tree_1_1tree__t_ae05b44f29be9ffd699b08754ef57a119}\label{struct_d_s_1_1rb__tree_1_1tree__t_ae05b44f29be9ffd699b08754ef57a119}} 
+\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t}{iterator}} {\bfseries find} (const value\+\_\+type \&val)
+\item 
+\mbox{\Hypertarget{struct_d_s_1_1rb__tree_1_1tree__t_a5b3cd7fffcaa4675b5553a2341e02db2}\label{struct_d_s_1_1rb__tree_1_1tree__t_a5b3cd7fffcaa4675b5553a2341e02db2}} 
+\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t}{iterator}} {\bfseries upper\+\_\+bound} (const value\+\_\+type \&val)
+\item 
+\mbox{\Hypertarget{struct_d_s_1_1rb__tree_1_1tree__t_a0585f70f36262239f52d09f28f1e7d57}\label{struct_d_s_1_1rb__tree_1_1tree__t_a0585f70f36262239f52d09f28f1e7d57}} 
+\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t}{iterator}} {\bfseries lower\+\_\+bound} (const value\+\_\+type \&val)
+\item 
+\mbox{\Hypertarget{struct_d_s_1_1rb__tree_1_1tree__t_a71c73926e20319fb1a2f68c004af4d0d}\label{struct_d_s_1_1rb__tree_1_1tree__t_a71c73926e20319fb1a2f68c004af4d0d}} 
+std\+::size\+\_\+t {\bfseries size} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{struct_d_s_1_1rb__tree_1_1tree__t_a479d00e8b5beeef19d424d00de1880e3}\label{struct_d_s_1_1rb__tree_1_1tree__t_a479d00e8b5beeef19d424d00de1880e3}} 
+\index{DS::rb\_tree::tree\_t$<$ T $>$@{DS::rb\_tree::tree\_t$<$ T $>$}!erase@{erase}}
+\index{erase@{erase}!DS::rb\_tree::tree\_t$<$ T $>$@{DS::rb\_tree::tree\_t$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{erase()}{erase()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1tree__t}{DS\+::rb\+\_\+tree\+::tree\+\_\+t}}$<$ T $>$\+::erase (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t}{iterator}}}]{it }\end{DoxyParamCaption})}
+
+
+
+Erasing a node from the rb-\/tree. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em it} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/vedan/\+Desktop/\+DAA Assignment/daa-\/assignment-\/sweep/lib/include/\mbox{\hyperlink{rb__tree_8hpp}{rb\+\_\+tree.\+hpp}}\item 
+C\+:/\+Users/vedan/\+Desktop/\+DAA Assignment/daa-\/assignment-\/sweep/lib/include/\mbox{\hyperlink{rb__tree_8tpp}{rb\+\_\+tree.\+tpp}}\end{DoxyCompactItemize}

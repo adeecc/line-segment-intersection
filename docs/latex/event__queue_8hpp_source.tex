@@ -1,0 +1,32 @@
+\hypertarget{event__queue_8hpp_source}{}\doxysection{event\+\_\+queue.\+hpp}
+\label{event__queue_8hpp_source}\index{C:/Users/vedan/Desktop/DAA Assignment/daa-\/assignment-\/sweep/lib/include/event\_queue.hpp@{C:/Users/vedan/Desktop/DAA Assignment/daa-\/assignment-\/sweep/lib/include/event\_queue.hpp}}
+\mbox{\hyperlink{event__queue_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{event_8hpp}{event.hpp}}>}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{rb__tree_8hpp}{rb\_tree.hpp}}>}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{16 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_event_queue}{EventQueue}} \{}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{19     \textcolor{keyword}{using} \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{node\_type}} = \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{DS::rb\_tree::node\_t<Event>}};}
+\DoxyCodeLine{21     \textcolor{keyword}{using} \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1tree__t}{container\_type}} = \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1tree__t}{DS::rb\_tree::tree\_t<Event>}};}
+\DoxyCodeLine{23     \textcolor{keyword}{using} \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t}{iterator}} = \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t}{DS::rb\_tree::iterator\_t<node\_type>}};}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{30     \textcolor{keywordtype}{void} \mbox{\hyperlink{struct_event_queue_aaffcc81ed15cd3eccff8fb946d7aeba9}{insert}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_event}{Event}}\& e);}
+\DoxyCodeLine{36     \textcolor{keywordtype}{void} \mbox{\hyperlink{struct_event_queue_a97e2ae7513789c82aa5afbc31dafe978}{erase}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_event}{Event}}\& e);}
+\DoxyCodeLine{38     \mbox{\hyperlink{struct_event}{Event}} \mbox{\hyperlink{struct_event_queue_a2264347560f7af929b6202ecd47be5a6}{next}}();}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{46     \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t}{iterator}} \mbox{\hyperlink{struct_event_queue_a013cd47654accb357ab0318d50dd602c}{find}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_event}{Event}}\& e) \{ \textcolor{keywordflow}{return} \_container.find(e); \}}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{53     \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t}{iterator}} \mbox{\hyperlink{struct_event_queue_a3f499ae0ee86391ae6ef6be0d1e015dd}{begin}}() \{ \textcolor{keywordflow}{return} \_container.begin(); \}}
+\DoxyCodeLine{59     \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t}{iterator}} \mbox{\hyperlink{struct_event_queue_ac029339d141f163c33d3dc1956f43161}{end}}() \{ \textcolor{keywordflow}{return} \_container.end(); \}}
+\DoxyCodeLine{66     \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_event_queue_a1ac35ff19397a33041838727b7229553}{empty}}() \{ \textcolor{keywordflow}{return} \_container.size() == 0; \}}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68    \textcolor{keyword}{private}:}
+\DoxyCodeLine{69    \textcolor{comment}{// Initializing a variable of Type container\_type}}
+\DoxyCodeLine{70     \mbox{\hyperlink{struct_event_queue_a4d79a3c7aec9e57a09a4394fec6a89af}{container\_type}} \_container;}
+\DoxyCodeLine{71 \};}
+
+\end{DoxyCode}

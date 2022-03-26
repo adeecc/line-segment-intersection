@@ -1,0 +1,203 @@
+\hypertarget{rb__tree_8hpp_source}{}\doxysection{rb\+\_\+tree.\+hpp}
+\label{rb__tree_8hpp_source}\index{C:/Users/vedan/Desktop/DAA Assignment/daa-\/assignment-\/sweep/lib/include/rb\_tree.hpp@{C:/Users/vedan/Desktop/DAA Assignment/daa-\/assignment-\/sweep/lib/include/rb\_tree.hpp}}
+\mbox{\hyperlink{rb__tree_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <cstddef>}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <iterator>}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{keyword}{using} std::bidirectional\_iterator\_tag;}
+\DoxyCodeLine{11 \textcolor{keyword}{using} std::iterator;}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{keyword}{namespace }DS \{}
+\DoxyCodeLine{14 \textcolor{keyword}{namespace }rb\_tree \{}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{20 \textcolor{keyword}{enum class} \mbox{\hyperlink{rb__tree_8hpp_a6070021a90a50d2d9b60da72cd3e4b51}{Color}} : \textcolor{keywordtype}{unsigned} \{}
+\DoxyCodeLine{21     BLACK, }
+\DoxyCodeLine{22     RED}
+\DoxyCodeLine{23 \};}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{30 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{node\_t}} \{}
+\DoxyCodeLine{31     \textcolor{keyword}{using} value\_type = T;}
+\DoxyCodeLine{32     \textcolor{keyword}{using} pointer = T *;}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34     value\_type val;}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36     \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{node\_t}} *p\{\textcolor{keyword}{nullptr}\}, *left\{\textcolor{keyword}{nullptr}\}, *right\{\textcolor{keyword}{nullptr}\};}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38     \mbox{\hyperlink{rb__tree_8hpp_a6070021a90a50d2d9b60da72cd3e4b51}{Color}} color\{Color::BLACK\};}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{46     \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t_a5b64eccbafc4c33acb91fee093faee50}{\_is\_a\_left\_child}}() \{ \textcolor{keywordflow}{return} (p != \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t_ae11db916d5d6fb1e759d0672ed742c1f}{node\_t::nil}}) and (p-\/>left == \textcolor{keyword}{this}); \}}
+\DoxyCodeLine{53     \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t_a216a9d31149f06d53b3a5c2d3c65a300}{\_is\_a\_right\_child}}() \{ \textcolor{keywordflow}{return} (p != \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t_ae11db916d5d6fb1e759d0672ed742c1f}{node\_t::nil}}) and (p-\/>right == \textcolor{keyword}{this}); \}}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55    \textcolor{keyword}{public}:}
+\DoxyCodeLine{60     \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t_a2223469a621c2a56297c1cc090cb008b}{node\_t}}() \{}
+\DoxyCodeLine{61         p = \textcolor{keyword}{this};}
+\DoxyCodeLine{62         left = \textcolor{keyword}{this};}
+\DoxyCodeLine{63         right = \textcolor{keyword}{this};}
+\DoxyCodeLine{64     \}}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{71     \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t_a7d78969d060f5213568b3b88179661e9}{node\_t}}(value\_type val) : val(val) \{}
+\DoxyCodeLine{72         left = \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t_ae11db916d5d6fb1e759d0672ed742c1f}{node\_t::nil}};}
+\DoxyCodeLine{73         right = \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t_ae11db916d5d6fb1e759d0672ed742c1f}{node\_t::nil}};}
+\DoxyCodeLine{74         p = \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t_ae11db916d5d6fb1e759d0672ed742c1f}{node\_t::nil}};}
+\DoxyCodeLine{75     \}}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77     \textcolor{keyword}{static} \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{node\_t}} *\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t_ae11db916d5d6fb1e759d0672ed742c1f}{nil}};}
+\DoxyCodeLine{78    }
+\DoxyCodeLine{79     \textcolor{keywordtype}{bool} is\_leaf() noexcept;}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{86     \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{node\_t}} *\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t_a90539d26f3e17a92c31ddc5ef98648d2}{max}}() \{ \textcolor{keywordflow}{return} (right == \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t_ae11db916d5d6fb1e759d0672ed742c1f}{node\_t::nil}}) ? this : right-\/>\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t_a90539d26f3e17a92c31ddc5ef98648d2}{max}}(); \}}
+\DoxyCodeLine{92     \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{node\_t}} *\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t_a9ce0e9f6082e36bd2a0b488575992827}{min}}() \{ \textcolor{keywordflow}{return} (left == \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t_ae11db916d5d6fb1e759d0672ed742c1f}{node\_t::nil}}) ? this : left-\/>\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t_a9ce0e9f6082e36bd2a0b488575992827}{min}}(); \}}
+\DoxyCodeLine{93 }
+\DoxyCodeLine{99     \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{node\_t}} *\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t_a90f49258ef994021e4e78e8ed3288c4a}{successor}}() \{}
+\DoxyCodeLine{100         \textcolor{keywordflow}{if} (right != \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t_ae11db916d5d6fb1e759d0672ed742c1f}{node\_t::nil}}) \textcolor{keywordflow}{return} right-\/>\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t_a9ce0e9f6082e36bd2a0b488575992827}{min}}();}
+\DoxyCodeLine{101         \textcolor{keywordflow}{if} (\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t_a5b64eccbafc4c33acb91fee093faee50}{\_is\_a\_left\_child}}()) \textcolor{keywordflow}{return} p;}
+\DoxyCodeLine{102         \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{node\_t}} *succ = \textcolor{keyword}{this};}
+\DoxyCodeLine{103         \textcolor{keywordflow}{do} \{}
+\DoxyCodeLine{104             succ = succ-\/>p;}
+\DoxyCodeLine{105         \} \textcolor{keywordflow}{while} ((succ != \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t_ae11db916d5d6fb1e759d0672ed742c1f}{node\_t::nil}}) and succ-\/>\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t_a216a9d31149f06d53b3a5c2d3c65a300}{\_is\_a\_right\_child}}());}
+\DoxyCodeLine{106 }
+\DoxyCodeLine{107         \textcolor{keywordflow}{if} (succ != \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t_ae11db916d5d6fb1e759d0672ed742c1f}{node\_t::nil}}) \{}
+\DoxyCodeLine{108             \textcolor{keywordflow}{return} succ-\/>p;}
+\DoxyCodeLine{109         \} \textcolor{keywordflow}{else}}
+\DoxyCodeLine{110             \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t_ae11db916d5d6fb1e759d0672ed742c1f}{node\_t::nil}};}
+\DoxyCodeLine{111     \}}
+\DoxyCodeLine{117     \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{node\_t}} *\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t_ad9e2eb24ac37108acbe958725e134905}{predecessor}}() \{}
+\DoxyCodeLine{118         \textcolor{keywordflow}{if} (left != \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t_ae11db916d5d6fb1e759d0672ed742c1f}{node\_t::nil}}) \textcolor{keywordflow}{return} left-\/>\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t_a90539d26f3e17a92c31ddc5ef98648d2}{max}}();}
+\DoxyCodeLine{119         \textcolor{keywordflow}{if} (\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t_a216a9d31149f06d53b3a5c2d3c65a300}{\_is\_a\_right\_child}}()) \textcolor{keywordflow}{return} p;}
+\DoxyCodeLine{120 }
+\DoxyCodeLine{121         \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{node\_t}} *pred = \textcolor{keyword}{this};}
+\DoxyCodeLine{122         \textcolor{keywordflow}{do} \{}
+\DoxyCodeLine{123             pred = pred-\/>p;}
+\DoxyCodeLine{124         \} \textcolor{keywordflow}{while} ((pred != \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t_ae11db916d5d6fb1e759d0672ed742c1f}{node\_t::nil}}) and pred-\/>\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t_a5b64eccbafc4c33acb91fee093faee50}{\_is\_a\_left\_child}}());}
+\DoxyCodeLine{125 }
+\DoxyCodeLine{126         \textcolor{keywordflow}{if} (pred != \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t_ae11db916d5d6fb1e759d0672ed742c1f}{node\_t::nil}}) \{}
+\DoxyCodeLine{127             \textcolor{keywordflow}{return} pred-\/>p;}
+\DoxyCodeLine{128         \} \textcolor{keywordflow}{else}}
+\DoxyCodeLine{129             \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t_ae11db916d5d6fb1e759d0672ed742c1f}{node\_t::nil}};}
+\DoxyCodeLine{130     \}}
+\DoxyCodeLine{131 }
+\DoxyCodeLine{137     \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{node\_t}} *\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t_ab74327ee91b3f36aae600d63b42f7420}{sibling}}() \{}
+\DoxyCodeLine{138         \textcolor{keywordflow}{if} (p == \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t_ae11db916d5d6fb1e759d0672ed742c1f}{node\_t::nil}}) \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t_ae11db916d5d6fb1e759d0672ed742c1f}{node\_t::nil}};}
+\DoxyCodeLine{139 }
+\DoxyCodeLine{140         \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t_a5b64eccbafc4c33acb91fee093faee50}{\_is\_a\_left\_child}}() ? p-\/>right : p-\/>left;}
+\DoxyCodeLine{141     \}}
+\DoxyCodeLine{142 \};}
+\DoxyCodeLine{143 }
+\DoxyCodeLine{145 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{146 node\_t<T> *\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t_ae11db916d5d6fb1e759d0672ed742c1f}{node\_t<T>::nil}} = \textcolor{keyword}{new} node\_t<T>();}
+\DoxyCodeLine{147 }
+\DoxyCodeLine{148 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{149 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t}{iterator\_t}} \{}
+\DoxyCodeLine{150    \textcolor{keyword}{private}:}
+\DoxyCodeLine{152     T *m\_ptr = T::nil;  }
+\DoxyCodeLine{153 }
+\DoxyCodeLine{154    \textcolor{keyword}{public}:}
+\DoxyCodeLine{156     \textcolor{keyword}{using} \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t_a76ea55a810bd054fc6494b4eccd93e0d}{iterator\_category}} = std::bidirectional\_iterator\_tag;}
+\DoxyCodeLine{158     \textcolor{keyword}{using} \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t_a5e741d35b795c84cae1790ac6fe85a60}{difference\_type}} = std::ptrdiff\_t;}
+\DoxyCodeLine{160     \textcolor{keyword}{using} \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t_a024e74ec8dc4ff800f358dd8880e3bd9}{value\_type}} = T::value\_type;}
+\DoxyCodeLine{162     \textcolor{keyword}{using} \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t_a387cabed70cc5e7337cc3fa6f421faae}{pointer}} = \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t_a024e74ec8dc4ff800f358dd8880e3bd9}{value\_type}} *;}
+\DoxyCodeLine{164     \textcolor{keyword}{using} \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t_a8c6be1f1770c0482e6dc5dcfd8086596}{reference}} = \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t_a024e74ec8dc4ff800f358dd8880e3bd9}{value\_type}} \&;}
+\DoxyCodeLine{165 }
+\DoxyCodeLine{170     \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t_a4707eef6f2aab5a001be192710be2e27}{iterator\_t}}(T *ptr) : m\_ptr(ptr) \{\}}
+\DoxyCodeLine{176     \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t_ae295ee16ecade610a19a4ea34f9e2ede}{iterator\_t}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t}{iterator\_t}} \&that) : m\_ptr(that.m\_ptr) \{\}}
+\DoxyCodeLine{181     \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t_a9b696087bb5f5bd9df17b5b0305a8801}{iterator\_t}}(\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t}{iterator\_t}} \&\&) = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{182 }
+\DoxyCodeLine{183     \textcolor{comment}{// Operators}}
+\DoxyCodeLine{190 \textcolor{comment}{}    \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t}{iterator\_t}} \&\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t_a31e16c46d5278be1b4add584df76c3b4}{operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t_a8c6be1f1770c0482e6dc5dcfd8086596}{reference}} that) \{}
+\DoxyCodeLine{191         m\_ptr-\/>val = that;}
+\DoxyCodeLine{192         \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{193     \}}
+\DoxyCodeLine{194     }
+\DoxyCodeLine{195     \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t}{iterator\_t}} \&\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t_a31e16c46d5278be1b4add584df76c3b4}{operator=}}(\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t}{iterator\_t}} \&\&) = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{196     }
+\DoxyCodeLine{202     \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t}{iterator\_t}} \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t_a127a9f7c5af065f1bc592fab189b16b7}{operator++}}() \{}
+\DoxyCodeLine{203         m\_ptr = m\_ptr-\/>successor();}
+\DoxyCodeLine{204         \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{205     \}}
+\DoxyCodeLine{206 }
+\DoxyCodeLine{207     \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t}{iterator\_t}} \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t_a127a9f7c5af065f1bc592fab189b16b7}{operator++}}(\textcolor{keywordtype}{int}) \{}
+\DoxyCodeLine{208         T *temp = m\_ptr;}
+\DoxyCodeLine{209         \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t_a127a9f7c5af065f1bc592fab189b16b7}{operator++}}();}
+\DoxyCodeLine{210         \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t_a4707eef6f2aab5a001be192710be2e27}{iterator\_t}}(temp);}
+\DoxyCodeLine{211     \}}
+\DoxyCodeLine{217     \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t}{iterator\_t}} \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t_a5c2d71f01b828cd3b65b6a0244329a89}{operator-\/-\/}}() \{}
+\DoxyCodeLine{218         m\_ptr = m\_ptr-\/>predecessor();}
+\DoxyCodeLine{219         \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{220     \}}
+\DoxyCodeLine{221 }
+\DoxyCodeLine{222     \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t}{iterator\_t}} \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t_a5c2d71f01b828cd3b65b6a0244329a89}{operator-\/-\/}}(\textcolor{keywordtype}{int}) \{}
+\DoxyCodeLine{223         T *temp = m\_ptr;}
+\DoxyCodeLine{224         \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t_a5c2d71f01b828cd3b65b6a0244329a89}{operator-\/-\/}}();}
+\DoxyCodeLine{225         \textcolor{keywordflow}{return} \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t_a4707eef6f2aab5a001be192710be2e27}{iterator\_t}}(temp);}
+\DoxyCodeLine{226     \}}
+\DoxyCodeLine{234     \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t_a8e1e4e21feb9e275572eafd1b695f7c7}{operator==}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t}{iterator\_t}} \&that)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{235         \textcolor{keywordflow}{return} m\_ptr == that.m\_ptr;}
+\DoxyCodeLine{236     \}}
+\DoxyCodeLine{237 }
+\DoxyCodeLine{243     \textcolor{keyword}{operator} T \&() \{ \textcolor{keywordflow}{return} *m\_ptr; \}}
+\DoxyCodeLine{244     \textcolor{keyword}{operator} \textcolor{keyword}{const} T \&() \textcolor{keyword}{const} \{ \textcolor{keywordflow}{return} *m\_ptr; \}}
+\DoxyCodeLine{245     }
+\DoxyCodeLine{251     \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t_a8c6be1f1770c0482e6dc5dcfd8086596}{reference}} \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t_a675eec4e11ab03fbb3dd3e52459aebf9}{operator*}}() \{ \textcolor{keywordflow}{return} m\_ptr-\/>val; \}}
+\DoxyCodeLine{252     T *operator-\/>() \{ \textcolor{keywordflow}{return} m\_ptr; \}}
+\DoxyCodeLine{253 \};}
+\DoxyCodeLine{254 }
+\DoxyCodeLine{255 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{256 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1tree__t}{tree\_t}} \{}
+\DoxyCodeLine{257 }
+\DoxyCodeLine{258     \textcolor{keyword}{using} value\_type = T;}
+\DoxyCodeLine{259     \textcolor{comment}{// Type Alias for Node}}
+\DoxyCodeLine{260     \textcolor{keyword}{using} \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{node\_type}} = \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{node\_t<value\_type>}};}
+\DoxyCodeLine{261     \textcolor{comment}{// Type Alias for Iterator}}
+\DoxyCodeLine{262     \textcolor{keyword}{using} \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t}{iterator}} = \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t}{iterator\_t<node\_type>}};}
+\DoxyCodeLine{263 }
+\DoxyCodeLine{264    \textcolor{keyword}{private}:}
+\DoxyCodeLine{266     std::size\_t \_size = 0;   }
+\DoxyCodeLine{268     \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{node\_type}} *root\{\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t_ae11db916d5d6fb1e759d0672ed742c1f}{node\_type::nil}}\}; }
+\DoxyCodeLine{269     }
+\DoxyCodeLine{270     \textcolor{keywordtype}{void} \_transplant(\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{node\_type}} *, \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{node\_type}} *);}
+\DoxyCodeLine{271     \textcolor{keywordtype}{void} \_delete(\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{node\_type}} *);}
+\DoxyCodeLine{272     \textcolor{keywordtype}{void} \_delete\_fixup(\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{node\_type}} *);}
+\DoxyCodeLine{273 }
+\DoxyCodeLine{274     \textcolor{keywordtype}{void} \_left\_rotate(\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{node\_type}} *);}
+\DoxyCodeLine{275     \textcolor{keywordtype}{void} \_right\_rotate(\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{node\_type}} *);}
+\DoxyCodeLine{276     \textcolor{keywordtype}{void} \_insert\_fixup(\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{node\_type}} *);}
+\DoxyCodeLine{277 }
+\DoxyCodeLine{278     \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{node\_type}} *\_insert(\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{node\_type}} *node);}
+\DoxyCodeLine{279     \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{node\_type}} *\_find(\textcolor{keyword}{const} value\_type \&val);}
+\DoxyCodeLine{280     \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{node\_type}} *\_upper\_bound(\textcolor{keyword}{const} value\_type \&val);}
+\DoxyCodeLine{281     \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{node\_type}} *\_lower\_bound(\textcolor{keyword}{const} value\_type \&val);}
+\DoxyCodeLine{282 }
+\DoxyCodeLine{283    \textcolor{keyword}{public}:}
+\DoxyCodeLine{288     \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1tree__t_a6a2ec76ca94f8f599013805aa7278074}{tree\_t}}() \{\}}
+\DoxyCodeLine{289 }
+\DoxyCodeLine{290     iterator max() \{ \textcolor{keywordflow}{return} empty() ? end() : iterator(root-\/>max()); \}}
+\DoxyCodeLine{291     iterator min() \{ \textcolor{keywordflow}{return} empty() ? end() : iterator(root-\/>min()); \}}
+\DoxyCodeLine{292     iterator begin() \{ \textcolor{keywordflow}{return} min(); \}}
+\DoxyCodeLine{293     iterator end() \{ \textcolor{keywordflow}{return} iterator(\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t_ae11db916d5d6fb1e759d0672ed742c1f}{node\_type::nil}}); \}}
+\DoxyCodeLine{294     \textcolor{keywordtype}{bool} empty() \{ \textcolor{keywordflow}{return} \_size == 0; \}}
+\DoxyCodeLine{295 }
+\DoxyCodeLine{296     iterator insert(value\_type val) \{}
+\DoxyCodeLine{297         \textcolor{keywordflow}{return} iterator(\_insert(\textcolor{keyword}{new} node\_type(val)));}
+\DoxyCodeLine{298     \}}
+\DoxyCodeLine{299 }
+\DoxyCodeLine{300     \textcolor{keywordtype}{void} \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1tree__t_a479d00e8b5beeef19d424d00de1880e3}{erase}}(iterator pos);}
+\DoxyCodeLine{301     \textcolor{keywordtype}{void} \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1tree__t_a479d00e8b5beeef19d424d00de1880e3}{erase}}(\textcolor{keyword}{const} value\_type \&val) \{ \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1tree__t_a479d00e8b5beeef19d424d00de1880e3}{erase}}(find(val)); \}}
+\DoxyCodeLine{302 }
+\DoxyCodeLine{303     iterator find(\textcolor{keyword}{const} value\_type \&val) \{ \textcolor{keywordflow}{return} iterator(\_find(val)); \}}
+\DoxyCodeLine{304     iterator upper\_bound(\textcolor{keyword}{const} value\_type \&val) \{ \textcolor{keywordflow}{return} iterator(\_upper\_bound(val)); \};}
+\DoxyCodeLine{305     iterator lower\_bound(\textcolor{keyword}{const} value\_type \&val) \{ \textcolor{keywordflow}{return} iterator(\_lower\_bound(val)); \};}
+\DoxyCodeLine{306 }
+\DoxyCodeLine{307     std::size\_t size() \{ \textcolor{keywordflow}{return} \_size; \}}
+\DoxyCodeLine{308 \};}
+\DoxyCodeLine{309 }
+\DoxyCodeLine{310 \}  \textcolor{comment}{// namespace rb\_tree}}
+\DoxyCodeLine{311 \}  \textcolor{comment}{// namespace DS}}
+\DoxyCodeLine{312 }
+\DoxyCodeLine{313 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{rb__tree_8tpp}{rb\_tree.tpp}}>}}
+
+\end{DoxyCode}

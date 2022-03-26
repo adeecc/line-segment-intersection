@@ -1,0 +1,163 @@
+\hypertarget{struct_event}{}\doxysection{Event Struct Reference}
+\label{struct_event}\index{Event@{Event}}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{struct_event_a2e208393d2fb7c9574088209ff7212e5}{Type}} \+: uint8\+\_\+t \{ \mbox{\hyperlink{struct_event_a2e208393d2fb7c9574088209ff7212e5a9e43f5291e6fcb2ad99c8e3f91acd179}{UPPER}}
+, \mbox{\hyperlink{struct_event_a2e208393d2fb7c9574088209ff7212e5aa7c48ba367e019d004bfb0239b85f2b3}{LOWER}}
+, \mbox{\hyperlink{struct_event_a2e208393d2fb7c9574088209ff7212e5a6c8c93b0cd657e2fd400f2c61acc6f42}{CONTAIN}}
+, \mbox{\hyperlink{struct_event_a2e208393d2fb7c9574088209ff7212e5a03570470bad94692ce93e32700d2e1cb}{OTHER}}
+ \}
+\begin{DoxyCompactList}\small\item\em An enum which denotes the Type of the \mbox{\hyperlink{struct_event}{Event}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_event_a5a40dd4708297f7031e29b39e039ae10}\label{struct_event_a5a40dd4708297f7031e29b39e039ae10}} 
+{\bfseries Event} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{struct_event}{Event}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_event_a12c5070a0649842fa23368465df1b5c1}{Event}} (const \mbox{\hyperlink{comparable__segment_8hpp_a3e0c1f9aae83dc00dcfd714d6595bfc7}{point\+\_\+t}} \&\mbox{\hyperlink{struct_event_a12c0f718c0ec555d682b9687ab6a6e82}{pt}}, const \mbox{\hyperlink{struct_comparable_segment}{Comparable\+Segment}} \&seg, \mbox{\hyperlink{struct_event_a2e208393d2fb7c9574088209ff7212e5}{Type}} type)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{struct_event}{Event}} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_event_a12c0f718c0ec555d682b9687ab6a6e82}\label{struct_event_a12c0f718c0ec555d682b9687ab6a6e82}} 
+\mbox{\hyperlink{comparable__segment_8hpp_a3e0c1f9aae83dc00dcfd714d6595bfc7}{point\+\_\+t}} {\bfseries pt}
+\begin{DoxyCompactList}\small\item\em Initializing variable of Type point\+\_\+t. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_event_af161bc0e81b88e078cd8f11e2a80bd79}\label{struct_event_af161bc0e81b88e078cd8f11e2a80bd79}} 
+std\+::vector$<$ \mbox{\hyperlink{struct_comparable_segment}{Comparable\+Segment}} $>$ {\bfseries lower}
+\begin{DoxyCompactList}\small\item\em Initializing vector of segments with the current point as ending point. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_event_a44f8d47f91f0b108cb83e53e23276341}\label{struct_event_a44f8d47f91f0b108cb83e53e23276341}} 
+std\+::vector$<$ \mbox{\hyperlink{struct_comparable_segment}{Comparable\+Segment}} $>$ {\bfseries upper}
+\begin{DoxyCompactList}\small\item\em Initializing vector of segments with the current point as starting point. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_event_accc0c01bd4489be7b82d4a7ed82f3c99}\label{struct_event_accc0c01bd4489be7b82d4a7ed82f3c99}} 
+std\+::vector$<$ \mbox{\hyperlink{struct_comparable_segment}{Comparable\+Segment}} $>$ {\bfseries contain}
+\begin{DoxyCompactList}\small\item\em Initializing vector of segments with the current point as interior point. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_event}{Event}} \mbox{\hyperlink{struct_event_a4544ff357a4fb2d65dff4de1af736f23}{operator$\vert$}} (const \mbox{\hyperlink{struct_event}{Event}} \&lhs, const \mbox{\hyperlink{struct_event}{Event}} \&rhs)
+\begin{DoxyCompactList}\small\item\em Overloading the operator $\vert$ (Union Operation) \end{DoxyCompactList}\item 
+auto \mbox{\hyperlink{struct_event_a2d64fbd8e515a8dabb1bcc347e57c8ee}{operator$<$=$>$}} (const \mbox{\hyperlink{struct_event}{Event}} \&lhs, const \mbox{\hyperlink{struct_event}{Event}} \&rhs)
+\begin{DoxyCompactList}\small\item\em Overloading the operator \texorpdfstring{$<$}{<}=\texorpdfstring{$>$}{>} \end{DoxyCompactList}\item 
+auto \mbox{\hyperlink{struct_event_aaa6676ddc45af1e16b32fa49bf862be4}{operator==}} (const \mbox{\hyperlink{struct_event}{Event}} \&lhs, const \mbox{\hyperlink{struct_event}{Event}} \&rhs)
+\begin{DoxyCompactList}\small\item\em Overloading the operator ==. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{struct_event_a2e208393d2fb7c9574088209ff7212e5}\label{struct_event_a2e208393d2fb7c9574088209ff7212e5}} 
+\index{Event@{Event}!Type@{Type}}
+\index{Type@{Type}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{Type}{Type}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{struct_event_a2e208393d2fb7c9574088209ff7212e5}{Event\+::\+Type}} \+: uint8\+\_\+t\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+An enum which denotes the Type of the \mbox{\hyperlink{struct_event}{Event}}. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UPPER@{UPPER}!Event@{Event}}\index{Event@{Event}!UPPER@{UPPER}}}\mbox{\Hypertarget{struct_event_a2e208393d2fb7c9574088209ff7212e5a9e43f5291e6fcb2ad99c8e3f91acd179}\label{struct_event_a2e208393d2fb7c9574088209ff7212e5a9e43f5291e6fcb2ad99c8e3f91acd179}} 
+UPPER&Denotes the starting point of a segment. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LOWER@{LOWER}!Event@{Event}}\index{Event@{Event}!LOWER@{LOWER}}}\mbox{\Hypertarget{struct_event_a2e208393d2fb7c9574088209ff7212e5aa7c48ba367e019d004bfb0239b85f2b3}\label{struct_event_a2e208393d2fb7c9574088209ff7212e5aa7c48ba367e019d004bfb0239b85f2b3}} 
+LOWER&Denotes the ending point of a segment. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CONTAIN@{CONTAIN}!Event@{Event}}\index{Event@{Event}!CONTAIN@{CONTAIN}}}\mbox{\Hypertarget{struct_event_a2e208393d2fb7c9574088209ff7212e5a6c8c93b0cd657e2fd400f2c61acc6f42}\label{struct_event_a2e208393d2fb7c9574088209ff7212e5a6c8c93b0cd657e2fd400f2c61acc6f42}} 
+CONTAIN&Denotes the interior point of a segment. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OTHER@{OTHER}!Event@{Event}}\index{Event@{Event}!OTHER@{OTHER}}}\mbox{\Hypertarget{struct_event_a2e208393d2fb7c9574088209ff7212e5a03570470bad94692ce93e32700d2e1cb}\label{struct_event_a2e208393d2fb7c9574088209ff7212e5a03570470bad94692ce93e32700d2e1cb}} 
+OTHER&Denotes if the point does not lie on the segment. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{struct_event_a12c5070a0649842fa23368465df1b5c1}\label{struct_event_a12c5070a0649842fa23368465df1b5c1}} 
+\index{Event@{Event}!Event@{Event}}
+\index{Event@{Event}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{Event()}{Event()}}
+{\footnotesize\ttfamily Event\+::\+Event (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{comparable__segment_8hpp_a3e0c1f9aae83dc00dcfd714d6595bfc7}{point\+\_\+t}} \&}]{pt,  }\item[{const \mbox{\hyperlink{struct_comparable_segment}{Comparable\+Segment}} \&}]{seg,  }\item[{\mbox{\hyperlink{struct_event_a2e208393d2fb7c9574088209ff7212e5}{Type}}}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a new \mbox{\hyperlink{struct_event}{Event}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pt} & \\
+\hline
+{\em seg} & \\
+\hline
+{\em type} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{struct_event_a2d64fbd8e515a8dabb1bcc347e57c8ee}\label{struct_event_a2d64fbd8e515a8dabb1bcc347e57c8ee}} 
+\index{Event@{Event}!operator$<$=$>$@{operator$<$=$>$}}
+\index{operator$<$=$>$@{operator$<$=$>$}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{operator$<$=$>$}{operator<=>}}
+{\footnotesize\ttfamily auto operator$<$=$>$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_event}{Event}} \&}]{lhs,  }\item[{const \mbox{\hyperlink{struct_event}{Event}} \&}]{rhs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Overloading the operator \texorpdfstring{$<$}{<}=\texorpdfstring{$>$}{>} 
+
+\begin{DoxyReturn}{Returns}
+-\/1 if Left Point \texorpdfstring{$<$}{<} Right Point 
+
+0 if Left Point = Right Point 
+
+1 if Left Point \texorpdfstring{$>$}{>} RIGHT Point 
+\end{DoxyReturn}
+\mbox{\Hypertarget{struct_event_aaa6676ddc45af1e16b32fa49bf862be4}\label{struct_event_aaa6676ddc45af1e16b32fa49bf862be4}} 
+\index{Event@{Event}!operator==@{operator==}}
+\index{operator==@{operator==}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{operator==}{operator==}}
+{\footnotesize\ttfamily auto operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_event}{Event}} \&}]{lhs,  }\item[{const \mbox{\hyperlink{struct_event}{Event}} \&}]{rhs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Overloading the operator ==. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lhs} & \\
+\hline
+{\em rhs} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if Left Point not equals Right Point 
+
+1 if Left Point = Right Point 
+\end{DoxyReturn}
+\mbox{\Hypertarget{struct_event_a4544ff357a4fb2d65dff4de1af736f23}\label{struct_event_a4544ff357a4fb2d65dff4de1af736f23}} 
+\index{Event@{Event}!operator\texttt{"|}@{operator\texttt{"|}}}
+\index{operator\texttt{"|}@{operator\texttt{"|}}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{operator\texttt{"|}}{operator|}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_event}{Event}} operator$\vert$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_event}{Event}} \&}]{lhs,  }\item[{const \mbox{\hyperlink{struct_event}{Event}} \&}]{rhs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Overloading the operator $\vert$ (Union Operation) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lhs} & \\
+\hline
+{\em rhs} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{struct_event}{Event}} 
+\end{DoxyReturn}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/vedan/\+Desktop/\+DAA Assignment/daa-\/assignment-\/sweep/lib/include/\mbox{\hyperlink{event_8hpp}{event.\+hpp}}\end{DoxyCompactItemize}

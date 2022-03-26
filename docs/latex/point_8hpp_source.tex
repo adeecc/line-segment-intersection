@@ -1,0 +1,39 @@
+\hypertarget{point_8hpp_source}{}\doxysection{point.\+hpp}
+\label{point_8hpp_source}\index{C:/Users/vedan/Desktop/DAA Assignment/daa-\/assignment-\/sweep/lib/include/point.hpp@{C:/Users/vedan/Desktop/DAA Assignment/daa-\/assignment-\/sweep/lib/include/point.hpp}}
+\mbox{\hyperlink{point_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <limits>}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <ostream>}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{keyword}{namespace }Geometry \{}
+\DoxyCodeLine{15 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_geometry_1_1_point}{Point}} \{}
+\DoxyCodeLine{17     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_geometry_1_1_point_afda73ad21424fb7a5202e3a7f1865b4a}{x}};}
+\DoxyCodeLine{19     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_geometry_1_1_point_a11218e1256b644dc226d696eea074e8d}{y}};}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{26     \textcolor{keyword}{constexpr} \mbox{\hyperlink{struct_geometry_1_1_point_a18b400e85776517fc7e87be4bb0c5365}{Point}}() : \mbox{\hyperlink{struct_geometry_1_1_point_afda73ad21424fb7a5202e3a7f1865b4a}{x}}(std::numeric\_limits<int>::min()), \mbox{\hyperlink{struct_geometry_1_1_point_a11218e1256b644dc226d696eea074e8d}{y}}(std::numeric\_limits<int>::min()) \{\}}
+\DoxyCodeLine{33     \mbox{\hyperlink{struct_geometry_1_1_point_a7c156649a8850a7ac86dedd84777e750}{Point}}(\textcolor{keywordtype}{double} \mbox{\hyperlink{struct_geometry_1_1_point_afda73ad21424fb7a5202e3a7f1865b4a}{x}}, \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_geometry_1_1_point_a11218e1256b644dc226d696eea074e8d}{y}}) : \mbox{\hyperlink{struct_geometry_1_1_point_afda73ad21424fb7a5202e3a7f1865b4a}{x}}(\mbox{\hyperlink{struct_geometry_1_1_point_afda73ad21424fb7a5202e3a7f1865b4a}{x}}), \mbox{\hyperlink{struct_geometry_1_1_point_a11218e1256b644dc226d696eea074e8d}{y}}(\mbox{\hyperlink{struct_geometry_1_1_point_a11218e1256b644dc226d696eea074e8d}{y}}) \{\}}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{40     \textcolor{keyword}{friend} \textcolor{keyword}{auto} \mbox{\hyperlink{struct_geometry_1_1_point_adbde2e732e09e348be702c8da306724e}{operator<=>}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_geometry_1_1_point}{Point}}\& lhs, \textcolor{keyword}{const} \mbox{\hyperlink{struct_geometry_1_1_point}{Point}}\& rhs) \{}
+\DoxyCodeLine{41         \textcolor{keywordflow}{if} ((lhs.\mbox{\hyperlink{struct_geometry_1_1_point_a11218e1256b644dc226d696eea074e8d}{y}} > rhs.\mbox{\hyperlink{struct_geometry_1_1_point_a11218e1256b644dc226d696eea074e8d}{y}}) or (lhs.\mbox{\hyperlink{struct_geometry_1_1_point_a11218e1256b644dc226d696eea074e8d}{y}} == rhs.\mbox{\hyperlink{struct_geometry_1_1_point_a11218e1256b644dc226d696eea074e8d}{y}} and lhs.\mbox{\hyperlink{struct_geometry_1_1_point_afda73ad21424fb7a5202e3a7f1865b4a}{x}} < rhs.\mbox{\hyperlink{struct_geometry_1_1_point_afda73ad21424fb7a5202e3a7f1865b4a}{x}}))}
+\DoxyCodeLine{42             \textcolor{keywordflow}{return} -\/1;}
+\DoxyCodeLine{43         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (lhs.\mbox{\hyperlink{struct_geometry_1_1_point_afda73ad21424fb7a5202e3a7f1865b4a}{x}} == rhs.\mbox{\hyperlink{struct_geometry_1_1_point_afda73ad21424fb7a5202e3a7f1865b4a}{x}} and lhs.\mbox{\hyperlink{struct_geometry_1_1_point_a11218e1256b644dc226d696eea074e8d}{y}} == rhs.\mbox{\hyperlink{struct_geometry_1_1_point_a11218e1256b644dc226d696eea074e8d}{y}})}
+\DoxyCodeLine{44             \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{45         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{46             \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{47     \}}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{57     \textcolor{keyword}{friend} \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_geometry_1_1_point_ad32019380665fdd1d07e75f3482544a3}{operator==}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_geometry_1_1_point}{Point}}\& lhs, \textcolor{keyword}{const} \mbox{\hyperlink{struct_geometry_1_1_point}{Point}}\& rhs) \{}
+\DoxyCodeLine{58         \textcolor{keywordflow}{return} lhs.\mbox{\hyperlink{struct_geometry_1_1_point_afda73ad21424fb7a5202e3a7f1865b4a}{x}} == rhs.\mbox{\hyperlink{struct_geometry_1_1_point_afda73ad21424fb7a5202e3a7f1865b4a}{x}} and lhs.\mbox{\hyperlink{struct_geometry_1_1_point_a11218e1256b644dc226d696eea074e8d}{y}} == rhs.\mbox{\hyperlink{struct_geometry_1_1_point_a11218e1256b644dc226d696eea074e8d}{y}};}
+\DoxyCodeLine{59     \}}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{69     \textcolor{keyword}{friend} std::ostream\& \mbox{\hyperlink{struct_geometry_1_1_point_a21d098459b16a7c8dd1a0cd8ed8dbaf6}{operator<<}}(std::ostream\& stream, \textcolor{keyword}{const} \mbox{\hyperlink{struct_geometry_1_1_point}{Point}}\& pt) \{}
+\DoxyCodeLine{70         stream << \textcolor{stringliteral}{"{}("{}} << pt.\mbox{\hyperlink{struct_geometry_1_1_point_afda73ad21424fb7a5202e3a7f1865b4a}{x}} << \textcolor{stringliteral}{"{}, "{}} << pt.\mbox{\hyperlink{struct_geometry_1_1_point_a11218e1256b644dc226d696eea074e8d}{y}} << \textcolor{stringliteral}{"{})"{}};}
+\DoxyCodeLine{71         \textcolor{keywordflow}{return} stream;}
+\DoxyCodeLine{72     \}}
+\DoxyCodeLine{73 \};}
+\DoxyCodeLine{74 \}  \textcolor{comment}{// namespace Geometry}}
+
+\end{DoxyCode}

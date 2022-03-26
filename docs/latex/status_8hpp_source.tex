@@ -1,0 +1,45 @@
+\hypertarget{status_8hpp_source}{}\doxysection{status.\+hpp}
+\label{status_8hpp_source}\index{C:/Users/vedan/Desktop/DAA Assignment/daa-\/assignment-\/sweep/lib/include/status.hpp@{C:/Users/vedan/Desktop/DAA Assignment/daa-\/assignment-\/sweep/lib/include/status.hpp}}
+\mbox{\hyperlink{status_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{comparable__segment_8hpp}{comparable\_segment.hpp}}>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{rb__tree_8hpp}{rb\_tree.hpp}}>}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{10 \textcolor{keyword}{using} \mbox{\hyperlink{struct_geometry_1_1_point}{point\_t}} = \mbox{\hyperlink{struct_geometry_1_1_point}{Geometry::Point}};}
+\DoxyCodeLine{12 \textcolor{keyword}{using} \mbox{\hyperlink{struct_geometry_1_1_line_segment}{segment\_t}} = \mbox{\hyperlink{struct_geometry_1_1_line_segment}{Geometry::LineSegment}};}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{18 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_status}{Status}} \{}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{21     \textcolor{keyword}{using} \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{node\_type}} = \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1node__t}{DS::rb\_tree::node\_t<ComparableSegment>}};}
+\DoxyCodeLine{23     \textcolor{keyword}{using} \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1tree__t}{container\_type}} = \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1tree__t}{DS::rb\_tree::tree\_t<ComparableSegment>}};}
+\DoxyCodeLine{25     \textcolor{keyword}{using} \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t}{iterator}} = \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t}{DS::rb\_tree::iterator\_t<node\_type>}};}
+\DoxyCodeLine{26     }
+\DoxyCodeLine{32     \textcolor{keywordtype}{void} \mbox{\hyperlink{struct_status_a4f745cfec8b13bd4c68aafdccc42ae20}{insert}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_comparable_segment}{ComparableSegment}}\& seg) \{}
+\DoxyCodeLine{33         \_container.insert(seg);}
+\DoxyCodeLine{34     \}}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{42     \textcolor{keywordtype}{void} \mbox{\hyperlink{struct_status_a316f1173b3e578c7463161298051a628}{erase}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_comparable_segment}{ComparableSegment}}\& seg) \{}
+\DoxyCodeLine{43         \_container.\mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1tree__t_a479d00e8b5beeef19d424d00de1880e3}{erase}}(seg);}
+\DoxyCodeLine{44     \}}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{52     \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t}{iterator}} \mbox{\hyperlink{struct_status_af860180af01da7d79a862be3a973be91}{lower\_bound}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_comparable_segment}{ComparableSegment}}\& seg) \{}
+\DoxyCodeLine{53         \textcolor{keywordflow}{return} \_container.lower\_bound(seg);}
+\DoxyCodeLine{54     \}}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{62     \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t}{iterator}} \mbox{\hyperlink{struct_status_a6024c38da9a43053afefe8f358dcc603}{upper\_bound}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_comparable_segment}{ComparableSegment}}\& seg) \{}
+\DoxyCodeLine{63         \textcolor{keywordflow}{return} \_container.upper\_bound(seg);}
+\DoxyCodeLine{64     \}}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{71     \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t}{iterator}} \mbox{\hyperlink{struct_status_a48a95ef45f03780c75e32eef9b243fae}{begin}}() \{ \textcolor{keywordflow}{return} \_container.begin(); \}}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{78     \mbox{\hyperlink{struct_d_s_1_1rb__tree_1_1iterator__t}{iterator}} \mbox{\hyperlink{struct_status_ad9ca1bb03b175f8e76639514b633a62c}{end}}() \{ \textcolor{keywordflow}{return} \_container.end(); \}}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{80    }
+\DoxyCodeLine{81    \textcolor{keyword}{private}:}
+\DoxyCodeLine{82    \textcolor{comment}{// Initializing a variable of Type container\_type}}
+\DoxyCodeLine{83     \mbox{\hyperlink{struct_status_a9ab85223b4bfa03961e60f70d86ceec4}{container\_type}} \_container;}
+\DoxyCodeLine{84 \};}
+
+\end{DoxyCode}

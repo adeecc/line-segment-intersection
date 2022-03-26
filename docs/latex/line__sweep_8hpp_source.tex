@@ -1,0 +1,56 @@
+\hypertarget{line__sweep_8hpp_source}{}\doxysection{line\+\_\+sweep.\+hpp}
+\label{line__sweep_8hpp_source}\index{C:/Users/vedan/Desktop/DAA Assignment/daa-\/assignment-\/sweep/lib/include/line\_sweep.hpp@{C:/Users/vedan/Desktop/DAA Assignment/daa-\/assignment-\/sweep/lib/include/line\_sweep.hpp}}
+\mbox{\hyperlink{line__sweep_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{event__queue_8hpp}{event\_queue.hpp}}>}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{status_8hpp}{status.hpp}}>}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{keyword}{const} \textcolor{keywordtype}{double} EPS = 1e-\/9;  \textcolor{comment}{// TODO: Try other numbers}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{17 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_intersection}{Intersection}} \{}
+\DoxyCodeLine{18     \mbox{\hyperlink{struct_geometry_1_1_point}{point\_t}} pt;}
+\DoxyCodeLine{19     std::vector<ComparableSegment> segs;}
+\DoxyCodeLine{24     \mbox{\hyperlink{struct_intersection_a67497e3efe2793b23909052eeb82c4f3}{Intersection}}() \{\}}
+\DoxyCodeLine{30     \mbox{\hyperlink{struct_intersection_a7520159dc010dd45b134f2ab53d4dd8f}{Intersection}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_geometry_1_1_point}{point\_t}}\& pt) : pt(pt) \{\}}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{39     \textcolor{keyword}{friend} std::ostream\& \mbox{\hyperlink{struct_intersection_a3be8f14e0541fd86ad75185554a63f19}{operator<<}}(std::ostream\& stream, \textcolor{keyword}{const} \mbox{\hyperlink{struct_intersection}{Intersection}}\& intersection) \{}
+\DoxyCodeLine{40         stream << \textcolor{stringliteral}{"{}<"{}} << intersection.pt << \textcolor{stringliteral}{"{}>: \{"{}};}
+\DoxyCodeLine{41         \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto}\& segs : intersection.segs) stream << segs << \textcolor{stringliteral}{"{}\(\backslash\)t"{}};}
+\DoxyCodeLine{42         stream << \textcolor{stringliteral}{"{}\}\(\backslash\)n"{}};}
+\DoxyCodeLine{43         \textcolor{keywordflow}{return} stream;}
+\DoxyCodeLine{44     \}}
+\DoxyCodeLine{45 \};}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 \textcolor{keyword}{class }\mbox{\hyperlink{class_line_sweep}{LineSweep}} \{}
+\DoxyCodeLine{48     \textcolor{keywordtype}{double} sweep\_line\_y;}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50     \mbox{\hyperlink{struct_event_queue}{EventQueue}} q;}
+\DoxyCodeLine{51     \mbox{\hyperlink{struct_status}{Status}} status;}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53     std::vector<ComparableSegment> segments;}
+\DoxyCodeLine{54     std::vector<Intersection> intersections;}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56     \textcolor{keywordtype}{void} \_findTrivialIntersection(\textcolor{keyword}{const} \mbox{\hyperlink{struct_event}{Event}}\& e);}
+\DoxyCodeLine{57     \textcolor{keywordtype}{void} \_eraseConsideredPoints(\textcolor{keyword}{const} \mbox{\hyperlink{struct_event}{Event}}\& e);}
+\DoxyCodeLine{58     \textcolor{keywordtype}{void} \_insertNewPoints(\textcolor{keyword}{const} \mbox{\hyperlink{struct_event}{Event}}\& e);}
+\DoxyCodeLine{59     \textcolor{keywordtype}{double} \_findLeftMostIntersection(\textcolor{keyword}{const} std::vector<ComparableSegment>\& segs);}
+\DoxyCodeLine{60     \textcolor{keywordtype}{double} \_findRightMostIntersection(\textcolor{keyword}{const} std::vector<ComparableSegment>\& segs);}
+\DoxyCodeLine{61     \textcolor{keywordtype}{void} \_handleLowerOnlyPoint(\textcolor{keyword}{const} \mbox{\hyperlink{struct_event}{Event}} \&e);}
+\DoxyCodeLine{62     \textcolor{keywordtype}{void} \_handleIsUpperContainPoint(\textcolor{keyword}{const} \mbox{\hyperlink{struct_event}{Event}} \&e);}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65    \textcolor{keyword}{public}:}
+\DoxyCodeLine{66     \mbox{\hyperlink{class_line_sweep}{LineSweep}}(\textcolor{keyword}{const} std::vector<segment\_t>\& segments);}
+\DoxyCodeLine{67     \textcolor{keywordtype}{void} find\_intersections();}
+\DoxyCodeLine{68     \textcolor{keywordtype}{void} handleEventPoint(\textcolor{keyword}{const} \mbox{\hyperlink{struct_event}{Event}}\& e);}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70     \textcolor{keywordtype}{void} findNewEvent(\textcolor{keyword}{const} \mbox{\hyperlink{struct_comparable_segment}{ComparableSegment}}\& left, \textcolor{keyword}{const} \mbox{\hyperlink{struct_comparable_segment}{ComparableSegment}}\& right, \textcolor{keyword}{const} \mbox{\hyperlink{struct_geometry_1_1_point}{point\_t}}\& pt);}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72     std::vector<Intersection> getIntersections() \{ \textcolor{keywordflow}{return} intersections; \}}
+\DoxyCodeLine{73 \};}
+
+\end{DoxyCode}

@@ -1,0 +1,47 @@
+\hypertarget{line__segment_8hpp_source}{}\doxysection{line\+\_\+segment.\+hpp}
+\label{line__segment_8hpp_source}\index{C:/Users/vedan/Desktop/DAA Assignment/daa-\/assignment-\/sweep/lib/include/line\_segment.hpp@{C:/Users/vedan/Desktop/DAA Assignment/daa-\/assignment-\/sweep/lib/include/line\_segment.hpp}}
+\mbox{\hyperlink{line__segment_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <assert.h>}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <ostream>}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{point_8hpp}{point.hpp}}>}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <utility>}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{keyword}{namespace }Geometry \{}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_geometry_1_1_line_segment}{LineSegment}} \{}
+\DoxyCodeLine{17     \mbox{\hyperlink{struct_geometry_1_1_point}{Point}} \mbox{\hyperlink{struct_geometry_1_1_line_segment_aaf52182f2996b1c1e1d8221eab084214}{u}};}
+\DoxyCodeLine{19     \mbox{\hyperlink{struct_geometry_1_1_point}{Point}} \mbox{\hyperlink{struct_geometry_1_1_line_segment_ad75a5c4d32a57fa89d39beb829f9c84a}{v}};}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{25     \mbox{\hyperlink{struct_geometry_1_1_line_segment_a772e9eed71b3da5f3cf40e581f4d9715}{LineSegment}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27     \mbox{\hyperlink{struct_geometry_1_1_line_segment_a772e9eed71b3da5f3cf40e581f4d9715}{LineSegment}}(\mbox{\hyperlink{struct_geometry_1_1_point}{Point}} \_u, \mbox{\hyperlink{struct_geometry_1_1_point}{Point}} \_v) : \mbox{\hyperlink{struct_geometry_1_1_line_segment_aaf52182f2996b1c1e1d8221eab084214}{u}}(\_u), \mbox{\hyperlink{struct_geometry_1_1_line_segment_ad75a5c4d32a57fa89d39beb829f9c84a}{v}}(\_v) \{\}}
+\DoxyCodeLine{28     \mbox{\hyperlink{struct_geometry_1_1_line_segment_a772e9eed71b3da5f3cf40e581f4d9715}{LineSegment}}(\textcolor{keywordtype}{double} ux, \textcolor{keywordtype}{double} uy, \textcolor{keywordtype}{double} vx, \textcolor{keywordtype}{double} vy) : \mbox{\hyperlink{struct_geometry_1_1_line_segment_aaf52182f2996b1c1e1d8221eab084214}{u}}(ux, uy), \mbox{\hyperlink{struct_geometry_1_1_line_segment_ad75a5c4d32a57fa89d39beb829f9c84a}{v}}(vx, vy) \{\}}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{35     \mbox{\hyperlink{struct_geometry_1_1_point}{Point}}\& \mbox{\hyperlink{struct_geometry_1_1_line_segment_ac8f9a379311de003bd7e26444c29b8a3}{top}}() \{ \textcolor{keywordflow}{return} (\mbox{\hyperlink{struct_geometry_1_1_line_segment_aaf52182f2996b1c1e1d8221eab084214}{u}} < \mbox{\hyperlink{struct_geometry_1_1_line_segment_ad75a5c4d32a57fa89d39beb829f9c84a}{v}}) ? \mbox{\hyperlink{struct_geometry_1_1_line_segment_aaf52182f2996b1c1e1d8221eab084214}{u}} : \mbox{\hyperlink{struct_geometry_1_1_line_segment_ad75a5c4d32a57fa89d39beb829f9c84a}{v}}; \}}
+\DoxyCodeLine{36     \textcolor{keyword}{const} \mbox{\hyperlink{struct_geometry_1_1_point}{Point}}\& \mbox{\hyperlink{struct_geometry_1_1_line_segment_ac8f9a379311de003bd7e26444c29b8a3}{top}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} (\mbox{\hyperlink{struct_geometry_1_1_line_segment_aaf52182f2996b1c1e1d8221eab084214}{u}} < \mbox{\hyperlink{struct_geometry_1_1_line_segment_ad75a5c4d32a57fa89d39beb829f9c84a}{v}}) ? \mbox{\hyperlink{struct_geometry_1_1_line_segment_aaf52182f2996b1c1e1d8221eab084214}{u}} : \mbox{\hyperlink{struct_geometry_1_1_line_segment_ad75a5c4d32a57fa89d39beb829f9c84a}{v}}; \}}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{43     \mbox{\hyperlink{struct_geometry_1_1_point}{Point}}\& \mbox{\hyperlink{struct_geometry_1_1_line_segment_aa1a29004cd3baec50e58f4d3008c3183}{bottom}}() \{ \textcolor{keywordflow}{return} (\mbox{\hyperlink{struct_geometry_1_1_line_segment_aaf52182f2996b1c1e1d8221eab084214}{u}} < \mbox{\hyperlink{struct_geometry_1_1_line_segment_ad75a5c4d32a57fa89d39beb829f9c84a}{v}}) ? \mbox{\hyperlink{struct_geometry_1_1_line_segment_ad75a5c4d32a57fa89d39beb829f9c84a}{v}} : \mbox{\hyperlink{struct_geometry_1_1_line_segment_aaf52182f2996b1c1e1d8221eab084214}{u}}; \}}
+\DoxyCodeLine{44     \textcolor{keyword}{const} \mbox{\hyperlink{struct_geometry_1_1_point}{Point}}\& \mbox{\hyperlink{struct_geometry_1_1_line_segment_aa1a29004cd3baec50e58f4d3008c3183}{bottom}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} (\mbox{\hyperlink{struct_geometry_1_1_line_segment_aaf52182f2996b1c1e1d8221eab084214}{u}} < \mbox{\hyperlink{struct_geometry_1_1_line_segment_ad75a5c4d32a57fa89d39beb829f9c84a}{v}}) ? \mbox{\hyperlink{struct_geometry_1_1_line_segment_ad75a5c4d32a57fa89d39beb829f9c84a}{v}} : \mbox{\hyperlink{struct_geometry_1_1_line_segment_aaf52182f2996b1c1e1d8221eab084214}{u}}; \}}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{53     \mbox{\hyperlink{struct_geometry_1_1_point}{Point}}\& \mbox{\hyperlink{struct_geometry_1_1_line_segment_a145c012dc72c8c9dc0df8d36ff36be16}{operator[]}}(std::size\_t idx) \{ \textcolor{keywordflow}{return} idx ? \mbox{\hyperlink{struct_geometry_1_1_line_segment_aa1a29004cd3baec50e58f4d3008c3183}{bottom}}() : \mbox{\hyperlink{struct_geometry_1_1_line_segment_ac8f9a379311de003bd7e26444c29b8a3}{top}}(); \}}
+\DoxyCodeLine{54     \textcolor{keyword}{const} \mbox{\hyperlink{struct_geometry_1_1_point}{Point}}\& \mbox{\hyperlink{struct_geometry_1_1_line_segment_a145c012dc72c8c9dc0df8d36ff36be16}{operator[]}}(std::size\_t idx)\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} idx ? \mbox{\hyperlink{struct_geometry_1_1_line_segment_aa1a29004cd3baec50e58f4d3008c3183}{bottom}}() : \mbox{\hyperlink{struct_geometry_1_1_line_segment_ac8f9a379311de003bd7e26444c29b8a3}{top}}(); \}}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{63     \textcolor{keyword}{friend} std::ostream\& \mbox{\hyperlink{struct_geometry_1_1_line_segment_a49526829fa247c25ebb93b82e4bf9ad7}{operator<<}}(std::ostream\& stream, \textcolor{keyword}{const} \mbox{\hyperlink{struct_geometry_1_1_line_segment}{LineSegment}}\& l) \{}
+\DoxyCodeLine{64         stream << \textcolor{stringliteral}{"{}["{}} << l.\mbox{\hyperlink{struct_geometry_1_1_line_segment_ac8f9a379311de003bd7e26444c29b8a3}{top}}() << \textcolor{stringliteral}{"{}-\/>"{}} << l.\mbox{\hyperlink{struct_geometry_1_1_line_segment_aa1a29004cd3baec50e58f4d3008c3183}{bottom}}() << \textcolor{stringliteral}{"{}]"{}};}
+\DoxyCodeLine{65         \textcolor{keywordflow}{return} stream;}
+\DoxyCodeLine{66     \}}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{76     \textcolor{keyword}{static} \textcolor{keywordtype}{bool} \mbox{\hyperlink{struct_geometry_1_1_line_segment_a73d97796e2b2b4be9186a75f4d815803}{does\_intersect}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_geometry_1_1_line_segment}{LineSegment}}\& l1, \textcolor{keyword}{const} \mbox{\hyperlink{struct_geometry_1_1_line_segment}{LineSegment}}\& l2);}
+\DoxyCodeLine{77     }
+\DoxyCodeLine{78     \textcolor{keyword}{static} \mbox{\hyperlink{struct_geometry_1_1_point}{Point}} compute\_intersection(\textcolor{keyword}{const} \mbox{\hyperlink{struct_geometry_1_1_line_segment}{LineSegment}}\& l1, \textcolor{keyword}{const} \mbox{\hyperlink{struct_geometry_1_1_line_segment}{LineSegment}}\& l2);}
+\DoxyCodeLine{79     \textcolor{keyword}{static} \mbox{\hyperlink{struct_geometry_1_1_point}{Point}} compute\_intersection(\textcolor{keyword}{const} \mbox{\hyperlink{struct_geometry_1_1_point}{Point}}\& \mbox{\hyperlink{struct_geometry_1_1_line_segment_aaf52182f2996b1c1e1d8221eab084214}{u}}, \textcolor{keyword}{const} \mbox{\hyperlink{struct_geometry_1_1_point}{Point}}\& \mbox{\hyperlink{struct_geometry_1_1_line_segment_ad75a5c4d32a57fa89d39beb829f9c84a}{v}}, \textcolor{keywordtype}{double} y);}
+\DoxyCodeLine{80     \textcolor{keyword}{static} \mbox{\hyperlink{struct_geometry_1_1_point}{Point}} compute\_intersection(\textcolor{keyword}{const} \mbox{\hyperlink{struct_geometry_1_1_line_segment}{LineSegment}}\& l1, \textcolor{keywordtype}{double} y);}
+\DoxyCodeLine{81 \};}
+\DoxyCodeLine{82 \}  \textcolor{comment}{// namespace Geometry}}
+
+\end{DoxyCode}

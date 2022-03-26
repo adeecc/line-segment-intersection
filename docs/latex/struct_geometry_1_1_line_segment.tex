@@ -1,0 +1,160 @@
+\hypertarget{struct_geometry_1_1_line_segment}{}\doxysection{Geometry\+::Line\+Segment Struct Reference}
+\label{struct_geometry_1_1_line_segment}\index{Geometry::LineSegment@{Geometry::LineSegment}}
+Inheritance diagram for Geometry\+::Line\+Segment\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{struct_geometry_1_1_line_segment}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_geometry_1_1_line_segment_a772e9eed71b3da5f3cf40e581f4d9715}\label{struct_geometry_1_1_line_segment_a772e9eed71b3da5f3cf40e581f4d9715}} 
+{\bfseries Line\+Segment} ()=default
+\begin{DoxyCompactList}\small\item\em Construct a new Line Segment object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_geometry_1_1_line_segment_a79e9fce2a192787722ff8e9c7afd68e9}\label{struct_geometry_1_1_line_segment_a79e9fce2a192787722ff8e9c7afd68e9}} 
+{\bfseries Line\+Segment} (\mbox{\hyperlink{struct_geometry_1_1_point}{Point}} \+\_\+u, \mbox{\hyperlink{struct_geometry_1_1_point}{Point}} \+\_\+v)
+\item 
+\mbox{\Hypertarget{struct_geometry_1_1_line_segment_a5612578a440d55a398b8fe9db6a33778}\label{struct_geometry_1_1_line_segment_a5612578a440d55a398b8fe9db6a33778}} 
+{\bfseries Line\+Segment} (double ux, double uy, double vx, double vy)
+\item 
+\mbox{\hyperlink{struct_geometry_1_1_point}{Point}} \& \mbox{\hyperlink{struct_geometry_1_1_line_segment_ac8f9a379311de003bd7e26444c29b8a3}{top}} ()
+\begin{DoxyCompactList}\small\item\em This method is for obtaining the top point of the segment. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_geometry_1_1_line_segment_a271263ab502ec03c566f35140192f3fe}\label{struct_geometry_1_1_line_segment_a271263ab502ec03c566f35140192f3fe}} 
+const \mbox{\hyperlink{struct_geometry_1_1_point}{Point}} \& {\bfseries top} () const
+\item 
+\mbox{\hyperlink{struct_geometry_1_1_point}{Point}} \& \mbox{\hyperlink{struct_geometry_1_1_line_segment_aa1a29004cd3baec50e58f4d3008c3183}{bottom}} ()
+\begin{DoxyCompactList}\small\item\em This method is for obtaining the bottom point of the segment. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_geometry_1_1_line_segment_af0eeed9c04754728a7242dda029154eb}\label{struct_geometry_1_1_line_segment_af0eeed9c04754728a7242dda029154eb}} 
+const \mbox{\hyperlink{struct_geometry_1_1_point}{Point}} \& {\bfseries bottom} () const
+\item 
+\mbox{\hyperlink{struct_geometry_1_1_point}{Point}} \& \mbox{\hyperlink{struct_geometry_1_1_line_segment_a145c012dc72c8c9dc0df8d36ff36be16}{operator\mbox{[}$\,$\mbox{]}}} (std\+::size\+\_\+t idx)
+\begin{DoxyCompactList}\small\item\em Overloading the operator \mbox{[}\mbox{]}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_geometry_1_1_line_segment_a366b9981acaef4d69311280b9d2c3dc4}\label{struct_geometry_1_1_line_segment_a366b9981acaef4d69311280b9d2c3dc4}} 
+const \mbox{\hyperlink{struct_geometry_1_1_point}{Point}} \& {\bfseries operator\mbox{[}$\,$\mbox{]}} (std\+::size\+\_\+t idx) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{struct_geometry_1_1_line_segment_a73d97796e2b2b4be9186a75f4d815803}{does\+\_\+intersect}} (const \mbox{\hyperlink{struct_geometry_1_1_line_segment}{Line\+Segment}} \&l1, const \mbox{\hyperlink{struct_geometry_1_1_line_segment}{Line\+Segment}} \&l2)
+\begin{DoxyCompactList}\small\item\em For knowing if two line segments intersect. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_geometry_1_1_line_segment_a65c9590fc58ac12de6f9a18de2d8312d}\label{struct_geometry_1_1_line_segment_a65c9590fc58ac12de6f9a18de2d8312d}} 
+static \mbox{\hyperlink{struct_geometry_1_1_point}{Point}} {\bfseries compute\+\_\+intersection} (const \mbox{\hyperlink{struct_geometry_1_1_line_segment}{Line\+Segment}} \&l1, const \mbox{\hyperlink{struct_geometry_1_1_line_segment}{Line\+Segment}} \&l2)
+\item 
+\mbox{\Hypertarget{struct_geometry_1_1_line_segment_a0f15796d3df62625d8f662e412dc5064}\label{struct_geometry_1_1_line_segment_a0f15796d3df62625d8f662e412dc5064}} 
+static \mbox{\hyperlink{struct_geometry_1_1_point}{Point}} {\bfseries compute\+\_\+intersection} (const \mbox{\hyperlink{struct_geometry_1_1_point}{Point}} \&\mbox{\hyperlink{struct_geometry_1_1_line_segment_aaf52182f2996b1c1e1d8221eab084214}{u}}, const \mbox{\hyperlink{struct_geometry_1_1_point}{Point}} \&\mbox{\hyperlink{struct_geometry_1_1_line_segment_ad75a5c4d32a57fa89d39beb829f9c84a}{v}}, double y)
+\item 
+\mbox{\Hypertarget{struct_geometry_1_1_line_segment_ab23de1bb93e4a6cfb530d2586232d38d}\label{struct_geometry_1_1_line_segment_ab23de1bb93e4a6cfb530d2586232d38d}} 
+static \mbox{\hyperlink{struct_geometry_1_1_point}{Point}} {\bfseries compute\+\_\+intersection} (const \mbox{\hyperlink{struct_geometry_1_1_line_segment}{Line\+Segment}} \&l1, double y)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_geometry_1_1_line_segment_aaf52182f2996b1c1e1d8221eab084214}\label{struct_geometry_1_1_line_segment_aaf52182f2996b1c1e1d8221eab084214}} 
+\mbox{\hyperlink{struct_geometry_1_1_point}{Point}} {\bfseries u}
+\begin{DoxyCompactList}\small\item\em Initializing a variable of Struct \mbox{\hyperlink{struct_geometry_1_1_point}{Point}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{struct_geometry_1_1_line_segment_ad75a5c4d32a57fa89d39beb829f9c84a}\label{struct_geometry_1_1_line_segment_ad75a5c4d32a57fa89d39beb829f9c84a}} 
+\mbox{\hyperlink{struct_geometry_1_1_point}{Point}} {\bfseries v}
+\begin{DoxyCompactList}\small\item\em Initializing a variable of Struct \mbox{\hyperlink{struct_geometry_1_1_point}{Point}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \mbox{\hyperlink{struct_geometry_1_1_line_segment_a49526829fa247c25ebb93b82e4bf9ad7}{operator$<$$<$}} (std\+::ostream \&stream, const \mbox{\hyperlink{struct_geometry_1_1_line_segment}{Line\+Segment}} \&l)
+\begin{DoxyCompactList}\small\item\em Overloading the Left Shift operator \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{struct_geometry_1_1_line_segment_aa1a29004cd3baec50e58f4d3008c3183}\label{struct_geometry_1_1_line_segment_aa1a29004cd3baec50e58f4d3008c3183}} 
+\index{Geometry::LineSegment@{Geometry::LineSegment}!bottom@{bottom}}
+\index{bottom@{bottom}!Geometry::LineSegment@{Geometry::LineSegment}}
+\doxysubsubsection{\texorpdfstring{bottom()}{bottom()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_geometry_1_1_point}{Point}} \& Geometry\+::\+Line\+Segment\+::bottom (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is for obtaining the bottom point of the segment. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{struct_geometry_1_1_point}{Point}}\& -\/ bottom point of a segment 
+\end{DoxyReturn}
+\mbox{\Hypertarget{struct_geometry_1_1_line_segment_a73d97796e2b2b4be9186a75f4d815803}\label{struct_geometry_1_1_line_segment_a73d97796e2b2b4be9186a75f4d815803}} 
+\index{Geometry::LineSegment@{Geometry::LineSegment}!does\_intersect@{does\_intersect}}
+\index{does\_intersect@{does\_intersect}!Geometry::LineSegment@{Geometry::LineSegment}}
+\doxysubsubsection{\texorpdfstring{does\_intersect()}{does\_intersect()}}
+{\footnotesize\ttfamily static bool Geometry\+::\+Line\+Segment\+::does\+\_\+intersect (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_geometry_1_1_line_segment}{Line\+Segment}} \&}]{l1,  }\item[{const \mbox{\hyperlink{struct_geometry_1_1_line_segment}{Line\+Segment}} \&}]{l2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+For knowing if two line segments intersect. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em l1} & first line segment \\
+\hline
+{\em l2} & second line segment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the line segments intersect 
+
+false if the line segments do not intersect 
+\end{DoxyReturn}
+\mbox{\Hypertarget{struct_geometry_1_1_line_segment_a145c012dc72c8c9dc0df8d36ff36be16}\label{struct_geometry_1_1_line_segment_a145c012dc72c8c9dc0df8d36ff36be16}} 
+\index{Geometry::LineSegment@{Geometry::LineSegment}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!Geometry::LineSegment@{Geometry::LineSegment}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_geometry_1_1_point}{Point}} \& Geometry\+::\+Line\+Segment\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{std\+::size\+\_\+t}]{idx }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Overloading the operator \mbox{[}\mbox{]}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em idx} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{struct_geometry_1_1_point}{Point}}\& based on parameters, bottom point or top point is returned 
+\end{DoxyReturn}
+\mbox{\Hypertarget{struct_geometry_1_1_line_segment_ac8f9a379311de003bd7e26444c29b8a3}\label{struct_geometry_1_1_line_segment_ac8f9a379311de003bd7e26444c29b8a3}} 
+\index{Geometry::LineSegment@{Geometry::LineSegment}!top@{top}}
+\index{top@{top}!Geometry::LineSegment@{Geometry::LineSegment}}
+\doxysubsubsection{\texorpdfstring{top()}{top()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_geometry_1_1_point}{Point}} \& Geometry\+::\+Line\+Segment\+::top (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This method is for obtaining the top point of the segment. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{struct_geometry_1_1_point}{Point}}\& -\/ top point of a segment 
+\end{DoxyReturn}
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{struct_geometry_1_1_line_segment_a49526829fa247c25ebb93b82e4bf9ad7}\label{struct_geometry_1_1_line_segment_a49526829fa247c25ebb93b82e4bf9ad7}} 
+\index{Geometry::LineSegment@{Geometry::LineSegment}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Geometry::LineSegment@{Geometry::LineSegment}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily std\+::ostream \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{stream,  }\item[{const \mbox{\hyperlink{struct_geometry_1_1_line_segment}{Line\+Segment}} \&}]{l }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Overloading the Left Shift operator \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em stream} & Output Stream to be written on \\
+\hline
+{\em l} & line segment to write \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::ostream\& reference to the output stream 
+\end{DoxyReturn}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/vedan/\+Desktop/\+DAA Assignment/daa-\/assignment-\/sweep/lib/include/\mbox{\hyperlink{line__segment_8hpp}{line\+\_\+segment.\+hpp}}\end{DoxyCompactItemize}
