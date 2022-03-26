@@ -6,7 +6,7 @@ LineSweep::LineSweep(const std::vector<segment_t>& segs) {
     segments.reserve(segs.size());
 
     for (const segment_t& seg : segs) {
-        segments.push_back(ComparableSegment(seg.u, seg.v, &sweep_line_y));
+        segments.emplace_back(seg.u, seg.v, &sweep_line_y);
     }
 
     for (ComparableSegment segment : segments) {
@@ -16,8 +16,8 @@ LineSweep::LineSweep(const std::vector<segment_t>& segs) {
 
 #ifndef NDEBUG
     std::cout << "Event Queue: ";
-    for (auto it = q.begin(); it != q.end(); ++it) {
-        std::cout << (*it).pt << " ";
+    for (auto & it : q) {
+        std::cout << it.pt << " ";
     }
     std::cout << "\n\n";
 #endif
@@ -31,7 +31,7 @@ void LineSweep::find_intersections() {
 }
 
 void LineSweep::_findTrivialIntersection(const Event& e) {
-    int total_size = e.lower.size() + e.upper.size() + e.contain.size();
+    size_t total_size = e.lower.size() + e.upper.size() + e.contain.size();
     if (total_size > 1) {
         Intersection I(e.pt);
 
@@ -103,7 +103,7 @@ void LineSweep::_insertNewPoints(const Event& e) {
     // sweep_line_y -= 2 * LineSweep::EPS;  // FIXME: Is this reset required?
 }
 
-double LineSweep::_findLeftMostIntersection(const std::vector<ComparableSegment>& segs) {
+double LineSweep::_findLeftMostIntersection(const std::vector<ComparableSegment>& segs) const {
     double mn = std::numeric_limits<int>::max();
 
     for (const ComparableSegment& seg : segs) {
@@ -114,7 +114,7 @@ double LineSweep::_findLeftMostIntersection(const std::vector<ComparableSegment>
     return mn;
 }
 
-double LineSweep::_findRightMostIntersection(const std::vector<ComparableSegment>& segs) {
+double LineSweep::_findRightMostIntersection(const std::vector<ComparableSegment>& segs) const {
     double mx = std::numeric_limits<int>::min();
 
     for (const ComparableSegment& seg : segs) {
@@ -128,8 +128,8 @@ double LineSweep::_findRightMostIntersection(const std::vector<ComparableSegment
 void LineSweep::_handleLowerOnlyPoint(const Event& e) {
     Status::iterator b_right = status.upper_bound(ComparableSegment(e.pt, e.pt, &sweep_line_y));
 
-    // If b_right = status.end() then search was unsuccesful.
-    // If b_right = status.begin() then there is no item smaller and we can not decrement the iterator.
+    // If b_right = status.end() then search was unsuccessful.
+    // If b_right = status.begin() then there is no item smaller, and we can not decrement the iterator.
     if (b_right != status.end() and b_right != status.begin()) {
         Status::iterator b_left = b_right;
         b_left--;

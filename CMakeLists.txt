@@ -43,3 +43,6 @@ add_subdirectory(apps)
 
 # The testing code is here
 add_subdirectory(tests)
+
+# The benchmarking code is here
+add_subdirectory(benchmark)

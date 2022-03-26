@@ -9,8 +9,8 @@ struct Intersection {
     point_t pt;
     std::vector<ComparableSegment> segs;
 
-    Intersection() {}
-    Intersection(const point_t& pt) : pt(pt) {}
+    Intersection() = default;
+    explicit Intersection(const point_t& pt) : pt(pt) {}
 
     friend std::ostream& operator<<(std::ostream& stream, const Intersection& intersection) {
         stream << intersection.pt << ": {";
@@ -23,7 +23,7 @@ struct Intersection {
 class LineSweep {
     static constexpr double EPS = std::numeric_limits<float>::epsilon();  // TODO: Try other options
 
-    double sweep_line_y;
+    double sweep_line_y{};
 
     EventQueue q;
     Status status;
@@ -34,13 +34,13 @@ class LineSweep {
     void _findTrivialIntersection(const Event& e);
     void _eraseConsideredPoints(const Event& e);
     void _insertNewPoints(const Event& e);
-    double _findLeftMostIntersection(const std::vector<ComparableSegment>& segs);
-    double _findRightMostIntersection(const std::vector<ComparableSegment>& segs);
+    double _findLeftMostIntersection(const std::vector<ComparableSegment>& segs) const;
+    double _findRightMostIntersection(const std::vector<ComparableSegment>& segs) const;
     void _handleLowerOnlyPoint(const Event& e);
     void _handleIsUpperContainPoint(const Event& e);
 
    public:
-    LineSweep(const std::vector<segment_t>& segments);
+    explicit LineSweep(const std::vector<segment_t>& segments);
     void find_intersections();
     void handleEventPoint(const Event& e);
 

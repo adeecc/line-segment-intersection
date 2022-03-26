@@ -22,9 +22,8 @@ struct Event {
     std::vector<ComparableSegment> upper;
     std::vector<ComparableSegment> contain;
 
-    Event() {}
+    Event() = default;
     Event(const point_t& pt, const ComparableSegment& seg, Type type) : pt(pt) {
-        // TODO: Verify this THOROUGHLY
         switch (type) {
             case Type::UPPER:
                 upper.push_back(seg);

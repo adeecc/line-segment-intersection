@@ -1,7 +1,6 @@
 #pragma once
 
-namespace DS {
-namespace rb_tree {
+namespace DS::rb_tree {
 
 template <typename T>
 void tree_t<T>::_left_rotate(node_type *x) {
@@ -50,7 +49,7 @@ void tree_t<T>::_right_rotate(node_type *y) {
 }
 
 template <typename T>
-tree_t<T>::node_type *tree_t<T>::_insert(node_type *z) {
+typename tree_t<T>::node_type *tree_t<T>::_insert(node_type *z) {
     node_type *x = root, *y = node_type::nil;
 
     while (x != node_type::nil) {
@@ -125,7 +124,7 @@ void tree_t<T>::_insert_fixup(node_type *z) {
 }
 
 template <typename T>
-tree_t<T>::node_type *tree_t<T>::_find(const value_type &val) {
+typename tree_t<T>::node_type *tree_t<T>::_find(const value_type &val) {
     node_type *x = root;
     while (x != node_type::nil && x->val != val) {
         if (x->val > val) {
@@ -138,7 +137,7 @@ tree_t<T>::node_type *tree_t<T>::_find(const value_type &val) {
 }
 
 template <typename T>
-tree_t<T>::node_type *tree_t<T>::_upper_bound(const value_type &val) {
+typename tree_t<T>::node_type *tree_t<T>::_upper_bound(const value_type &val) {
     node_type *x = root;
     node_type *upper_bound = node_type::nil;
 
@@ -155,7 +154,7 @@ tree_t<T>::node_type *tree_t<T>::_upper_bound(const value_type &val) {
 }
 
 template <typename T>
-tree_t<T>::node_type *tree_t<T>::_lower_bound(const value_type &val) {
+typename tree_t<T>::node_type *tree_t<T>::_lower_bound(const value_type &val) {
     node_type *x = root;
     node_type *lower_bound = node_type::nil;
 
@@ -298,5 +297,4 @@ void tree_t<T>::erase(iterator it) {
     _size--;
 }
 
-}  // namespace rb_tree
 }  // namespace DS

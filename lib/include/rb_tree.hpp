@@ -6,8 +6,7 @@
 using std::bidirectional_iterator_tag;
 using std::iterator;
 
-namespace DS {
-namespace rb_tree {
+namespace DS::rb_tree {
 
 enum class Color : unsigned {
     BLACK,
@@ -35,15 +34,13 @@ struct node_t {
         right = this;
     }
 
-    node_t(value_type val) : val(val) {
+    explicit node_t(value_type val) : val(val) {
         left = node_t::nil;
         right = node_t::nil;
         p = node_t::nil;
     }
 
     static node_t *nil;
-
-    bool is_leaf() noexcept;
 
     node_t *max() { return (right == node_t::nil) ? this : right->max(); }
     node_t *min() { return (left == node_t::nil) ? this : left->min(); }
@@ -87,7 +84,7 @@ struct node_t {
     }
 };
 
-// Decalre the NIL sentinel
+// Declare the NIL sentinel
 template <typename T>
 node_t<T> *node_t<T>::nil = new node_t<T>();
 
@@ -100,29 +97,29 @@ struct iterator_t {
     // Type definitions
     using iterator_category = std::bidirectional_iterator_tag;
     using difference_type = std::ptrdiff_t;
-    using value_type = T::value_type;
+    using value_type = typename T::value_type;
     using pointer = value_type *;
     using reference = value_type &;
 
     // Constructors:
-    iterator_t(T *ptr) : m_ptr(ptr) {}
+    explicit iterator_t(T *ptr) : m_ptr(ptr) {}
     iterator_t(const iterator_t &that) : m_ptr(that.m_ptr) {}
-    iterator_t(iterator_t &&) = default;
+    iterator_t(iterator_t &&)  noexcept = default;
 
     // Operators
-    iterator_t &operator=(const reference that) {
+    iterator_t &operator=(reference that) {
         m_ptr->val = that;
         return *this;
     }
 
-    iterator_t &operator=(iterator_t &&) = default;
+    iterator_t &operator=(iterator_t &&) noexcept = default;
 
     iterator_t operator++() {
         m_ptr = m_ptr->successor();
         return *this;
     }
 
-    iterator_t operator++(int) {
+    const iterator_t operator++(int) {
         T *temp = m_ptr;
         operator++();
         return iterator_t(temp);
@@ -133,7 +130,7 @@ struct iterator_t {
         return *this;
     }
 
-    iterator_t operator--(int) {
+    const iterator_t operator--(int) {
         T *temp = m_ptr;
         operator--();
         return iterator_t(temp);
@@ -143,8 +140,8 @@ struct iterator_t {
         return m_ptr == that.m_ptr;
     }
 
-    operator T &() { return *m_ptr; }
-    operator const T &() const { return *m_ptr; }
+    explicit operator T &() { return *m_ptr; }
+    explicit operator const T &() const { return *m_ptr; }
 
     reference operator*() { return m_ptr->val; }
     T *operator->() { return m_ptr; }
@@ -168,14 +165,14 @@ struct tree_t {
     void _right_rotate(node_type *);
     void _insert_fixup(node_type *);
 
-    node_type *_insert(node_type *node);
+    node_type *_insert(node_type *z);
 
     node_type *_find(const value_type &val);
     node_type *_upper_bound(const value_type &val);
     node_type *_lower_bound(const value_type &val);
 
    public:
-    tree_t() {}
+    tree_t() = default;
 
     iterator max() { return empty() ? end() : iterator(root->max()); }
     iterator min() { return empty() ? end() : iterator(root->min()); }
@@ -187,7 +184,7 @@ struct tree_t {
         return iterator(_insert(new node_type(val)));
     }
 
-    void erase(iterator pos);
+    void erase(iterator it);
     void erase(const value_type &val) { erase(find(val)); }
 
     iterator find(const value_type &val) { return iterator(_find(val)); }
@@ -197,7 +194,6 @@ struct tree_t {
     std::size_t size() { return _size; }
 };
 
-}  // namespace rb_tree
 }  // namespace DS
 
 #include <rb_tree.tpp>
