@@ -1,10 +1,8 @@
-# Contributing the the CRust Compiler
+# Contributing this DAA Assignment 
 
 It is essential that you know how to use Git as well as GitHub. While the maintainers will be more than happy helping you make your first PR, prerequisite know-how makes it easier for everyone involved. Check [this](https://github.com/firstcontributions/first-contributions) guide if you've never contributed to a project on GitHub before.
 
-
 When you submit code changes, your submissions are understood to be under the same GNU-GPL v3 License that covers the project. Feel free to contact the maintainers if that's a concern.
-
 
 ## Contribution Workflow
 

@@ -13,7 +13,7 @@ void EventQueue::insert(const Event& e) {
 void EventQueue::erase(const Event& e) { _container.erase(e); };
 
 Event EventQueue::next() {
-    if (_container.empty()) return Event();
+    if (_container.empty()) return {};
 
     auto it = _container.begin();
 

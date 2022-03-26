@@ -19,10 +19,10 @@ struct LineSegment {
     LineSegment(double ux, double uy, double vx, double vy) : u(ux, uy), v(vx, vy) {}
 
     Point& top() { return (u < v) ? u : v; }
-    const Point& top() const { return (u < v) ? u : v; }
+    [[nodiscard]] const Point& top() const { return (u < v) ? u : v; }
 
     Point& bottom() { return (u < v) ? v : u; }
-    const Point& bottom() const { return (u < v) ? v : u; }
+    [[nodiscard]] const Point& bottom() const { return (u < v) ? v : u; }
 
     Point& operator[](std::size_t idx) { return idx ? bottom() : top(); }
     const Point& operator[](std::size_t idx) const { return idx ? bottom() : top(); }

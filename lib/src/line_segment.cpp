@@ -52,7 +52,7 @@ Point LineSegment::compute_intersection(const LineSegment& l1, const LineSegment
     double x = det(b1, c1, b2, c2) / dr;
     double y = det(c1, a1, c2, a2) / dr;
 
-    return Point(x, y);
+    return {x, y};
 }
 
 Point LineSegment::compute_intersection(const Point& u, const Point& v, double y) {
@@ -61,7 +61,7 @@ Point LineSegment::compute_intersection(const Point& u, const Point& v, double y
 
     double x = v.x + ((y - v.y) * (v.x - u.x) / (v.y - u.y));
 
-    return Point(x, y);
+    return {x, y};
 }
 
 Point LineSegment::compute_intersection(const LineSegment& l1, double y) {
