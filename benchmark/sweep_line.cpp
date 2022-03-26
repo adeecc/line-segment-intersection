@@ -25,7 +25,7 @@ static void BM_SweepLineRandom(benchmark::State& state) {
 
         state.SetComplexityN(state.range(0));
 
-        std::vector<segment_t> segs = Utils::TestCaseFactory::random(state.range(0), 100);
+        std::vector<segment_t> segs = Utils::TestCaseFactory::random(state.range(0), 5);
         LineSweep sweep(segs);
 
         state.ResumeTiming();
@@ -34,10 +34,10 @@ static void BM_SweepLineRandom(benchmark::State& state) {
     }
 }
 
-BENCHMARK(BM_SweepLineGrid)
-    ->ArgsProduct({benchmark::CreateRange(1, 1 << 14, 1 << 4),
-                   benchmark::CreateRange(1, 1 << 14, 1 << 4)})
-    ->Complexity();
+// BENCHMARK(BM_SweepLineGrid)
+//     ->ArgsProduct({benchmark::CreateRange(1, 1 << 14, 1 << 4),
+//                    benchmark::CreateRange(1, 1 << 14, 1 << 4)})
+//     ->Complexity();
 
 BENCHMARK(BM_SweepLineRandom)
     ->ArgsProduct({benchmark::CreateRange(1, 1 << 10, 2)})

@@ -6,10 +6,12 @@
 
 int main() {
     std::vector<segment_t> segs = Utils::parse_file("input.txt");
+    // int count; std::cin >> count;
+    // std::vector<segment_t> segs = Utils::TestCaseFactory::random(count, 10);
 
 #ifndef NDEBUG
     std::cout << "Staring Sweep Line Algorithm for: \n";
-    for (auto seg : segs) std::cout << seg << "\t";
+    for (auto seg : segs) std::cout << seg << "  ";
     std::cout << "\n------------------------------\n";
 #endif
 
