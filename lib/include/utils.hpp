@@ -1,6 +1,7 @@
 #pragma once
 
 #include <array>
+#include <cmath>
 #include <fstream>
 #include <iostream>
 #include <line_segment.hpp>
@@ -106,6 +107,99 @@ class TestCaseFactory {
 
         for (int i = 0; i < count; ++i) {
             segs.emplace_back(dist(gen), dist(gen), dist(gen), dist(gen));
+        }
+
+        return segs;
+    }
+
+    static std::vector<segment_t> sparse(int count, double mean, double std) {
+        std::random_device dev;
+        std::default_random_engine gen(dev());
+        std::normal_distribution<double> dist(mean, std);
+
+        std::vector<segment_t> segs;
+        segs.reserve(count);
+
+        for (int i = 0; i < count; ++i) {
+            for (int j = 0; j < count; ++j) {
+                double x_1 = i * 10;
+                double y_1 = j * 10;
+                double GAUSSIAN_PARAM = dist(gen);
+
+                double x_2 = x_1 + 10 * std::cos(GAUSSIAN_PARAM);
+                double y_2 = y_1 + 10 * std::sin(GAUSSIAN_PARAM);
+
+                segs.emplace_back(x_1, y_1, x_2, y_2);
+            }
+        }
+        return segs;
+    }
+
+    static std::vector<segment_t> parallelSanted(int count) {
+        std::vector<segment_t> segs;
+        segs.reserve(count);
+
+        for (int i = 0; i < count; ++i) {
+            double x_1 = -i;
+            double y_1 = i;
+
+            double x_2 = i;
+            double y_2 = i + 1;
+
+            segs.emplace_back(x_1, y_1, x_2, y_2);
+        }
+
+        return segs;
+    }
+
+    static std::vector<segment_t> drunkGrid(int count, double variance, double mean, double std) {
+        std::random_device dev;
+        std::default_random_engine gen(dev());
+        std::normal_distribution<double> dist(mean, std);
+
+        std::vector<segment_t> segs;
+        segs.reserve(2 * count);
+
+        double dx = 0, dy = -0.3;
+        for (int i = 0; i < count; ++i) {
+            double x_1 = dx + dist(gen) * variance;
+            double y_1 = dy + i + dist(gen) * variance;
+
+            double x_2 = dx + (count - 1) + dist(gen) * variance;
+            double y_2 = dy + i + dist(gen) * variance;
+
+            segs.emplace_back(x_1, y_1, x_2, y_2);
+
+            x_1 = dx + i + dist(gen) * variance;
+            y_1 = dy + dist(gen) * variance;
+
+            x_2 = dx + i + dist(gen) * variance;
+            y_2 = dy + (count - 1) + dist(gen) * variance;
+
+            segs.emplace_back(x_1, y_1, x_2, y_2);
+        }
+        return segs;
+    }
+
+    static std::vector<segment_t> cube(int count, double dPi = 30, double radius = 4) {
+        double dAngle = M_PI / dPi;
+
+        std::vector<segment_t> segs;
+        segs.reserve(4 * count);
+
+        double angle = 0;
+        for (int i = 0; i < count; ++i) {
+            angle += dAngle;
+
+            double x = std::cos(angle) * radius;
+            double y = std::sin(angle) * radius;
+
+            radius *= 1.04;
+
+            segs.emplace_back(x, y, -y, x);
+            segs.emplace_back(-y, x, -x, -y);
+            segs.emplace_back(-x, -y, y, -x);
+            segs.emplace_back(y, -x, x, y);
         }
 
         return segs;
