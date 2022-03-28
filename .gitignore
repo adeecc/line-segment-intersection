@@ -58,3 +58,7 @@ bld/
 
 # Editors
 .idea/
+
+# Doxygen
+docs/html
+docs/latex

@@ -1,3 +1,7 @@
+/**
+ * @file utils.hpp
+ * @brief Utility Function Definitions
+ */
 #pragma once
 
 #include <array>
@@ -12,9 +16,18 @@
 
 namespace Utils {
 
+/// Type alias for Point
 using point_t = Geometry::Point;
+
+/// Type alias for LineSegment
 using segment_t = Geometry::LineSegment;
 
+/**
+ * @brief Parse the contents of the given filename to generate a set of segments
+ *
+ * @param fname name of file to be parsed
+ * @return list of segments parsed from the file
+ */
 std::vector<segment_t> parse_file(const std::string& fname) {
     std::ifstream stream(fname);
 
@@ -41,6 +54,13 @@ std::vector<segment_t> parse_file(const std::string& fname) {
     return segments;
 }
 
+/**
+ * @brief Write the final output generated after finding all intersections to a file
+ *
+ * @param fname name of file to be used for storing the result
+ * @param segs List of LineSegments used
+ * @param intersections List of intersection points found
+ */
 void generate_output(std::string fname, const std::vector<segment_t>& segs, const std::vector<point_t>& intersections) {
     std::ofstream stream(fname);
 

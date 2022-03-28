@@ -16,7 +16,7 @@ LineSweep::LineSweep(const std::vector<segment_t>& segs) {
 
 #ifndef NDEBUG
     std::cout << "Event Queue: ";
-    for (auto & it : q) {
+    for (auto& it : q) {
         std::cout << it.pt << " ";
     }
     std::cout << "\n\n";
@@ -26,7 +26,7 @@ LineSweep::LineSweep(const std::vector<segment_t>& segs) {
 void LineSweep::find_intersections() {
     while (!q.empty()) {
         auto e = q.next();
-        handleEventPoint(e);
+        _handleEventPoint(e);
     }
 }
 
@@ -137,7 +137,7 @@ void LineSweep::_handleLowerOnlyPoint(const Event& e) {
         std::cout << "[" << e.pt << "] (_handleLowerOnlyPoint): "
                   << "b_left: " << *b_left << " b_right: " << *b_right << "\n";
 #endif
-        findNewEvent(*b_left, *b_right, e.pt);
+        _findNewEvent(*b_left, *b_right, e.pt);
     } else {
 #ifndef NDEBUG
         std::cout << "[" << e.pt << "] (_handleLowerOnlyPoint): "
@@ -168,7 +168,7 @@ void LineSweep::_handleIsUpperContainPoint(const Event& e) {
         std::cout << "[" << e.pt << "] (_handleIsUpperContainPoint:left): "
                   << "b_left: " << *b_left << " s_left: " << *s_left << "\n";
 #endif
-        findNewEvent(*b_left, *s_left, e.pt);
+        _findNewEvent(*b_left, *s_left, e.pt);
     } else {
 #ifndef NDEBUG
         std::cout << "[" << e.pt << "] (_handleIsUpperContainPoint:left): "
@@ -183,7 +183,7 @@ void LineSweep::_handleIsUpperContainPoint(const Event& e) {
         std::cout << "[" << e.pt << "] (_handleIsUpperContainPoint:right): "
                   << "s_right: " << *s_right << " b_right: " << *b_right << "\n";
 #endif
-        findNewEvent(*s_right, *b_right, e.pt);
+        _findNewEvent(*s_right, *b_right, e.pt);
     } else {
 #ifndef NDEBUG
         std::cout << "[" << e.pt << "] (_handleIsUpperContainPoint:right): "
@@ -192,7 +192,7 @@ void LineSweep::_handleIsUpperContainPoint(const Event& e) {
     }
 }
 
-void LineSweep::handleEventPoint(const Event& e) {
+void LineSweep::_handleEventPoint(const Event& e) {
     sweep_line_y = e.pt.y;
 
 #ifndef NDEBUG
@@ -243,7 +243,7 @@ void LineSweep::handleEventPoint(const Event& e) {
 #endif
 }
 
-void LineSweep::findNewEvent(const ComparableSegment& leftNeighbour, const ComparableSegment& rightNeighbour, const point_t& pt) {
+void LineSweep::_findNewEvent(const ComparableSegment& leftNeighbour, const ComparableSegment& rightNeighbour, const point_t& pt) {
     if (!segment_t::does_intersect(leftNeighbour, rightNeighbour)) {
 #ifndef NDEBUG
         std::cout << "[" << pt << "] (findNewEvent): "
