@@ -87,5 +87,6 @@
         "typeindex": "cpp",
         "valarray": "cpp",
         "*.tpp": "cpp"
-    }
+    },
+    "python.formatting.provider": "black"
 }

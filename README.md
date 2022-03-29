@@ -1,13 +1,12 @@
 # SweepLine Algorithm for Line Segment Intersection
 
-
 ## Team (Group 9)
 
-| Name                                       |   ID Number   |
-| :----------------------------------------- | :-----------: |
-| [Aditya Chopra](https://github.com/adeecc) | 2019A7PS0178H |
-| [Omkar Pitale](https://github.com/CyberKnight1803)        | 2019A7PS0083H |
-| [Vedansh Srivastava](https://github.com/vedansh-srivastava)  | 2019A7PS0323H |
+| Name                                                        |   ID Number   |
+| :---------------------------------------------------------- | :-----------: |
+| [Aditya Chopra](https://github.com/adeecc)                  | 2019A7PS0178H |
+| [Omkar Pitale](https://github.com/CyberKnight1803)          | 2019A7PS0083H |
+| [Vedansh Srivastava](https://github.com/vedansh-srivastava) | 2019A7PS0323H |
 
 ## Instructions
 

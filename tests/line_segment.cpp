@@ -13,16 +13,16 @@ TEST(LineSegmentTest, DefaultConstructor) {
 
 TEST(LineSegmentTest, ParameterizedConstructors) {
     Geometry::LineSegment seg(Geometry::Point(2, 3), Geometry::Point(4, 5));
-    ASSERT_EQ(seg.u.x, 4);
-    ASSERT_EQ(seg.u.y, 5);
-    ASSERT_EQ(seg.v.x, 2);
-    ASSERT_EQ(seg.v.y, 3);
+    ASSERT_EQ(seg.u.x, 2);
+    ASSERT_EQ(seg.u.y, 3);
+    ASSERT_EQ(seg.v.x, 4);
+    ASSERT_EQ(seg.v.y, 5);
 
     seg = Geometry::LineSegment(2, 3, 4, 5);
-    ASSERT_EQ(seg.u.x, 4);
-    ASSERT_EQ(seg.u.y, 5);
-    ASSERT_EQ(seg.v.x, 2);
-    ASSERT_EQ(seg.v.y, 3);
+    ASSERT_EQ(seg.u.x, 2);
+    ASSERT_EQ(seg.u.y, 3);
+    ASSERT_EQ(seg.v.x, 4);
+    ASSERT_EQ(seg.v.y, 5);
 }
 
 TEST(LineSegmentTest, ArraySubscriptOperator) {
