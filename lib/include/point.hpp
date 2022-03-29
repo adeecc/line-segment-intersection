@@ -16,7 +16,7 @@ namespace Geometry {
  */
 struct Point {
     /// The epsilon value to be used for all comparisons
-    static constexpr double EPS = std::numeric_limits<float>::epsilon();
+    static constexpr double EPS = 1e-9;  // std::numeric_limits<double>::epsilon();
 
     /// x coordinate of the point
     double x;
@@ -45,12 +45,26 @@ struct Point {
      * @param rhs
      */
     friend int operator<=>(const Point& lhs, const Point& rhs) {
-        if ((lhs.y > rhs.y) or (lhs.y == rhs.y and lhs.x < rhs.x))
+        // if ((lhs.y > rhs.y) or (lhs.y == rhs.y and lhs.x < rhs.x))
+        //     return -1;
+        // else if (lhs.x == rhs.x and lhs.y == rhs.y)
+        //     return 0;
+        // else
+        //     return 1;
+
+        if (std::abs(lhs.y - rhs.y) < Point::EPS) {
+            if (std::abs(lhs.x - rhs.x) < Point::EPS) {
+                return 0;
+            } else if (lhs.x < rhs.x) {
+                return -1;
+            } else {
+                return 1;
+            }
+        } else if (lhs.y > rhs.y) {
             return -1;
-        else if (lhs.x == rhs.x and lhs.y == rhs.y)
-            return 0;
-        else
+        } else {
             return 1;
+        }
     }
 
     /**
@@ -58,8 +72,7 @@ struct Point {
      *
      * @param lhs
      * @param rhs
-     * @return true
-     * @return false
+     * @return true if equal, false otherwise
      */
     friend bool operator==(const Point& lhs, const Point& rhs) {
         return std::abs(lhs.x - rhs.x) < Point::EPS and

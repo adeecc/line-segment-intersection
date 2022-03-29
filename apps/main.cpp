@@ -35,7 +35,7 @@ int main() {
         intersection_pts.push_back(its.pt);
     }
 
-//    Utils::generate_output("output.txt", segs, intersection_pts);
+   Utils::generate_output("output.txt", segs, intersection_pts);
 
     return 0;
 }

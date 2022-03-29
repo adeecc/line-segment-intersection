@@ -47,7 +47,7 @@ void LineSweep::_findTrivialIntersection(const Event& e) {
             I.segs.push_back(comparableSeg);
         }
 
-        intersections.push_back(I);
+        intersections.insert(I);
 
 #ifndef NDEBUG
 
@@ -259,13 +259,18 @@ void LineSweep::_findNewEvent(const ComparableSegment& leftNeighbour, const Comp
     point_t intersection = segment_t::compute_intersection(leftNeighbour, rightNeighbour);
 
     // If intersection is below sweep_line or to the right of the event point
-    if ((intersection.y < sweep_line_y) or (intersection.x > pt.x)) {
+    if ((intersection.y < pt.y) or (intersection.x > pt.x)) {
 #ifndef NDEBUG
-        std::cout << "Found New Event Point: " << intersection << "\n";
+    std::cout << "Found New Event Point: " << intersection << "\n";
 #endif
-        if (intersection != leftNeighbour.u and intersection != leftNeighbour.v)
-            q.insert(Event(intersection, leftNeighbour, Event::Type::CONTAIN));
-        if (intersection != rightNeighbour.u and intersection != rightNeighbour.v)
-            q.insert(Event(intersection, rightNeighbour, Event::Type::CONTAIN));
+    if (intersection != leftNeighbour.u and intersection != leftNeighbour.v)
+        q.insert(Event(intersection, leftNeighbour, Event::Type::CONTAIN));
+    if (intersection != rightNeighbour.u and intersection != rightNeighbour.v)
+        q.insert(Event(intersection, rightNeighbour, Event::Type::CONTAIN));
     }
+}
+
+std::vector<Intersection> LineSweep::getIntersections() {
+    std::vector<Intersection> segment_list(intersections.begin(), intersections.end());
+    return segment_list;
 }

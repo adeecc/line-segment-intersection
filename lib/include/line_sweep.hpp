@@ -5,7 +5,7 @@
 #pragma once
 
 #include <event_queue.hpp>
-#include <iomanip>
+#include <rb_tree.hpp>
 #include <status.hpp>
 #include <vector>
 
@@ -34,6 +34,32 @@ struct Intersection {
     explicit Intersection(const point_t& pt) : pt(pt) {}
 
     /**
+     * @brief Overload the operator<=>
+     * Defines a strict ordering on all points
+     * @param lhs
+     * @param rhs
+     */
+    friend int operator<=>(const Intersection& lhs, const Intersection& rhs) {
+        if (lhs.pt < rhs.pt)
+            return -1;
+        else if (lhs.pt == rhs.pt)
+            return 0;
+        else
+            return 1;
+    }
+
+    /**
+     * @brief overload operator==
+     *
+     * @param lhs
+     * @param rhs
+     * @return true if equal, false otherwise
+     */
+    friend bool operator==(const Intersection& lhs, const Intersection& rhs) {
+        return lhs.pt == rhs.pt;
+    }
+
+    /**
      * @brief Overloading the operator<<
      *
      * @param stream Output Stream to be written on
@@ -56,7 +82,7 @@ struct Intersection {
 class LineSweep {
     /// Epsilon to be used for the Bentley-Ottman algorithm
     /// Delta to be taken when calculatingn the neighbours at an intersection point
-    static constexpr double EPS = std::numeric_limits<float>::epsilon();
+    static constexpr double EPS = 1e-9; // std::numeric_limits<double>::epsilon();
 
     /// Current sweep line position
     double sweep_line_y{};
@@ -70,8 +96,9 @@ class LineSweep {
     /// Set of segments being evaluated
     std::vector<ComparableSegment> segments;
 
-    /// List of calculated intersection points
-    std::vector<Intersection> intersections;
+    /// Set of calculated intersection points
+
+    DS::rb_tree::tree_t<Intersection> intersections;
 
     void _findTrivialIntersection(const Event& e);
     void _eraseConsideredPoints(const Event& e);
@@ -103,5 +130,5 @@ class LineSweep {
      *
      * @return the calculated intersection points
      */
-    std::vector<Intersection> getIntersections() { return intersections; }
+    std::vector<Intersection> getIntersections();
 };

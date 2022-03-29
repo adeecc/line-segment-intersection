@@ -18,7 +18,7 @@ namespace Geometry {
  * @brief Struct describing a line segment objecs defined by two end points
  */
 struct LineSegment {
-    static constexpr double EPS = std::numeric_limits<float>::epsilon();
+    static constexpr double EPS = Point::EPS;
 
     /// Variable representing one (of two) end point of a Line Segment
     Point u;
